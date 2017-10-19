@@ -1,0 +1,133 @@
+@font-face {
+    font-family: Immath;
+    src: url("lmmath.otf") format("opentype");
+}
+
+html, input {
+  font-family: Immath;
+}
+.div > *{
+    display: block;
+    text-align: center;
+    font-size: 0.7em;
+}
+
+.div-left {
+    border-bottom: 1px solid black;
+}
+
+.div {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.plus-right:before {
+    content: "+"
+}
+
+.hole input {
+ box-shadow: 0 0 0 1px #bada55;
+}
+
+.equals-right:before {
+  content: "=";
+}
+
+.sigma {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.sigma>* {
+  display: block;
+}
+
+.sigma-under, .sigma-over {
+  font-size: 0.7em;
+
+}
+
+.sigma-after::before {
+  content: "Σ";
+  font-size: 2em;
+}
+
+.sigma-after {
+  vertical-align: super;
+}
+
+.pow-right {
+  vertical-align: super;
+  font-size: 0.8em;
+}
+.pow-right > input {
+  font-size: 1em;
+}
+
+.matrix-content {
+  display: inline-table;
+  vertical-align: middle;
+  padding-left: 0.4em;
+  padding-right: 0.4em;
+  border-left: 0.08em solid black;
+  border-right: 0.08em solid black;
+  border-top-left-radius: 30% 100%;
+  border-bottom-left-radius: 30% 100%;
+  border-top-right-radius: 30% 100%;
+  border-bottom-right-radius: 30% 100%;
+}
+
+.vector {
+  display: inline-block;
+  vertical-align: middle;
+  border-left: 0.08em solid black;
+  border-right: 0.08em solid black;
+  border-top: 0.08em solid transparent;
+  border-bottom: 0.08em solid transparent;
+  border-radius: 51%/13%;
+  padding-left: 0.3em;
+  padding-right: 0.3em;
+  padding-top: 0.3em;
+  padding-bottom: 0.3em;
+}
+.vector-item {
+  display: block;
+  text-align: center;
+}
+
+
+.elem-in-right::before {
+  content: "∈"
+}
+
+
+.sqrt::before {
+  content: "√"
+}
+
+.sqrt-inner {
+  border-top: 1px solid black;
+}
+
+
+input {
+  font-size: 1em;
+  text-align: center;
+  background: transparent;
+  border: none;
+  box-shadow: 0 0 0 1px #72dfff;
+}
+
+
+.parentheses:before {
+  content: "("
+}
+
+.parentheses:after {
+  content: ")"
+}
+
+.hidden-text {
+  overflow: hidden;
+  font-size: 0;
+}
