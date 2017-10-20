@@ -1,0 +1,305 @@
+[
+  {
+    "name": "MathUi",
+    "comment": " MathUi\n\n\n# Types\n\n@docs OpInfo, Exp, Model, Msg\n\n\n# Usage\n\n@docs update, view, viewExp, latexRepr\n\n\n# Configuration\n\n@docs plus, divide, pow, elemIn, equals, sqrtOp, parentheses, sigma, infinity, vectorsymbol\n\n",
+    "aliases": [
+      {
+        "name": "Model",
+        "comment": " ",
+        "args": [],
+        "type": "{ expression : MathUi.Exp, breadCrum : MathUi.BreadCrum }"
+      },
+      {
+        "name": "OpInfo",
+        "comment": "\nContains Information for the Operation.\n ",
+        "args": [],
+        "type": "{ shortName : String , longName : String , cssClass : String , latexOperator : String , latexBefore : String , latexAfter : String }"
+      }
+    ],
+    "types": [
+      {
+        "name": "Exp",
+        "comment": "\nHomogeneous syntax tree\n ",
+        "args": [],
+        "cases": [
+          [
+            "BinOp",
+            [
+              "MathUi.OpInfo",
+              "MathUi.Exp",
+              "MathUi.Exp"
+            ]
+          ],
+          [
+            "BigOp",
+            [
+              "MathUi.OpInfo",
+              "MathUi.Exp",
+              "MathUi.Exp",
+              "MathUi.Exp"
+            ]
+          ],
+          [
+            "UnaryOp",
+            [
+              "MathUi.OpInfo",
+              "MathUi.Exp"
+            ]
+          ],
+          [
+            "Symbol",
+            [
+              "MathUi.OpInfo"
+            ]
+          ],
+          [
+            "Vector",
+            [
+              "List MathUi.Exp"
+            ]
+          ],
+          [
+            "Matrix",
+            [
+              "List (List MathUi.Exp)"
+            ]
+          ],
+          [
+            "Id",
+            [
+              "String"
+            ]
+          ],
+          [
+            "Hole",
+            []
+          ]
+        ]
+      },
+      {
+        "name": "Msg",
+        "comment": " ",
+        "args": [],
+        "cases": []
+      }
+    ],
+    "values": [
+      {
+        "name": "divide",
+        "comment": " dividde top bottom ",
+        "type": "MathUi.Exp -> MathUi.Exp -> MathUi.Exp"
+      },
+      {
+        "name": "elemIn",
+        "comment": " elemIn set item",
+        "type": "MathUi.Exp -> MathUi.Exp -> MathUi.Exp"
+      },
+      {
+        "name": "equals",
+        "comment": " equals left right ",
+        "type": "MathUi.Exp -> MathUi.Exp -> MathUi.Exp"
+      },
+      {
+        "name": "infinity",
+        "comment": " ",
+        "type": "MathUi.Exp"
+      },
+      {
+        "name": "latexRepr",
+        "comment": " ",
+        "type": "MathUi.Exp -> String"
+      },
+      {
+        "name": "parentheses",
+        "comment": " ",
+        "type": "MathUi.Exp -> MathUi.Exp"
+      },
+      {
+        "name": "plus",
+        "comment": " plus left right ",
+        "type": "MathUi.Exp -> MathUi.Exp -> MathUi.Exp"
+      },
+      {
+        "name": "pow",
+        "comment": " pow basis exponent ",
+        "type": "MathUi.Exp -> MathUi.Exp -> MathUi.Exp"
+      },
+      {
+        "name": "sigma",
+        "comment": " ",
+        "type": "MathUi.Exp -> MathUi.Exp -> MathUi.Exp -> MathUi.Exp"
+      },
+      {
+        "name": "sqrtOp",
+        "comment": " ",
+        "type": "MathUi.Exp -> MathUi.Exp"
+      },
+      {
+        "name": "update",
+        "comment": " ",
+        "type": "MathUi.Msg -> MathUi.Model -> MathUi.Model"
+      },
+      {
+        "name": "vectorsymbol",
+        "comment": " ",
+        "type": "MathUi.Exp -> MathUi.Exp"
+      },
+      {
+        "name": "view",
+        "comment": " ",
+        "type": "MathUi.Model -> Html.Html MathUi.Msg"
+      },
+      {
+        "name": "viewExp",
+        "comment": " ",
+        "type": "MathUi.Exp -> MathUi.BreadCrum -> Html.Html MathUi.Msg"
+      }
+    ],
+    "generated-with-elm-version": "0.18.0"
+  },
+  {
+    "name": "MathUiCss",
+    "comment": "\n@docs CssIds, CssClasses, css\n",
+    "aliases": [],
+    "types": [
+      {
+        "name": "CssClasses",
+        "comment": " ",
+        "args": [],
+        "cases": [
+          [
+            "Wrapper",
+            []
+          ],
+          [
+            "Div",
+            []
+          ],
+          [
+            "DivLeft",
+            []
+          ],
+          [
+            "DivRight",
+            []
+          ],
+          [
+            "PlusRight",
+            []
+          ],
+          [
+            "PlusLeft",
+            []
+          ],
+          [
+            "Plus",
+            []
+          ],
+          [
+            "Hole",
+            []
+          ],
+          [
+            "Equals",
+            []
+          ],
+          [
+            "EqualsRight",
+            []
+          ],
+          [
+            "EqualsLeft",
+            []
+          ],
+          [
+            "Sigma",
+            []
+          ],
+          [
+            "SigmaUnder",
+            []
+          ],
+          [
+            "SigmaOver",
+            []
+          ],
+          [
+            "SigmaAfter",
+            []
+          ],
+          [
+            "Pow",
+            []
+          ],
+          [
+            "PowRight",
+            []
+          ],
+          [
+            "PowLeft",
+            []
+          ],
+          [
+            "Matrix",
+            []
+          ],
+          [
+            "MatrixContent",
+            []
+          ],
+          [
+            "Vector",
+            []
+          ],
+          [
+            "VectorItem",
+            []
+          ],
+          [
+            "ElemIn",
+            []
+          ],
+          [
+            "Sqrt",
+            []
+          ],
+          [
+            "VectorSymbol",
+            []
+          ],
+          [
+            "Parentheses",
+            []
+          ],
+          [
+            "HiddenText",
+            []
+          ],
+          [
+            "FunctionApplication",
+            []
+          ]
+        ]
+      },
+      {
+        "name": "CssIds",
+        "comment": " ",
+        "args": [],
+        "cases": [
+          [
+            "Bottom",
+            []
+          ]
+        ]
+      }
+    ],
+    "values": [
+      {
+        "name": "css",
+        "comment": " ",
+        "type": "Css.Stylesheet"
+      }
+    ],
+    "generated-with-elm-version": "0.18.0"
+  }
+]
