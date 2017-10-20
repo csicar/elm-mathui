@@ -1,8 +1,8 @@
 {
-    "version": "0.0.2",
-    "summary": "Math formular display and creationg",
+    "version": "1.0.0",
+    "summary": "display and edit math formulars",
     "repository": "https://github.com/csicar/elm-mathui.git",
-    "license": "MIT",
+    "license": "BSD3",
     "source-directories": [
         "src/"
     ],
