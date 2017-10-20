@@ -1,70 +1,85 @@
+@import url('https://fonts.googleapis.com/css?family=Crimson+Text');
 @font-face {
     font-family: Immath;
     src: url("lmmath.otf") format("opentype");
 }
 
 html, input {
-  font-family: Immath;
+  font-family: 'Crimson Text', serif;
+  font-size: 3em;
 }
-.div > *{
+.mathui-Div > *{
     display: block;
     text-align: center;
     font-size: 0.7em;
 }
 
-.div-left {
+.mathui-FunctionApplicationRight::after {
+  content: ")";
+}
+
+.mathui-FunctionApplicationRight::before {
+  content: "(";
+}
+
+.mathui-DivLeft {
     border-bottom: 1px solid black;
 }
 
-.div {
+.mathui-Div {
     display: inline-block;
     vertical-align: middle;
 }
 
-.plus-right:before {
-    content: "+"
+.mathui-MultiplyRight::before {
+  content: "·";
 }
 
-.hole input {
+.mathui-PlusRight:before {
+    content: "+";
+}
+
+.mathui-Hole input {
  box-shadow: 0 0 0 1px #bada55;
 }
 
-.equals-right:before {
+.mathui-EqualsRight:before {
   content: "=";
 }
 
-.sigma {
+.mathui-Sigma {
   display: inline-block;
   vertical-align: middle;
 }
 
-.sigma>* {
+.mathui-Sigma>* {
   display: block;
 }
 
-.sigma-under, .sigma-over {
+.mathui-SigmaUnder, .mathui-SigmaOver {
   font-size: 0.7em;
-
+  line-height: 0;
+  height: 0.6em;
 }
 
-.sigma-after::before {
+.mathui-SigmaAfter::before {
   content: "Σ";
   font-size: 2em;
+  vertical-align: middle;
 }
 
-.sigma-after {
-  vertical-align: super;
+.mathui-SigmaAfter {
 }
 
-.pow-right {
+.mathui-PowRight {
   vertical-align: super;
   font-size: 0.8em;
 }
-.pow-right > input {
+.mathui-PowRight > input {
   font-size: 1em;
 }
 
-.matrix-content {
+.mathui-MatrixContent {
   display: inline-table;
   vertical-align: middle;
   padding-left: 0.4em;
@@ -77,7 +92,7 @@ html, input {
   border-bottom-right-radius: 30% 100%;
 }
 
-.vector {
+.mathui-Vector {
   display: inline-block;
   vertical-align: middle;
   border-left: 0.08em solid black;
@@ -90,44 +105,63 @@ html, input {
   padding-top: 0.3em;
   padding-bottom: 0.3em;
 }
-.vector-item {
+.mathui-VectorItem {
   display: block;
   text-align: center;
 }
 
 
-.elem-in-right::before {
+.mathui-ElemInRight::before {
   content: "∈"
 }
 
 
-.sqrt::before {
-  content: "√"
+.mathui-Sqrt::before {
+  content: "√";
+  font-size: 132%;
+line-height: 100%;
 }
 
-.sqrt-inner {
+.mathui-SqrtInner {
   border-top: 1px solid black;
+}
+.mathui-SqrtInner > * {
+    font-size: 0.8em;
 }
 
 
 input {
   font-size: 1em;
   text-align: center;
-  background: transparent;
+  background: rgba(114, 223, 255, 0.25);
+    border-radius: 19px;
   border: none;
-  box-shadow: 0 0 0 1px #72dfff;
+  box-shadow: 0 0 0 1px #72dfff inset;
 }
 
 
-.parentheses:before {
+.mathui-VectorSymbol::before {
+  content: "→";
+  display: block;
+  text-align: center;
+  line-height: 50%;
+}
+
+.mathui-VectorSymbol {
+  display: inline-block;
+}
+
+
+
+.mathui-Parentheses:before {
   content: "("
 }
 
-.parentheses:after {
+.mathui-Parentheses:after {
   content: ")"
 }
 
-.hidden-text {
+.mathui-HiddenText {
   overflow: hidden;
   font-size: 0;
 }
