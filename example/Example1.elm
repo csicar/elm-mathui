@@ -49,4 +49,4 @@ update msg model =
 
 view : Model -> Html.Html Msg
 view model =
-    div [] [ Html.map MathUiMsg (MathUi.view model.mathUi) ]
+    div [] [ Html.map MathUiMsg (MathUi.viewAll model.mathUi) ]
