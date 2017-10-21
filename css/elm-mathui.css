@@ -71,6 +71,56 @@ html, input {
 .mathui-SigmaAfter {
 }
 
+
+.mathui-SubRight {
+  vertical-align: sub;
+  font-size: 0.8em;
+}
+
+.mathui-Lambda {
+  font-size: 0.8em;
+}
+
+.mathui-LambdaLeft {
+  background-color: #bada55;
+  padding: 0.1em;
+  border-top-left-radius: 0.1em;
+  border-bottom-left-radius: 0.1em;
+}
+
+.mathui-LambdaLeft::before {
+  content: "λ"
+}
+
+.mathui-LambdaRight {
+  border: 4px solid #bada55;
+  padding: 0.2em;
+  border-radius: 0.1em;
+}
+
+.mathui-App {
+  font-size: 0.8em;
+}
+
+.mathui-AppLeft::after {
+  content :"|>"
+}
+
+.mathui-AppLeft {
+  background-color: #bada55;
+  padding: 0.1em;
+  border-top-left-radius: 0.1em;
+  border-bottom-left-radius: 0.1em;
+}
+
+.mathui-AppRight {
+  border: 4px solid #bada55;
+  padding: 0.2em;
+  border-radius: 0.1em;
+}
+
+
+
 .mathui-PowRight {
   vertical-align: super;
   font-size: 0.8em;

@@ -27,7 +27,7 @@ module MathUi exposing (OpInfo, Exp(..), Model, Msg, update, view, viewAll, late
 
 import Html exposing (Html, Attribute, div, input, text, span, node, pre, img, table, tr, td)
 import Html.Attributes exposing (..)
-import Html.Events exposing (onInput, on, keyCode)
+import Html.Events exposing (onInput, on, keyCode, onClick, onWithOptions)
 import Json.Decode as Json
 import Css.File exposing (CssFileStructure, CssCompilerProgram)
 import MathUiCss
@@ -36,6 +36,8 @@ import MathUiCss
 main =
     Html.beginnerProgram { model = model, view = view, update = update }
 
+
+type LatexOperator = Operator String | AdvancedOperator String
 
 {-| Contains Information for the Operation.
 -}
@@ -62,11 +64,14 @@ type Exp
     | Hole
 
 
+
+plusInfo = { shortName = "+", longName = "plus", cssClass = "Plus", latexOperator = "+", latexBefore = "", latexAfter = "" }
+
 {-| plus left right
 -}
 plus : Exp -> Exp -> Exp
 plus =
-    BinOp { shortName = "+", longName = "plus", cssClass = "Plus", latexOperator = "+", latexBefore = "", latexAfter = "" }
+    BinOp plusInfo
 
 
 {-| multiply left right
@@ -89,6 +94,10 @@ pow : Exp -> Exp -> Exp
 pow =
     BinOp { shortName = "^", longName = "power", cssClass = "Pow", latexOperator = "^", latexBefore = "", latexAfter = "" }
 
+sub : Exp -> Exp -> Exp
+sub =
+  BinOp {shortName="_", longName = "subscript", cssClass="Sub", latexOperator="_", latexBefore="", latexAfter=""}
+
 
 {-| elemIn set item
 -}
@@ -110,6 +119,15 @@ functionApplication : Exp -> Exp -> Exp
 functionApplication =
     BinOp { shortName = "⇒", longName = "functionApplication", cssClass = "FunctionApplication", latexOperator = "", latexBefore = "", latexAfter = "" }
 
+lambda : Exp -> Exp -> Exp
+lambda =
+  BinOp {shortName="λ", longName="lambda", cssClass="Lambda", latexOperator="", latexBefore="", latexAfter=""}
+
+appInfo = {shortName="β", longName="app", cssClass="App", latexOperator="", latexBefore="", latexAfter=""}
+
+app : Exp -> Exp -> Exp
+app =
+  BinOp appInfo
 
 {-| sqrtOp operand
 -}
@@ -146,12 +164,16 @@ infinity =
     Symbol { shortName = "∞", longName = "infinity", cssClass = "Infinity", latexOperator = "\\infty", latexBefore = "", latexAfter = "" }
 
 
+
 options =
     [ ( "+", \rest -> plus (Id rest) Hole )
     , ( "*", \rest -> multiply (Id rest) Hole )
     , ( "/", \rest -> divide (Id rest) Hole )
     , ( "^", \rest -> pow (Id rest) Hole )
+    , ( "_", \rest -> sub (Id rest) Hole )
     , ( "=", \rest -> equals (Id rest) Hole )
+    , ( "\\lambda", \rest -> lambda (Id rest) (Hole))
+    , ( "\\app", \rest -> app (Id rest) (Hole))
     , ( "\\in", \rest -> elemIn (Id rest) Hole )
     , ( "\\sqrt", \rest -> sqrtOp (Id rest) )
     , ( "\\vec", \rest -> vectorsymbol (Id rest) )
@@ -228,6 +250,14 @@ latexRepr exp =
 
         Hole ->
             "<Hole>"
+--
+-- asciiMathRepr : Exp -> String
+-- asciiMathRepr exp =
+--   case exp of
+--     BinOp info a b ->
+--       String.concat ["((", asciiMathRepr a, ")", info.shortName, "(", asciiMathRepr, "))"]
+--     BigOp info under over exp ->
+--       String.concat ["((", info.asciiMathRepr under]
 
 
 type Crum
@@ -241,6 +271,7 @@ type Crum
     | VectorAt Int (List Exp) (List Exp)
     | MatrixAt ( Int, Int ) (List (List Exp)) (List Exp) (List Exp) (List (List Exp))
     | IdHere String
+    | ExpBelow Exp
     | HoleHere
 
 
@@ -289,6 +320,7 @@ model2 =
 type Msg
     = UpdateIdentifier BreadCrum String
     | KeyUp BreadCrum Int
+    | ClickOn BreadCrum
 
 
 textToExp : String -> Exp
@@ -305,53 +337,81 @@ textToExp string =
                 Id string
 
 
+foldCrum : (Crum -> Maybe Exp) -> Exp -> BreadCrum -> Exp
+foldCrum f neutral breadCrum =
+  case breadCrum of
+      (x::[]) -> f x |> Maybe.withDefault (case x of
+        SymbolHere opInfo -> Symbol opInfo
+        ExpBelow exp -> exp
+        IdHere s -> Id s
+        HoleHere -> Hole
+        _ -> neutral
+          )
+      x :: xs ->
+          let
+              futureExp = foldCrum f neutral xs |> Debug.log "exp"
+          in
+              case x of
+                  BinOpLeft opInfo exp ->
+                      BinOp opInfo futureExp exp
+
+                  BinOpRight opInfo exp ->
+                      BinOp opInfo exp futureExp
+
+                  BigOpUnder opInfo over after ->
+                      BigOp opInfo futureExp over after
+
+                  BigOpOver opInfo under after ->
+                      BigOp opInfo under futureExp after
+
+                  BigOpAfer opInfo under over ->
+                      BigOp opInfo under over futureExp
+
+                  UnaryOpHere opInfo inner ->
+                      UnaryOp opInfo futureExp
+
+                  VectorAt pos before after ->
+                      Vector (before ++ [ futureExp ] ++ after)
+
+                  MatrixAt pos rowsBefore cellsBefore cellsAfter rowsAfter ->
+                      rowsBefore ++ [ cellsBefore ++ [ futureExp ] ++ cellsAfter ] ++ rowsAfter |> Matrix
+
+                  SymbolHere opInfo ->
+                      Symbol opInfo
+
+                  ExpBelow exp ->
+                    exp
+
+                  IdHere s ->
+                      Id s
+
+                  HoleHere ->
+                      Hole
+      [] ->
+          neutral
+
+changeIdentifierFolder : String -> Crum -> Maybe Exp
+changeIdentifierFolder newContent crum =
+  let
+    newExp = textToExp newContent |> Just
+  in
+    case crum of
+
+        IdHere string ->
+          newExp
+
+        SymbolHere _ ->
+          newExp
+
+        HoleHere ->
+          newExp
+
+
+        _ -> Nothing
+
+
 changeIdentifier : BreadCrum -> String -> Exp
-changeIdentifier breadCrum newContent =
-    case breadCrum of
-        x :: xs ->
-            let
-                changedExp =
-                    changeIdentifier xs newContent
-
-                newExp =
-                    textToExp newContent
-            in
-                case x of
-                    BinOpLeft opInfo exp ->
-                        BinOp opInfo changedExp exp
-
-                    BinOpRight opInfo exp ->
-                        BinOp opInfo exp changedExp
-
-                    BigOpUnder opInfo over after ->
-                        BigOp opInfo changedExp over after
-
-                    BigOpOver opInfo under after ->
-                        BigOp opInfo under changedExp after
-
-                    BigOpAfer opInfo under over ->
-                        BigOp opInfo under over changedExp
-
-                    UnaryOpHere opInfo _ ->
-                        UnaryOp opInfo changedExp
-
-                    VectorAt pos before after ->
-                        Vector (before ++ [ changedExp ] ++ after)
-
-                    MatrixAt pos rowsBefore cellsBefore cellsAfter rowsAfter ->
-                        rowsBefore ++ [ cellsBefore ++ [ changedExp ] ++ cellsAfter ] ++ rowsAfter |> Matrix
-
-                    SymbolHere opInfo ->
-                        newExp
-
-                    IdHere _ ->
-                        newExp
-
-                    HoleHere ->
-                        newExp
-
-        [] ->
-            Hole
+changeIdentifier breadCrum newContent = foldCrum (changeIdentifierFolder newContent) Hole breadCrum
 
 
 deletePartWithOption : BreadCrum -> Crum -> Exp -> ( Exp, Exp )
@@ -390,6 +450,9 @@ deletePartWithOption breadCrum crum changedExp =
         IdHere s ->
             ( Id s, Id s )
 
+        ExpBelow exp ->
+            (exp, Hole)
+
         HoleHere ->
             ( Hole, Hole )
 
@@ -416,6 +479,17 @@ deleteNode breadCrum =
             Hole
 
 
+applyActionFolder : Crum -> Maybe Exp
+applyActionFolder x =
+  case x of
+    HoleHere -> Id "yay! not a hole anymore!" |> Just
+    _ -> Nothing
+
+applyAction : BreadCrum -> Exp
+applyAction = foldCrum applyActionFolder (Id "test")
+
+
+
 {-| the update function. Should be called by the caller's update function updating the model:
 
     update : Msg -> Model -> Model
@@ -439,12 +513,16 @@ update msg model =
 
                 _ ->
                     model
+        ClickOn breadCrum ->
+            {model | expression = applyAction breadCrum, breadCrum = breadCrum}
 
 
 onKeyUp : (Int -> msg) -> Attribute msg
 onKeyUp tagger =
-    on "keypress" (Json.map tagger keyCode)
+    on "keyup" (Json.map tagger keyCode)
 
+onClickNoPropagation : msg -> Attribute msg
+onClickNoPropagation msg = onWithOptions "click" { stopPropagation = True, preventDefault = False } (Json.succeed msg)
 
 setLengthForString string =
     String.length string |> toFloat |> (*) 0.39 |> (+) 0.5 |> toString |> \x -> x ++ "em"
@@ -458,7 +536,7 @@ viewExp : Exp -> BreadCrum -> Html Msg
 viewExp expression breadCrums =
     case expression of
         BinOp opInfo left right ->
-            span [ cls opInfo.cssClass ]
+            span [ cls opInfo.cssClass, onClickNoPropagation <| ClickOn (breadCrums ++ [ ExpBelow expression ]) ]
                 [ hiddenText <| "{{" ++ opInfo.latexBefore
                 , span [ cls (opInfo.cssClass ++ "Left") ] [ viewExp left (breadCrums ++ [ BinOpLeft opInfo right ]) ]
                 , hiddenText <| "}" ++ opInfo.latexOperator ++ "{"
@@ -467,7 +545,7 @@ viewExp expression breadCrums =
                 ]
 
         BigOp opInfo under over after ->
-            span [ cls opInfo.cssClass ]
+            span [ cls opInfo.cssClass,  onClickNoPropagation <| ClickOn <| breadCrums ++ [ExpBelow expression]  ]
                 [ hiddenText <| "{" ++ opInfo.latexOperator ++ opInfo.latexBefore ++ "{"
                 , span [ cls (opInfo.cssClass ++ "Under") ] [ viewExp under (breadCrums ++ [ BigOpUnder opInfo over after ]) ]
                 , hiddenText <| "}" ++ opInfo.latexAfter ++ "{"
@@ -477,14 +555,14 @@ viewExp expression breadCrums =
                 ]
 
         UnaryOp opInfo exp ->
-            span [ cls opInfo.cssClass ]
+            span [ cls opInfo.cssClass, onClickNoPropagation <| ClickOn (breadCrums ++ [ ExpBelow expression ]) ]
                 [ hiddenText <| "{" ++ opInfo.latexOperator ++ "{"
                 , span [ cls (opInfo.cssClass ++ "Inner") ] [ viewExp exp (breadCrums ++ [ UnaryOpHere opInfo exp ]) ]
                 , hiddenText "}}"
                 ]
 
         Symbol opInfo ->
-            span [ cls opInfo.cssClass ]
+            span [ cls opInfo.cssClass, onClickNoPropagation <| ClickOn <| breadCrums ++ [ExpBelow expression]  ]
                 [ input
                     [ value opInfo.shortName
                     , style [ ( "width", setLengthForString opInfo.shortName ) ]
@@ -495,7 +573,7 @@ viewExp expression breadCrums =
                 ]
 
         Vector expressions ->
-            span [ cls "Vector" ]
+            span [ cls "Vector", onClickNoPropagation <| ClickOn <| breadCrums ++ [ExpBelow expression] ]
                 [ span [ cls "VectorContent" ] <|
                     List.indexedMap
                         (\index expression ->
@@ -507,7 +585,7 @@ viewExp expression breadCrums =
                 ]
 
         Matrix rows ->
-            span [ cls "Matrix" ]
+            span [ cls "Matrix" ,  onClickNoPropagation <| ClickOn <| breadCrums ++ [ExpBelow expression] ]
                 [ table [ cls "MatrixContent" ] <|
                     List.indexedMap
                         (\indexRow row ->
@@ -532,13 +610,18 @@ viewExp expression breadCrums =
                 [ value a
                 , style [ ( "width", setLengthForString a ) ]
                 , onKeyUp (KeyUp (breadCrums ++ [ IdHere a ]))
+                , onClickNoPropagation (ClickOn <| breadCrums ++ [IdHere a])
                 , onInput (UpdateIdentifier (breadCrums ++ [ IdHere a ]))
                 ]
                 []
 
         Hole ->
             span [ cls "Hole" ]
-                [ input [ style [ ( "width", "0.5em" ) ], onInput (UpdateIdentifier (breadCrums ++ [ HoleHere ])) ] []
+                [ input
+                  [ style [ ( "width", "0.5em" ) ]
+                  , onKeyUp (KeyUp (breadCrums ++ [ HoleHere ]))
+                  , onClickNoPropagation (ClickOn <| breadCrums ++ [HoleHere])
+                  , onInput (UpdateIdentifier (breadCrums ++ [ HoleHere ])) ] []
                 ]
 
 
