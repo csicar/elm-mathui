@@ -647,12 +647,16 @@ applyAction =
 
 {-| the update function. Should be called by the caller's update function updating the model:
 
-    update : Msg -> Model -> Model
-    update msg model =
-        case msg of
-            MathUiMsg msg ->
-                { model | mathUi = MathUi.update msg model.mathUi }
-
+```elm
+update : Msg -> Model -> (Model, Cmd Msg)
+update msg model =
+    case msg of
+        MathUiMsg msg ->
+            let
+                (newModel, cmds) = MathUi.update msg model.mathUi
+            in
+              { model | mathUi = newModel } ! [Cmd.map MathUiMsg cmds]
+```
 -}
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
