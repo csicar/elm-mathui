@@ -40,7 +40,7 @@ html, input {
 }
 
 .mathui-Hole input {
- box-shadow: 0 0 0 1px #bada55;
+ box-shadow: 0 0 0 1px rgba(186, 218, 85, 0.72);
 }
 
 .mathui-EqualsRight:before {
@@ -82,7 +82,7 @@ html, input {
 }
 
 .mathui-LambdaLeft {
-  background-color: #bada55;
+  background-color: rgba(186, 218, 85, 0.72);
   padding: 0.1em;
   border-top-left-radius: 0.1em;
   border-bottom-left-radius: 0.1em;
@@ -93,13 +93,13 @@ html, input {
 }
 
 .mathui-LambdaRight {
-  border: 4px solid #bada55;
+  border: 4px solid rgba(186, 218, 85, 0.72);
   padding: 0.2em;
   border-radius: 0.1em;
 }
 
 .mathui-App {
-  font-size: 0.8em;
+  font-size: 1em;
 }
 
 .mathui-AppLeft::after {
@@ -107,14 +107,14 @@ html, input {
 }
 
 .mathui-AppLeft {
-  background-color: #bada55;
+  background-color: rgba(186, 218, 85, 0.72);
   padding: 0.1em;
   border-top-left-radius: 0.1em;
   border-bottom-left-radius: 0.1em;
 }
 
 .mathui-AppRight {
-  border: 4px solid #bada55;
+  border: 4px solid rgba(186, 218, 85, 0.72);
   padding: 0.2em;
   border-radius: 0.1em;
 }
