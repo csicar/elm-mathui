@@ -1,5 +1,5 @@
 {
-    "version": "1.0.0",
+    "version": "2.0.0",
     "summary": "display and edit math formulars",
     "repository": "https://github.com/csicar/elm-mathui.git",
     "license": "BSD3",
