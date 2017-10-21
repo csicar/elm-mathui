@@ -658,7 +658,7 @@ update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
         UpdateIdentifier breadCrum newContent ->
-            { model | expression = changeIdentifier breadCrum newContent, breadCrum = breadCrum } ! [Task.attempt FocusResult (focus (breadCrum |> toString |> hashStr))]
+            { model | expression = changeIdentifier breadCrum newContent, breadCrum = breadCrum } ! [Task.attempt FocusResult (focus "mathui-focus")]
 
         KeyUp breadCrum key ->
             case key of
