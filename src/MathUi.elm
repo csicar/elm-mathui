@@ -31,10 +31,14 @@ import Html.Events exposing (onInput, on, keyCode, onClick, onWithOptions)
 import Json.Decode as Json
 import Css.File exposing (CssFileStructure, CssCompilerProgram)
 import MathUiCss
+import Dom exposing (focus)
+import Task
+import Bitwise exposing (shiftLeftBy)
+import Char
 
 
 main =
-    Html.beginnerProgram { model = model, view = view, update = update }
+    Html.program { init = (model, Cmd.none), view = view, update = update, subscriptions = \x -> Sub.none }
 
 
 type LatexOperator
@@ -367,6 +371,8 @@ type Msg
     = UpdateIdentifier BreadCrum String
     | KeyUp BreadCrum Int
     | ClickOn BreadCrum
+    | FocusOn String
+    | FocusResult (Result Dom.Error ())
 
 
 textToExp : String -> Exp
@@ -648,23 +654,33 @@ applyAction =
                 { model | mathUi = MathUi.update msg model.mathUi }
 
 -}
-update : Msg -> Model -> Model
+update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
         UpdateIdentifier breadCrum newContent ->
-            { model | expression = changeIdentifier breadCrum newContent, breadCrum = breadCrum }
+            { model | expression = changeIdentifier breadCrum newContent, breadCrum = breadCrum } ! [Task.attempt FocusResult (focus (breadCrum |> toString |> hashStr))]
 
         KeyUp breadCrum key ->
             case key of
                 8 ->
                     --Backspace
-                    { model | expression = deleteNode breadCrum, breadCrum = breadCrum }
+                    { model | expression = deleteNode breadCrum, breadCrum = breadCrum } ! []
 
                 _ ->
-                    model
+                    model ! []
 
         ClickOn breadCrum ->
-            { model | expression = applyAction breadCrum, breadCrum = breadCrum }
+            { model | expression = applyAction breadCrum, breadCrum = breadCrum } ! []
+
+        FocusOn id ->
+          model ! [ Task.attempt FocusResult (focus id) ]
+
+        FocusResult res ->
+          let
+            res2 = res |> Debug.log "res"
+          in
+            model ! []
+
 
 
 onKeyUp : (Int -> msg) -> Attribute msg
