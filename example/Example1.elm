@@ -2,7 +2,8 @@ module Main exposing (..)
 
 import Html exposing (div, span)
 import Html.Attributes exposing (..)
-import MathUi exposing (sigma, equals, Exp(..), infinity, plus, elemIn, sqrtOp, divide, vectorsymbol)
+import MathUi
+import MathUi.Operations exposing (..)
 
 
 main =

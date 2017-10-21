@@ -1,11 +1,11 @@
-module MathUi exposing (OpInfo, Exp(..), Model, Msg, update, view, viewAll, latexRepr, plus, divide, pow, elemIn, equals, sqrtOp, parentheses, sigma, infinity, vectorsymbol, app, lambda)
+module MathUi exposing (Model, Msg, update, view, viewAll, latexRepr)
 
 {-| MathUi
 
 
 # Types
 
-@docs OpInfo, Exp, Model, Msg
+@docs  Model, Msg
 
 
 # Update
@@ -19,10 +19,6 @@ module MathUi exposing (OpInfo, Exp(..), Model, Msg, update, view, viewAll, late
 ##
 
 
-## build-in constructs
-
-@docs plus, divide, pow, elemIn, equals, sqrtOp, parentheses, sigma, infinity, vectorsymbol, app, lambda
-
 -}
 
 import Html exposing (Html, Attribute, div, input, text, span, node, pre, img, table, tr, td)
@@ -35,6 +31,8 @@ import Dom exposing (focus)
 import Task
 import Bitwise exposing (shiftLeftBy)
 import Char
+import MathUi.Operations exposing (..)
+import MathUi.Breadcrums exposing (..)
 
 
 main =
@@ -45,288 +43,6 @@ type LatexOperator
     = Operator String
     | AdvancedOperator String
 
-
-{-| Contains Information for the Operation.
--}
-type alias OpInfo =
-    { shortName : String
-    , longName : String
-    , cssClass : String
-    , latexOperator : String
-    , latexBefore : String
-    , latexAfter : String
-    }
-
-
-type OpType
-    = App
-    | Abs
-    | Plus
-    | Mul
-    | Div
-    | Pow
-    | Sub
-    | Contains
-    | Equals
-    | FunctionApplication
-    | Infinity
-    | Root Int
-    | NoOp
-    | BigSum
-
-
-{-| Homogeneous syntax tree
--}
-type Exp
-    = BinOp OpType OpInfo Exp Exp
-    | BigOp OpType OpInfo Exp Exp Exp
-    | UnaryOp OpType OpInfo Exp
-    | Symbol OpType OpInfo
-    | Vector (List Exp)
-    | Matrix (List (List Exp))
-    | Id String
-    | Hole
-
-
-plusInfo =
-    { shortName = "+", longName = "plus", cssClass = "Plus", latexOperator = "+", latexBefore = "", latexAfter = "" }
-
-
-{-| plus left right
--}
-plus : Exp -> Exp -> Exp
-plus =
-    BinOp Plus plusInfo
-
-
-minus : Exp -> Exp -> Exp
-minus =
-    BinOp Sub { shortName = "-", longName = "subtract", cssClass = "-", latexOperator = "-", latexBefore = "", latexAfter = "" }
-
-
-{-| multiply left right
--}
-multiply : Exp -> Exp -> Exp
-multiply =
-    BinOp Mul { shortName = "*", longName = "multiply", cssClass = "Multiply", latexOperator = "\\cdot", latexBefore = "", latexAfter = "" }
-
-
-{-| divide top bottom
--}
-divide : Exp -> Exp -> Exp
-divide =
-    BinOp Div { shortName = "/", longName = "divide", cssClass = "Div", latexOperator = "\\over", latexBefore = "", latexAfter = "" }
-
-
-{-| pow basis exponent
--}
-pow : Exp -> Exp -> Exp
-pow =
-    BinOp Pow { shortName = "^", longName = "power", cssClass = "Pow", latexOperator = "^", latexBefore = "", latexAfter = "" }
-
-
-sub : Exp -> Exp -> Exp
-sub =
-    BinOp Sub { shortName = "_", longName = "subscript", cssClass = "Sub", latexOperator = "_", latexBefore = "", latexAfter = "" }
-
-
-{-| elemIn set item
--}
-elemIn : Exp -> Exp -> Exp
-elemIn =
-    BinOp Contains { shortName = "∈", longName = "in", cssClass = "ElemIn", latexOperator = "\\in", latexBefore = "", latexAfter = "" }
-
-
-{-| equals left right
--}
-equals : Exp -> Exp -> Exp
-equals =
-    BinOp Equals { shortName = "=", longName = "equals", cssClass = "Equals", latexOperator = "=", latexBefore = "", latexAfter = "" }
-
-
-{-| functionApplication func argument
--}
-functionApplication : Exp -> Exp -> Exp
-functionApplication =
-    BinOp FunctionApplication { shortName = "⇒", longName = "functionApplication", cssClass = "FunctionApplication", latexOperator = "", latexBefore = "", latexAfter = "" }
-
-
-lambdaInfo : OpInfo
-lambdaInfo =
-    { shortName = "λ", longName = "lambda", cssClass = "Lambda", latexOperator = "", latexBefore = "", latexAfter = "" }
-
-
-{-| Represents a lambda abstraction
-lambda param body
--}
-lambda : Exp -> Exp -> Exp
-lambda =
-    BinOp Abs lambdaInfo
-
-
-appInfo =
-    { shortName = "β", longName = "app", cssClass = "App", latexOperator = "", latexBefore = "", latexAfter = "" }
-
-
-{-| Represents a lambda app. Ware attention! the order is flipped compared to standart lambda-calc notation
-app argument body
--}
-app : Exp -> Exp -> Exp
-app =
-    BinOp App appInfo
-
-
-{-| sqrtOp operand
--}
-sqrtOp : Exp -> Exp
-sqrtOp =
-    UnaryOp (Root 2) { shortName = "√", longName = "sqrt", cssClass = "Sqrt", latexOperator = "\\sqrt", latexBefore = "", latexAfter = "" }
-
-
-{-| enclose expression in parentheses
--}
-parentheses : Exp -> Exp
-parentheses =
-    UnaryOp NoOp { shortName = "()", longName = "parentheses", cssClass = "Parentheses", latexOperator = "()", latexBefore = "(", latexAfter = ")" }
-
-
-{-| place vector arrow above expression
--}
-vectorsymbol : Exp -> Exp
-vectorsymbol =
-    UnaryOp NoOp { shortName = "vec", longName = "→", cssClass = "VectorSymbol", latexOperator = "\\vec", latexBefore = "", latexAfter = "" }
-
-
-{-| sigma from to over
--}
-sigma : Exp -> Exp -> Exp -> Exp
-sigma =
-    BigOp BigSum { shortName = "Σ", longName = "sigma", cssClass = "Sigma", latexOperator = "\\sum", latexBefore = "_", latexAfter = "^" }
-
-
-{-| infinity symbol
--}
-infinity : Exp
-infinity =
-    Symbol Infinity { shortName = "∞", longName = "infinity", cssClass = "Infinity", latexOperator = "\\infty", latexBefore = "", latexAfter = "" }
-
-
-options =
-    [ ( "+", \rest -> plus (Id rest) Hole )
-    , ( "-", \rest -> minus (Id rest) Hole )
-    , ( "*", \rest -> multiply (Id rest) Hole )
-    , ( "/", \rest -> divide (Id rest) Hole )
-    , ( "^", \rest -> pow (Id rest) Hole )
-    , ( "_", \rest -> sub (Id rest) Hole )
-    , ( "=", \rest -> equals (Id rest) Hole )
-    , ( "\\lambda", \rest -> lambda (Id rest) (Hole) )
-    , ( "\\app", \rest -> app (Id rest) (Hole) )
-    , ( "\\in", \rest -> elemIn (Id rest) Hole )
-    , ( "\\sqrt", \rest -> sqrtOp (Id rest) )
-    , ( "\\vec", \rest -> vectorsymbol (Id rest) )
-    , ( "("
-      , \rest ->
-            case rest of
-                "" ->
-                    parentheses (Hole)
-
-                rest ->
-                    functionApplication (Id rest) Hole
-      )
-    , ( "\\infinity", \_ -> infinity )
-    , ( "\\sigma", \rest -> sigma Hole Hole (Id rest) )
-    , ( "\\v2", \rest -> Vector [ Id rest, Hole ] )
-    , ( "\\v3", \rest -> Vector [ Id rest, Hole, Hole ] )
-    , ( "\\vv"
-      , \rest ->
-            case (String.toInt rest) of
-                Ok value ->
-                    Vector <| List.repeat value Hole
-
-                Err _ ->
-                    Vector [ Id rest, Hole ]
-      )
-    , ( "\\m3", \rest -> List.repeat 3 () |> List.map (\a -> List.repeat 3 Hole) |> Matrix )
-    , ( "\\mm"
-      , \rest ->
-            String.split "x" rest
-                |> List.map String.toInt
-                |> \res ->
-                    case res of
-                        [ Ok x, Ok y ] ->
-                            Matrix <| List.repeat x (List.repeat y Hole)
-
-                        _ ->
-                            Matrix [ [ Hole ] ]
-      )
-    ]
-
-
-{-| Represents the Expression as a latex-readable string.
-
-    latexRepr plus (Id "a") (Id "b") -- = {{{a}}+{{b}}}
-
--}
-latexRepr : Exp -> String
-latexRepr exp =
-    case exp of
-        BinOp _ info a b ->
-            String.concat [ "{", info.latexBefore, "{", latexRepr a, "}", info.latexOperator, "{", latexRepr b, "}", info.latexAfter, "}" ]
-
-        BigOp _ info under over exp ->
-            String.concat [ "{", info.latexOperator, info.latexBefore, "{", latexRepr under, "}", info.latexAfter, "{", latexRepr over, "}", "{", latexRepr exp, "}}" ]
-
-        UnaryOp _ info exp ->
-            String.concat [ "{", info.latexBefore, info.latexOperator, "{", latexRepr exp, "}", info.latexAfter, "}" ]
-
-        Symbol _ info ->
-            String.concat [ "{", info.latexBefore, info.latexOperator, info.latexAfter, "}" ]
-
-        Vector exps ->
-            String.concat <| [ "\\begin{bmatrix} " ] ++ List.map (\val -> (latexRepr val) ++ " \\\\ ") exps ++ [ " \\end{bmatrix}" ]
-
-        Matrix rows ->
-            let
-                reprRow row =
-                    List.map latexRepr row |> String.join " & "
-            in
-                String.concat <| [ "\\begin{pmatrix} ", String.join "\\\\" (List.map reprRow rows), "\\end{pmatrix}" ]
-
-        Id string ->
-            String.concat [ "{", string, "}" ]
-
-        Hole ->
-            "<Hole>"
-
-
-
---
--- asciiMathRepr : Exp -> String
--- asciiMathRepr exp =
---   case exp of
---     BinOp info a b ->
---       String.concat ["((", asciiMathRepr a, ")", info.shortName, "(", asciiMathRepr, "))"]
---     BigOp info under over exp ->
---       String.concat ["((", info.asciiMathRepr under]
-
-
-type Crum
-    = BinOpLeft OpType OpInfo Exp
-    | BinOpRight OpType OpInfo Exp
-    | BigOpUnder OpType OpInfo Exp Exp
-    | BigOpOver OpType OpInfo Exp Exp
-    | BigOpAfer OpType OpInfo Exp Exp
-    | UnaryOpHere OpType OpInfo Exp
-    | SymbolHere OpType OpInfo
-    | VectorAt Int (List Exp) (List Exp)
-    | MatrixAt ( Int, Int ) (List (List Exp)) (List Exp) (List Exp) (List (List Exp))
-    | IdHere String
-    | ExpBelow Exp
-    | HoleHere
-
-
-type alias BreadCrum =
-    List Crum
 
 
 {-| -}
@@ -388,75 +104,42 @@ textToExp string =
             Nothing ->
                 Id string
 
+{-| Represents the Expression as a latex-readable string.
 
-foldCrum : (Crum -> Maybe Exp) -> Exp -> BreadCrum -> Exp
-foldCrum f neutral breadCrum =
-    case breadCrum of
-        x :: [] ->
-            f x
-                |> Debug.log "f x"
-                |> Maybe.withDefault
-                    (case x of
-                        SymbolHere op opInfo ->
-                            Symbol op opInfo
+    latexRepr plus (Id "a") (Id "b") -- = {{{a}}+{{b}}}
 
-                        ExpBelow exp ->
-                            exp
+-}
+latexRepr : Exp -> String
+latexRepr exp =
+    case exp of
+        BinOp _ info a b ->
+            String.concat [ "{", info.latexBefore, "{", latexRepr a, "}", info.latexOperator, "{", latexRepr b, "}", info.latexAfter, "}" ]
 
-                        IdHere s ->
-                            Id s
+        BigOp _ info under over exp ->
+            String.concat [ "{", info.latexOperator, info.latexBefore, "{", latexRepr under, "}", info.latexAfter, "{", latexRepr over, "}", "{", latexRepr exp, "}}" ]
 
-                        HoleHere ->
-                            Hole
+        UnaryOp _ info exp ->
+            String.concat [ "{", info.latexBefore, info.latexOperator, "{", latexRepr exp, "}", info.latexAfter, "}" ]
 
-                        _ ->
-                            neutral
-                    )
+        Symbol _ info ->
+            String.concat [ "{", info.latexBefore, info.latexOperator, info.latexAfter, "}" ]
 
-        x :: xs ->
+        Vector exps ->
+            String.concat <| [ "\\begin{bmatrix} " ] ++ List.map (\val -> (latexRepr val) ++ " \\\\ ") exps ++ [ " \\end{bmatrix}" ]
+
+        Matrix rows ->
             let
-                futureExp =
-                    foldCrum f neutral xs |> Debug.log "exp"
+                reprRow row =
+                    List.map latexRepr row |> String.join " & "
             in
-                case x of
-                    BinOpLeft op opInfo exp ->
-                        BinOp op opInfo futureExp exp
+                String.concat <| [ "\\begin{pmatrix} ", String.join "\\\\" (List.map reprRow rows), "\\end{pmatrix}" ]
 
-                    BinOpRight op opInfo exp ->
-                        BinOp op opInfo exp futureExp
+        Id string ->
+            String.concat [ "{", string, "}" ]
 
-                    BigOpUnder op opInfo over after ->
-                        BigOp op opInfo futureExp over after
+        Hole ->
+            "<Hole>"
 
-                    BigOpOver op opInfo under after ->
-                        BigOp op opInfo under futureExp after
-
-                    BigOpAfer op opInfo under over ->
-                        BigOp op opInfo under over futureExp
-
-                    UnaryOpHere op opInfo inner ->
-                        UnaryOp op opInfo futureExp
-
-                    VectorAt pos before after ->
-                        Vector (before ++ [ futureExp ] ++ after)
-
-                    MatrixAt pos rowsBefore cellsBefore cellsAfter rowsAfter ->
-                        rowsBefore ++ [ cellsBefore ++ [ futureExp ] ++ cellsAfter ] ++ rowsAfter |> Matrix
-
-                    SymbolHere op opInfo ->
-                        Symbol op opInfo
-
-                    ExpBelow exp ->
-                        exp
-
-                    IdHere s ->
-                        Id s
-
-                    HoleHere ->
-                        Hole
-
-        [] ->
-            neutral
 
 
 changeIdentifierFolder : String -> Crum -> Maybe Exp
