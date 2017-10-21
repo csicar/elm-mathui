@@ -1,4 +1,4 @@
-module MathUi exposing (OpInfo, Exp(..), Model, Msg, update, view, viewAll, latexRepr, plus, divide, pow, elemIn, equals, sqrtOp, parentheses, sigma, infinity, vectorsymbol)
+module MathUi exposing (OpInfo, Exp(..), Model, Msg, update, view, viewAll, latexRepr, plus, divide, pow, elemIn, equals, sqrtOp, parentheses, sigma, infinity, vectorsymbol, app, lambda)
 
 {-| MathUi
 
@@ -21,7 +21,7 @@ module MathUi exposing (OpInfo, Exp(..), Model, Msg, update, view, viewAll, late
 
 ## build-in constructs
 
-@docs plus, divide, pow, elemIn, equals, sqrtOp, parentheses, sigma, infinity, vectorsymbol
+@docs plus, divide, pow, elemIn, equals, sqrtOp, parentheses, sigma, infinity, vectorsymbol, app, lambda
 
 -}
 
@@ -37,7 +37,10 @@ main =
     Html.beginnerProgram { model = model, view = view, update = update }
 
 
-type LatexOperator = Operator String | AdvancedOperator String
+type LatexOperator
+    = Operator String
+    | AdvancedOperator String
+
 
 {-| Contains Information for the Operation.
 -}
@@ -51,129 +54,169 @@ type alias OpInfo =
     }
 
 
+type OpType
+    = App
+    | Abs
+    | Plus
+    | Mul
+    | Div
+    | Pow
+    | Sub
+    | Contains
+    | Equals
+    | FunctionApplication
+    | Infinity
+    | Root Int
+    | NoOp
+    | BigSum
+
+
 {-| Homogeneous syntax tree
 -}
 type Exp
-    = BinOp OpInfo Exp Exp
-    | BigOp OpInfo Exp Exp Exp
-    | UnaryOp OpInfo Exp
-    | Symbol OpInfo
+    = BinOp OpType OpInfo Exp Exp
+    | BigOp OpType OpInfo Exp Exp Exp
+    | UnaryOp OpType OpInfo Exp
+    | Symbol OpType OpInfo
     | Vector (List Exp)
     | Matrix (List (List Exp))
     | Id String
     | Hole
 
 
+plusInfo =
+    { shortName = "+", longName = "plus", cssClass = "Plus", latexOperator = "+", latexBefore = "", latexAfter = "" }
 
-plusInfo = { shortName = "+", longName = "plus", cssClass = "Plus", latexOperator = "+", latexBefore = "", latexAfter = "" }
 
 {-| plus left right
 -}
 plus : Exp -> Exp -> Exp
 plus =
-    BinOp plusInfo
+    BinOp Plus plusInfo
+
+
+minus : Exp -> Exp -> Exp
+minus =
+    BinOp Sub { shortName = "-", longName = "subtract", cssClass = "-", latexOperator = "-", latexBefore = "", latexAfter = "" }
 
 
 {-| multiply left right
 -}
 multiply : Exp -> Exp -> Exp
 multiply =
-    BinOp { shortName = "*", longName = "multiply", cssClass = "Multiply", latexOperator = "\\cdot", latexBefore = "", latexAfter = "" }
+    BinOp Mul { shortName = "*", longName = "multiply", cssClass = "Multiply", latexOperator = "\\cdot", latexBefore = "", latexAfter = "" }
 
 
 {-| divide top bottom
 -}
 divide : Exp -> Exp -> Exp
 divide =
-    BinOp { shortName = "/", longName = "divide", cssClass = "Div", latexOperator = "\\over", latexBefore = "", latexAfter = "" }
+    BinOp Div { shortName = "/", longName = "divide", cssClass = "Div", latexOperator = "\\over", latexBefore = "", latexAfter = "" }
 
 
 {-| pow basis exponent
 -}
 pow : Exp -> Exp -> Exp
 pow =
-    BinOp { shortName = "^", longName = "power", cssClass = "Pow", latexOperator = "^", latexBefore = "", latexAfter = "" }
+    BinOp Pow { shortName = "^", longName = "power", cssClass = "Pow", latexOperator = "^", latexBefore = "", latexAfter = "" }
+
 
 sub : Exp -> Exp -> Exp
 sub =
-  BinOp {shortName="_", longName = "subscript", cssClass="Sub", latexOperator="_", latexBefore="", latexAfter=""}
+    BinOp Sub { shortName = "_", longName = "subscript", cssClass = "Sub", latexOperator = "_", latexBefore = "", latexAfter = "" }
 
 
 {-| elemIn set item
 -}
 elemIn : Exp -> Exp -> Exp
 elemIn =
-    BinOp { shortName = "∈", longName = "in", cssClass = "ElemIn", latexOperator = "\\in", latexBefore = "", latexAfter = "" }
+    BinOp Contains { shortName = "∈", longName = "in", cssClass = "ElemIn", latexOperator = "\\in", latexBefore = "", latexAfter = "" }
 
 
 {-| equals left right
 -}
 equals : Exp -> Exp -> Exp
 equals =
-    BinOp { shortName = "=", longName = "equals", cssClass = "Equals", latexOperator = "=", latexBefore = "", latexAfter = "" }
+    BinOp Equals { shortName = "=", longName = "equals", cssClass = "Equals", latexOperator = "=", latexBefore = "", latexAfter = "" }
 
 
 {-| functionApplication func argument
 -}
 functionApplication : Exp -> Exp -> Exp
 functionApplication =
-    BinOp { shortName = "⇒", longName = "functionApplication", cssClass = "FunctionApplication", latexOperator = "", latexBefore = "", latexAfter = "" }
+    BinOp FunctionApplication { shortName = "⇒", longName = "functionApplication", cssClass = "FunctionApplication", latexOperator = "", latexBefore = "", latexAfter = "" }
 
+
+lambdaInfo : OpInfo
+lambdaInfo =
+    { shortName = "λ", longName = "lambda", cssClass = "Lambda", latexOperator = "", latexBefore = "", latexAfter = "" }
+
+
+{-| Represents a lambda abstraction
+lambda param body
+-}
 lambda : Exp -> Exp -> Exp
 lambda =
-  BinOp {shortName="λ", longName="lambda", cssClass="Lambda", latexOperator="", latexBefore="", latexAfter=""}
+    BinOp Abs lambdaInfo
 
-appInfo = {shortName="β", longName="app", cssClass="App", latexOperator="", latexBefore="", latexAfter=""}
 
+appInfo =
+    { shortName = "β", longName = "app", cssClass = "App", latexOperator = "", latexBefore = "", latexAfter = "" }
+
+
+{-| Represents a lambda app. Ware attention! the order is flipped compared to standart lambda-calc notation
+app argument body
+-}
 app : Exp -> Exp -> Exp
 app =
-  BinOp appInfo
+    BinOp App appInfo
+
 
 {-| sqrtOp operand
 -}
 sqrtOp : Exp -> Exp
 sqrtOp =
-    UnaryOp { shortName = "√", longName = "sqrt", cssClass = "Sqrt", latexOperator = "\\sqrt", latexBefore = "", latexAfter = "" }
+    UnaryOp (Root 2) { shortName = "√", longName = "sqrt", cssClass = "Sqrt", latexOperator = "\\sqrt", latexBefore = "", latexAfter = "" }
 
 
 {-| enclose expression in parentheses
 -}
 parentheses : Exp -> Exp
 parentheses =
-    UnaryOp { shortName = "()", longName = "parentheses", cssClass = "Parentheses", latexOperator = "()", latexBefore = "(", latexAfter = ")" }
+    UnaryOp NoOp { shortName = "()", longName = "parentheses", cssClass = "Parentheses", latexOperator = "()", latexBefore = "(", latexAfter = ")" }
 
 
 {-| place vector arrow above expression
 -}
 vectorsymbol : Exp -> Exp
 vectorsymbol =
-    UnaryOp { shortName = "vec", longName = "→", cssClass = "VectorSymbol", latexOperator = "\\vec", latexBefore = "", latexAfter = "" }
+    UnaryOp NoOp { shortName = "vec", longName = "→", cssClass = "VectorSymbol", latexOperator = "\\vec", latexBefore = "", latexAfter = "" }
 
 
 {-| sigma from to over
 -}
 sigma : Exp -> Exp -> Exp -> Exp
 sigma =
-    BigOp { shortName = "Σ", longName = "sigma", cssClass = "Sigma", latexOperator = "\\sum", latexBefore = "_", latexAfter = "^" }
+    BigOp BigSum { shortName = "Σ", longName = "sigma", cssClass = "Sigma", latexOperator = "\\sum", latexBefore = "_", latexAfter = "^" }
 
 
 {-| infinity symbol
 -}
 infinity : Exp
 infinity =
-    Symbol { shortName = "∞", longName = "infinity", cssClass = "Infinity", latexOperator = "\\infty", latexBefore = "", latexAfter = "" }
-
+    Symbol Infinity { shortName = "∞", longName = "infinity", cssClass = "Infinity", latexOperator = "\\infty", latexBefore = "", latexAfter = "" }
 
 
 options =
     [ ( "+", \rest -> plus (Id rest) Hole )
+    , ( "-", \rest -> minus (Id rest) Hole )
     , ( "*", \rest -> multiply (Id rest) Hole )
     , ( "/", \rest -> divide (Id rest) Hole )
     , ( "^", \rest -> pow (Id rest) Hole )
     , ( "_", \rest -> sub (Id rest) Hole )
     , ( "=", \rest -> equals (Id rest) Hole )
-    , ( "\\lambda", \rest -> lambda (Id rest) (Hole))
-    , ( "\\app", \rest -> app (Id rest) (Hole))
+    , ( "\\lambda", \rest -> lambda (Id rest) (Hole) )
+    , ( "\\app", \rest -> app (Id rest) (Hole) )
     , ( "\\in", \rest -> elemIn (Id rest) Hole )
     , ( "\\sqrt", \rest -> sqrtOp (Id rest) )
     , ( "\\vec", \rest -> vectorsymbol (Id rest) )
@@ -223,16 +266,16 @@ options =
 latexRepr : Exp -> String
 latexRepr exp =
     case exp of
-        BinOp info a b ->
+        BinOp _ info a b ->
             String.concat [ "{", info.latexBefore, "{", latexRepr a, "}", info.latexOperator, "{", latexRepr b, "}", info.latexAfter, "}" ]
 
-        BigOp info under over exp ->
+        BigOp _ info under over exp ->
             String.concat [ "{", info.latexOperator, info.latexBefore, "{", latexRepr under, "}", info.latexAfter, "{", latexRepr over, "}", "{", latexRepr exp, "}}" ]
 
-        UnaryOp info exp ->
+        UnaryOp _ info exp ->
             String.concat [ "{", info.latexBefore, info.latexOperator, "{", latexRepr exp, "}", info.latexAfter, "}" ]
 
-        Symbol info ->
+        Symbol _ info ->
             String.concat [ "{", info.latexBefore, info.latexOperator, info.latexAfter, "}" ]
 
         Vector exps ->
@@ -250,6 +293,9 @@ latexRepr exp =
 
         Hole ->
             "<Hole>"
+
+
+
 --
 -- asciiMathRepr : Exp -> String
 -- asciiMathRepr exp =
@@ -261,13 +307,13 @@ latexRepr exp =
 
 
 type Crum
-    = BinOpLeft OpInfo Exp
-    | BinOpRight OpInfo Exp
-    | BigOpUnder OpInfo Exp Exp
-    | BigOpOver OpInfo Exp Exp
-    | BigOpAfer OpInfo Exp Exp
-    | UnaryOpHere OpInfo Exp
-    | SymbolHere OpInfo
+    = BinOpLeft OpType OpInfo Exp
+    | BinOpRight OpType OpInfo Exp
+    | BigOpUnder OpType OpInfo Exp Exp
+    | BigOpOver OpType OpInfo Exp Exp
+    | BigOpAfer OpType OpInfo Exp Exp
+    | UnaryOpHere OpType OpInfo Exp
+    | SymbolHere OpType OpInfo
     | VectorAt Int (List Exp) (List Exp)
     | MatrixAt ( Int, Int ) (List (List Exp)) (List Exp) (List Exp) (List (List Exp))
     | IdHere String
@@ -339,101 +385,119 @@ textToExp string =
 
 foldCrum : (Crum -> Maybe Exp) -> Exp -> BreadCrum -> Exp
 foldCrum f neutral breadCrum =
-  case breadCrum of
-      (x::[]) -> f x |> Maybe.withDefault (case x of
-        SymbolHere opInfo -> Symbol opInfo
-        ExpBelow exp -> exp
-        IdHere s -> Id s
-        HoleHere -> Hole
-        _ -> neutral
-          )
-      x :: xs ->
-          let
-              futureExp = foldCrum f neutral xs |> Debug.log "exp"
-          in
-              case x of
-                  BinOpLeft opInfo exp ->
-                      BinOp opInfo futureExp exp
+    case breadCrum of
+        x :: [] ->
+            f x
+                |> Debug.log "f x"
+                |> Maybe.withDefault
+                    (case x of
+                        SymbolHere op opInfo ->
+                            Symbol op opInfo
 
-                  BinOpRight opInfo exp ->
-                      BinOp opInfo exp futureExp
+                        ExpBelow exp ->
+                            exp
 
-                  BigOpUnder opInfo over after ->
-                      BigOp opInfo futureExp over after
+                        IdHere s ->
+                            Id s
 
-                  BigOpOver opInfo under after ->
-                      BigOp opInfo under futureExp after
+                        HoleHere ->
+                            Hole
 
-                  BigOpAfer opInfo under over ->
-                      BigOp opInfo under over futureExp
+                        _ ->
+                            neutral
+                    )
 
-                  UnaryOpHere opInfo inner ->
-                      UnaryOp opInfo futureExp
+        x :: xs ->
+            let
+                futureExp =
+                    foldCrum f neutral xs |> Debug.log "exp"
+            in
+                case x of
+                    BinOpLeft op opInfo exp ->
+                        BinOp op opInfo futureExp exp
 
-                  VectorAt pos before after ->
-                      Vector (before ++ [ futureExp ] ++ after)
+                    BinOpRight op opInfo exp ->
+                        BinOp op opInfo exp futureExp
 
-                  MatrixAt pos rowsBefore cellsBefore cellsAfter rowsAfter ->
-                      rowsBefore ++ [ cellsBefore ++ [ futureExp ] ++ cellsAfter ] ++ rowsAfter |> Matrix
+                    BigOpUnder op opInfo over after ->
+                        BigOp op opInfo futureExp over after
 
-                  SymbolHere opInfo ->
-                      Symbol opInfo
+                    BigOpOver op opInfo under after ->
+                        BigOp op opInfo under futureExp after
 
-                  ExpBelow exp ->
-                    exp
+                    BigOpAfer op opInfo under over ->
+                        BigOp op opInfo under over futureExp
 
-                  IdHere s ->
-                      Id s
+                    UnaryOpHere op opInfo inner ->
+                        UnaryOp op opInfo futureExp
 
-                  HoleHere ->
-                      Hole
-      [] ->
-          neutral
+                    VectorAt pos before after ->
+                        Vector (before ++ [ futureExp ] ++ after)
+
+                    MatrixAt pos rowsBefore cellsBefore cellsAfter rowsAfter ->
+                        rowsBefore ++ [ cellsBefore ++ [ futureExp ] ++ cellsAfter ] ++ rowsAfter |> Matrix
+
+                    SymbolHere op opInfo ->
+                        Symbol op opInfo
+
+                    ExpBelow exp ->
+                        exp
+
+                    IdHere s ->
+                        Id s
+
+                    HoleHere ->
+                        Hole
+
+        [] ->
+            neutral
+
 
 changeIdentifierFolder : String -> Crum -> Maybe Exp
 changeIdentifierFolder newContent crum =
-  let
-    newExp = textToExp newContent |> Just
-  in
-    case crum of
+    let
+        newExp =
+            textToExp newContent |> Just
+    in
+        case crum of
+            IdHere string ->
+                newExp
 
-        IdHere string ->
-          newExp
+            SymbolHere _ _ ->
+                newExp
 
-        SymbolHere _ ->
-          newExp
+            HoleHere ->
+                newExp
 
-        HoleHere ->
-          newExp
-
-
-        _ -> Nothing
+            _ ->
+                Nothing
 
 
 changeIdentifier : BreadCrum -> String -> Exp
-changeIdentifier breadCrum newContent = foldCrum (changeIdentifierFolder newContent) Hole breadCrum
+changeIdentifier breadCrum newContent =
+    foldCrum (changeIdentifierFolder newContent) Hole breadCrum
 
 
 deletePartWithOption : BreadCrum -> Crum -> Exp -> ( Exp, Exp )
 deletePartWithOption breadCrum crum changedExp =
     case crum of
-        BinOpLeft opInfo exp ->
-            ( BinOp opInfo changedExp exp, exp )
+        BinOpLeft op opInfo exp ->
+            ( BinOp op opInfo changedExp exp, exp )
 
-        BinOpRight opInfo exp ->
-            ( BinOp opInfo exp changedExp, exp )
+        BinOpRight op opInfo exp ->
+            ( BinOp op opInfo exp changedExp, exp )
 
-        BigOpUnder opInfo over after ->
-            ( BigOp opInfo changedExp over after, after )
+        BigOpUnder op opInfo over after ->
+            ( BigOp op opInfo changedExp over after, after )
 
-        BigOpOver opInfo under after ->
-            ( BigOp opInfo under changedExp after, after )
+        BigOpOver op opInfo under after ->
+            ( BigOp op opInfo under changedExp after, after )
 
-        BigOpAfer opInfo under over ->
-            ( BigOp opInfo under over changedExp, Hole )
+        BigOpAfer op opInfo under over ->
+            ( BigOp op opInfo under over changedExp, Hole )
 
-        UnaryOpHere opInfo _ ->
-            ( UnaryOp opInfo changedExp, Hole )
+        UnaryOpHere op opInfo _ ->
+            ( UnaryOp op opInfo changedExp, Hole )
 
         VectorAt pos before after ->
             ( Vector (before ++ [ changedExp ] ++ after), Vector (before ++ after) )
@@ -441,7 +505,7 @@ deletePartWithOption breadCrum crum changedExp =
         MatrixAt pos rowsBefore cellsBefore cellsAfter rowsAfter ->
             ( rowsBefore ++ [ cellsBefore ++ [ changedExp ] ++ cellsAfter ] ++ rowsAfter |> Matrix, rowsBefore ++ rowsAfter |> Matrix )
 
-        SymbolHere opInfo ->
+        SymbolHere op opInfo ->
             ( Hole, Hole )
 
         IdHere "" ->
@@ -451,7 +515,7 @@ deletePartWithOption breadCrum crum changedExp =
             ( Id s, Id s )
 
         ExpBelow exp ->
-            (exp, Hole)
+            ( exp, Hole )
 
         HoleHere ->
             ( Hole, Hole )
@@ -479,15 +543,100 @@ deleteNode breadCrum =
             Hole
 
 
+applyBetaReduce : Exp -> Exp -> Exp -> Exp
+applyBetaReduce argument param body =
+    if body == param then
+        argument |> Debug.log "arg"
+    else
+        case body of
+            BinOp op opInfo exp exp2 ->
+                BinOp op opInfo (applyBetaReduce argument param exp) (applyBetaReduce argument param exp2)
+
+            BigOp op opInfo exp exp2 exp3 ->
+                BigOp op opInfo (applyBetaReduce argument param exp) (applyBetaReduce argument param exp2) (applyBetaReduce argument param exp3)
+
+            UnaryOp op opInfo exp ->
+                UnaryOp op opInfo (applyBetaReduce argument param exp)
+
+            Vector expList ->
+                Vector <| List.map (\cell -> applyBetaReduce argument param cell) expList
+
+            Matrix expListList ->
+                Matrix <| List.map (List.map (\cell -> applyBetaReduce argument param cell)) expListList
+
+            _ ->
+                body
+
+
+actions : List (Crum -> Maybe Exp)
+actions =
+    [ \x ->
+        case x of
+            ExpBelow (BinOp App _ argument (BinOp Abs _ param body)) ->
+                applyBetaReduce argument param body |> Just |> Debug.log "found match"
+
+            _ ->
+                Nothing
+    , \x ->
+        case x of
+            ExpBelow (BinOp Plus _ (Id right) (Id left)) ->
+                case ( right |> String.toInt, left |> String.toInt ) of
+                    ( Ok rightInt, Ok leftInt ) ->
+                        Just <| Id <| toString <| rightInt + leftInt
+
+                    _ ->
+                        Nothing
+
+            _ ->
+                Nothing
+    , \x ->
+      case x of
+        ExpBelow (BinOp Plus _ right left) ->
+          if right == left then
+            multiply (Id "2") right |> Just
+          else
+            Nothing
+        _ -> Nothing
+    , \x ->
+        case x of
+            ExpBelow (BinOp Sub _ (Id right) (Id left)) ->
+                Nothing
+
+            _ ->
+                Nothing
+    , \x ->
+        case x of
+            ExpBelow (BinOp Div _ (Id right) (Id left)) ->
+                case ( right |> String.toFloat, left |> String.toFloat ) of
+                    ( Ok rightFloat, Ok leftFloat ) ->
+                        Just <| Id <| toString <| rightFloat / leftFloat
+
+                    _ ->
+                        Nothing
+
+            _ ->
+                Nothing
+    ]
+
+
 applyActionFolder : Crum -> Maybe Exp
 applyActionFolder x =
-  case x of
-    HoleHere -> Id "yay! not a hole anymore!" |> Just
-    _ -> Nothing
+    List.foldr
+        (\action best ->
+            case action x of
+                Just exp ->
+                    Just exp
+
+                Nothing ->
+                    best
+        )
+        Nothing
+        actions
+
 
 applyAction : BreadCrum -> Exp
-applyAction = foldCrum applyActionFolder (Id "test")
-
+applyAction =
+    foldCrum applyActionFolder (Id "test")
 
 
 {-| the update function. Should be called by the caller's update function updating the model:
@@ -513,16 +662,20 @@ update msg model =
 
                 _ ->
                     model
+
         ClickOn breadCrum ->
-            {model | expression = applyAction breadCrum, breadCrum = breadCrum}
+            { model | expression = applyAction breadCrum, breadCrum = breadCrum }
 
 
 onKeyUp : (Int -> msg) -> Attribute msg
 onKeyUp tagger =
     on "keyup" (Json.map tagger keyCode)
 
+
 onClickNoPropagation : msg -> Attribute msg
-onClickNoPropagation msg = onWithOptions "click" { stopPropagation = True, preventDefault = False } (Json.succeed msg)
+onClickNoPropagation msg =
+    onWithOptions "click" { stopPropagation = True, preventDefault = False } (Json.succeed msg)
+
 
 setLengthForString string =
     String.length string |> toFloat |> (*) 0.39 |> (+) 0.5 |> toString |> \x -> x ++ "em"
@@ -535,45 +688,45 @@ cls string =
 viewExp : Exp -> BreadCrum -> Html Msg
 viewExp expression breadCrums =
     case expression of
-        BinOp opInfo left right ->
+        BinOp op opInfo left right ->
             span [ cls opInfo.cssClass, onClickNoPropagation <| ClickOn (breadCrums ++ [ ExpBelow expression ]) ]
                 [ hiddenText <| "{{" ++ opInfo.latexBefore
-                , span [ cls (opInfo.cssClass ++ "Left") ] [ viewExp left (breadCrums ++ [ BinOpLeft opInfo right ]) ]
+                , span [ cls (opInfo.cssClass ++ "Left") ] [ viewExp left (breadCrums ++ [ BinOpLeft op opInfo right ]) ]
                 , hiddenText <| "}" ++ opInfo.latexOperator ++ "{"
-                , span [ cls (opInfo.cssClass ++ "Right") ] [ viewExp right (breadCrums ++ [ BinOpRight opInfo left ]) ]
+                , span [ cls (opInfo.cssClass ++ "Right") ] [ viewExp right (breadCrums ++ [ BinOpRight op opInfo left ]) ]
                 , hiddenText <| opInfo.latexAfter ++ "}}"
                 ]
 
-        BigOp opInfo under over after ->
-            span [ cls opInfo.cssClass,  onClickNoPropagation <| ClickOn <| breadCrums ++ [ExpBelow expression]  ]
+        BigOp op opInfo under over after ->
+            span [ cls opInfo.cssClass, onClickNoPropagation <| ClickOn <| breadCrums ++ [ ExpBelow expression ] ]
                 [ hiddenText <| "{" ++ opInfo.latexOperator ++ opInfo.latexBefore ++ "{"
-                , span [ cls (opInfo.cssClass ++ "Under") ] [ viewExp under (breadCrums ++ [ BigOpUnder opInfo over after ]) ]
+                , span [ cls (opInfo.cssClass ++ "Under") ] [ viewExp under (breadCrums ++ [ BigOpUnder op opInfo over after ]) ]
                 , hiddenText <| "}" ++ opInfo.latexAfter ++ "{"
-                , span [ cls (opInfo.cssClass ++ "After") ] [ viewExp after (breadCrums ++ [ BigOpAfer opInfo under over ]) ]
-                , span [ cls (opInfo.cssClass ++ "Over") ] [ viewExp over (breadCrums ++ [ BigOpOver opInfo under after ]) ]
+                , span [ cls (opInfo.cssClass ++ "After") ] [ viewExp after (breadCrums ++ [ BigOpAfer op opInfo under over ]) ]
+                , span [ cls (opInfo.cssClass ++ "Over") ] [ viewExp over (breadCrums ++ [ BigOpOver op opInfo under after ]) ]
                 , hiddenText "}}"
                 ]
 
-        UnaryOp opInfo exp ->
+        UnaryOp op opInfo exp ->
             span [ cls opInfo.cssClass, onClickNoPropagation <| ClickOn (breadCrums ++ [ ExpBelow expression ]) ]
                 [ hiddenText <| "{" ++ opInfo.latexOperator ++ "{"
-                , span [ cls (opInfo.cssClass ++ "Inner") ] [ viewExp exp (breadCrums ++ [ UnaryOpHere opInfo exp ]) ]
+                , span [ cls (opInfo.cssClass ++ "Inner") ] [ viewExp exp (breadCrums ++ [ UnaryOpHere op opInfo exp ]) ]
                 , hiddenText "}}"
                 ]
 
-        Symbol opInfo ->
-            span [ cls opInfo.cssClass, onClickNoPropagation <| ClickOn <| breadCrums ++ [ExpBelow expression]  ]
+        Symbol op opInfo ->
+            span [ cls opInfo.cssClass, onClickNoPropagation <| ClickOn <| breadCrums ++ [ ExpBelow expression ] ]
                 [ input
                     [ value opInfo.shortName
                     , style [ ( "width", setLengthForString opInfo.shortName ) ]
-                    , onKeyUp (KeyUp (breadCrums ++ [ SymbolHere opInfo ]))
-                    , onInput (UpdateIdentifier (breadCrums ++ [ SymbolHere opInfo ]))
+                    , onKeyUp (KeyUp (breadCrums ++ [ SymbolHere op opInfo ]))
+                    , onInput (UpdateIdentifier (breadCrums ++ [ SymbolHere op opInfo ]))
                     ]
                     []
                 ]
 
         Vector expressions ->
-            span [ cls "Vector", onClickNoPropagation <| ClickOn <| breadCrums ++ [ExpBelow expression] ]
+            span [ cls "Vector", onClickNoPropagation <| ClickOn <| breadCrums ++ [ ExpBelow expression ] ]
                 [ span [ cls "VectorContent" ] <|
                     List.indexedMap
                         (\index expression ->
@@ -585,7 +738,7 @@ viewExp expression breadCrums =
                 ]
 
         Matrix rows ->
-            span [ cls "Matrix" ,  onClickNoPropagation <| ClickOn <| breadCrums ++ [ExpBelow expression] ]
+            span [ cls "Matrix", onClickNoPropagation <| ClickOn <| breadCrums ++ [ ExpBelow expression ] ]
                 [ table [ cls "MatrixContent" ] <|
                     List.indexedMap
                         (\indexRow row ->
@@ -610,7 +763,7 @@ viewExp expression breadCrums =
                 [ value a
                 , style [ ( "width", setLengthForString a ) ]
                 , onKeyUp (KeyUp (breadCrums ++ [ IdHere a ]))
-                , onClickNoPropagation (ClickOn <| breadCrums ++ [IdHere a])
+                , onClickNoPropagation (ClickOn <| breadCrums ++ [ IdHere a ])
                 , onInput (UpdateIdentifier (breadCrums ++ [ IdHere a ]))
                 ]
                 []
@@ -618,10 +771,12 @@ viewExp expression breadCrums =
         Hole ->
             span [ cls "Hole" ]
                 [ input
-                  [ style [ ( "width", "0.5em" ) ]
-                  , onKeyUp (KeyUp (breadCrums ++ [ HoleHere ]))
-                  , onClickNoPropagation (ClickOn <| breadCrums ++ [HoleHere])
-                  , onInput (UpdateIdentifier (breadCrums ++ [ HoleHere ])) ] []
+                    [ style [ ( "width", "0.5em" ) ]
+                    , onKeyUp (KeyUp (breadCrums ++ [ HoleHere ]))
+                    , onClickNoPropagation (ClickOn <| breadCrums ++ [ HoleHere ])
+                    , onInput (UpdateIdentifier (breadCrums ++ [ HoleHere ]))
+                    ]
+                    []
                 ]
 
 
