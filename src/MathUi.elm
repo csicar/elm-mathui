@@ -25,7 +25,6 @@ import Html.Attributes exposing (..)
 import Html.Events exposing (onInput, on, keyCode, onClick, onWithOptions)
 import Json.Decode as Json
 import Css.File exposing (CssFileStructure, CssCompilerProgram)
-import MathUiCss
 import Dom exposing (focus)
 import Task
 import Bitwise exposing (shiftLeftBy)
@@ -506,8 +505,6 @@ viewAll : Model -> Html Msg
 viewAll model =
     div [ cls "Container" ]
         [ stylesheet
-
-        --, inlinestyle
         , viewExp model.expression (Just model.focus) []
         , pre [] [ latexRepr model.expression |> text ]
         , a [ target "_blank", href <| "https://www.wolframalpha.com/input/?i=" ++ (wolframAlphaText model.expression) ] [ pre [] [ wolframAlphaText model.expression |> text ] ]
@@ -517,14 +514,6 @@ viewAll model =
 
 hiddenText string =
     span [ cls "HiddenText" ] [ text string ]
-
-
-inlinestyle =
-    let
-        tag =
-            "style"
-    in
-        node "style" [] [ text (Css.File.compile [ MathUiCss.css ]).css ]
 
 
 stylesheet =
