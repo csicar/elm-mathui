@@ -13543,646 +13543,846 @@ var _rtfeldman$elm_css$Css_File$UniqueSvgClass = function (a) {
 	return {ctor: 'UniqueSvgClass', _0: a};
 };
 var _rtfeldman$elm_css$Css_File$uniqueSvgClass = _rtfeldman$elm_css$Css_File$UniqueSvgClass;
-var _rtfeldman$elm_css$Css_Elements$typeSelector = F2(
-	function (selectorStr, styles) {
-		var sequence = A2(
-			_rtfeldman$elm_css$Css_Structure$TypeSelectorSequence,
-			_rtfeldman$elm_css$Css_Structure$TypeSelector(selectorStr),
-			{ctor: '[]'});
-		var selector = A3(
-			_rtfeldman$elm_css$Css_Structure$Selector,
-			sequence,
-			{ctor: '[]'},
-			_elm_lang$core$Maybe$Nothing);
-		return _rtfeldman$elm_css$Css_Preprocess$Snippet(
-			{
-				ctor: '::',
-				_0: _rtfeldman$elm_css$Css_Preprocess$StyleBlockDeclaration(
-					A3(
-						_rtfeldman$elm_css$Css_Preprocess$StyleBlock,
-						selector,
-						{ctor: '[]'},
-						styles)),
-				_1: {ctor: '[]'}
-			});
-	});
-var _rtfeldman$elm_css$Css_Elements$html = _rtfeldman$elm_css$Css_Elements$typeSelector('html');
-var _rtfeldman$elm_css$Css_Elements$body = _rtfeldman$elm_css$Css_Elements$typeSelector('body');
-var _rtfeldman$elm_css$Css_Elements$article = _rtfeldman$elm_css$Css_Elements$typeSelector('article');
-var _rtfeldman$elm_css$Css_Elements$header = _rtfeldman$elm_css$Css_Elements$typeSelector('header');
-var _rtfeldman$elm_css$Css_Elements$footer = _rtfeldman$elm_css$Css_Elements$typeSelector('footer');
-var _rtfeldman$elm_css$Css_Elements$h1 = _rtfeldman$elm_css$Css_Elements$typeSelector('h1');
-var _rtfeldman$elm_css$Css_Elements$h2 = _rtfeldman$elm_css$Css_Elements$typeSelector('h2');
-var _rtfeldman$elm_css$Css_Elements$h3 = _rtfeldman$elm_css$Css_Elements$typeSelector('h3');
-var _rtfeldman$elm_css$Css_Elements$h4 = _rtfeldman$elm_css$Css_Elements$typeSelector('h4');
-var _rtfeldman$elm_css$Css_Elements$h5 = _rtfeldman$elm_css$Css_Elements$typeSelector('h5');
-var _rtfeldman$elm_css$Css_Elements$h6 = _rtfeldman$elm_css$Css_Elements$typeSelector('h6');
-var _rtfeldman$elm_css$Css_Elements$nav = _rtfeldman$elm_css$Css_Elements$typeSelector('nav');
-var _rtfeldman$elm_css$Css_Elements$menu = _rtfeldman$elm_css$Css_Elements$typeSelector('menu');
-var _rtfeldman$elm_css$Css_Elements$section = _rtfeldman$elm_css$Css_Elements$typeSelector('section');
-var _rtfeldman$elm_css$Css_Elements$aside = _rtfeldman$elm_css$Css_Elements$typeSelector('aside');
-var _rtfeldman$elm_css$Css_Elements$time = _rtfeldman$elm_css$Css_Elements$typeSelector('time');
-var _rtfeldman$elm_css$Css_Elements$div = _rtfeldman$elm_css$Css_Elements$typeSelector('div');
-var _rtfeldman$elm_css$Css_Elements$hr = _rtfeldman$elm_css$Css_Elements$typeSelector('hr');
-var _rtfeldman$elm_css$Css_Elements$li = _rtfeldman$elm_css$Css_Elements$typeSelector('li');
-var _rtfeldman$elm_css$Css_Elements$main_ = _rtfeldman$elm_css$Css_Elements$typeSelector('main');
-var _rtfeldman$elm_css$Css_Elements$ol = _rtfeldman$elm_css$Css_Elements$typeSelector('ol');
-var _rtfeldman$elm_css$Css_Elements$p = _rtfeldman$elm_css$Css_Elements$typeSelector('p');
-var _rtfeldman$elm_css$Css_Elements$ul = _rtfeldman$elm_css$Css_Elements$typeSelector('ul');
-var _rtfeldman$elm_css$Css_Elements$pre = _rtfeldman$elm_css$Css_Elements$typeSelector('pre');
-var _rtfeldman$elm_css$Css_Elements$dl = _rtfeldman$elm_css$Css_Elements$typeSelector('dl');
-var _rtfeldman$elm_css$Css_Elements$dt = _rtfeldman$elm_css$Css_Elements$typeSelector('dt');
-var _rtfeldman$elm_css$Css_Elements$dd = _rtfeldman$elm_css$Css_Elements$typeSelector('dd');
-var _rtfeldman$elm_css$Css_Elements$a = _rtfeldman$elm_css$Css_Elements$typeSelector('a');
-var _rtfeldman$elm_css$Css_Elements$code = _rtfeldman$elm_css$Css_Elements$typeSelector('code');
-var _rtfeldman$elm_css$Css_Elements$small = _rtfeldman$elm_css$Css_Elements$typeSelector('small');
-var _rtfeldman$elm_css$Css_Elements$span = _rtfeldman$elm_css$Css_Elements$typeSelector('span');
-var _rtfeldman$elm_css$Css_Elements$strong = _rtfeldman$elm_css$Css_Elements$typeSelector('strong');
-var _rtfeldman$elm_css$Css_Elements$i = _rtfeldman$elm_css$Css_Elements$typeSelector('i');
-var _rtfeldman$elm_css$Css_Elements$em = _rtfeldman$elm_css$Css_Elements$typeSelector('em');
-var _rtfeldman$elm_css$Css_Elements$q = _rtfeldman$elm_css$Css_Elements$typeSelector('q');
-var _rtfeldman$elm_css$Css_Elements$img = _rtfeldman$elm_css$Css_Elements$typeSelector('img');
-var _rtfeldman$elm_css$Css_Elements$audio = _rtfeldman$elm_css$Css_Elements$typeSelector('audio');
-var _rtfeldman$elm_css$Css_Elements$video = _rtfeldman$elm_css$Css_Elements$typeSelector('video');
-var _rtfeldman$elm_css$Css_Elements$canvas = _rtfeldman$elm_css$Css_Elements$typeSelector('canvas');
-var _rtfeldman$elm_css$Css_Elements$caption = _rtfeldman$elm_css$Css_Elements$typeSelector('caption');
-var _rtfeldman$elm_css$Css_Elements$col = _rtfeldman$elm_css$Css_Elements$typeSelector('col');
-var _rtfeldman$elm_css$Css_Elements$colgroup = _rtfeldman$elm_css$Css_Elements$typeSelector('colgroup');
-var _rtfeldman$elm_css$Css_Elements$table = _rtfeldman$elm_css$Css_Elements$typeSelector('table');
-var _rtfeldman$elm_css$Css_Elements$tbody = _rtfeldman$elm_css$Css_Elements$typeSelector('tbody');
-var _rtfeldman$elm_css$Css_Elements$td = _rtfeldman$elm_css$Css_Elements$typeSelector('td');
-var _rtfeldman$elm_css$Css_Elements$tfoot = _rtfeldman$elm_css$Css_Elements$typeSelector('tfoot');
-var _rtfeldman$elm_css$Css_Elements$th = _rtfeldman$elm_css$Css_Elements$typeSelector('th');
-var _rtfeldman$elm_css$Css_Elements$thead = _rtfeldman$elm_css$Css_Elements$typeSelector('thead');
-var _rtfeldman$elm_css$Css_Elements$tr = _rtfeldman$elm_css$Css_Elements$typeSelector('tr');
-var _rtfeldman$elm_css$Css_Elements$button = _rtfeldman$elm_css$Css_Elements$typeSelector('button');
-var _rtfeldman$elm_css$Css_Elements$fieldset = _rtfeldman$elm_css$Css_Elements$typeSelector('fieldset');
-var _rtfeldman$elm_css$Css_Elements$form = _rtfeldman$elm_css$Css_Elements$typeSelector('form');
-var _rtfeldman$elm_css$Css_Elements$input = _rtfeldman$elm_css$Css_Elements$typeSelector('input');
-var _rtfeldman$elm_css$Css_Elements$label = _rtfeldman$elm_css$Css_Elements$typeSelector('label');
-var _rtfeldman$elm_css$Css_Elements$legend = _rtfeldman$elm_css$Css_Elements$typeSelector('legend');
-var _rtfeldman$elm_css$Css_Elements$optgroup = _rtfeldman$elm_css$Css_Elements$typeSelector('optgroup');
-var _rtfeldman$elm_css$Css_Elements$option = _rtfeldman$elm_css$Css_Elements$typeSelector('option');
-var _rtfeldman$elm_css$Css_Elements$progress = _rtfeldman$elm_css$Css_Elements$typeSelector('progress');
-var _rtfeldman$elm_css$Css_Elements$select = _rtfeldman$elm_css$Css_Elements$typeSelector('select');
-var _rtfeldman$elm_css$Css_Elements$textarea = _rtfeldman$elm_css$Css_Elements$typeSelector('textarea');
-var _rtfeldman$elm_css$Css_Elements$blockquote = _rtfeldman$elm_css$Css_Elements$typeSelector('blockquote');
-var _rtfeldman$elm_css$Css_Elements$svg = _rtfeldman$elm_css$Css_Elements$typeSelector('svg');
-var _rtfeldman$elm_css$Css_Elements$path = _rtfeldman$elm_css$Css_Elements$typeSelector('path');
-var _rtfeldman$elm_css$Css_Elements$rect = _rtfeldman$elm_css$Css_Elements$typeSelector('rect');
-var _rtfeldman$elm_css$Css_Elements$circle = _rtfeldman$elm_css$Css_Elements$typeSelector('circle');
-var _rtfeldman$elm_css$Css_Elements$ellipse = _rtfeldman$elm_css$Css_Elements$typeSelector('ellipse');
-var _rtfeldman$elm_css$Css_Elements$line = _rtfeldman$elm_css$Css_Elements$typeSelector('line');
-var _rtfeldman$elm_css$Css_Elements$polyline = _rtfeldman$elm_css$Css_Elements$typeSelector('polyline');
-var _rtfeldman$elm_css$Css_Elements$polygon = _rtfeldman$elm_css$Css_Elements$typeSelector('polygon');
-var _rtfeldman$elm_css$Css_Namespace$applyNamespaceToProperty = F2(
-	function (name, property) {
-		var _p0 = property.key;
-		if (_p0 === 'animation-name') {
-			return _elm_lang$core$Native_Utils.update(
-				property,
-				{
-					value: A2(_elm_lang$core$Basics_ops['++'], name, property.value)
-				});
-		} else {
-			return property;
-		}
-	});
-var _rtfeldman$elm_css$Css_Namespace$applyNamespaceToRepeatable = F2(
-	function (name, selector) {
-		var _p1 = selector;
-		switch (_p1.ctor) {
-			case 'ClassSelector':
-				return _rtfeldman$elm_css$Css_Structure$ClassSelector(
-					A2(_elm_lang$core$Basics_ops['++'], name, _p1._0));
-			case 'IdSelector':
-				return _rtfeldman$elm_css$Css_Structure$IdSelector(_p1._0);
-			default:
-				return _rtfeldman$elm_css$Css_Structure$PseudoClassSelector(_p1._0);
-		}
-	});
-var _rtfeldman$elm_css$Css_Namespace$applyNamespaceToSequence = F2(
-	function (name, sequence) {
-		var _p2 = sequence;
-		switch (_p2.ctor) {
-			case 'TypeSelectorSequence':
-				return A2(
-					_rtfeldman$elm_css$Css_Structure$TypeSelectorSequence,
-					_p2._0,
-					A2(
-						_elm_lang$core$List$map,
-						_rtfeldman$elm_css$Css_Namespace$applyNamespaceToRepeatable(name),
-						_p2._1));
-			case 'UniversalSelectorSequence':
-				return _rtfeldman$elm_css$Css_Structure$UniversalSelectorSequence(
-					A2(
-						_elm_lang$core$List$map,
-						_rtfeldman$elm_css$Css_Namespace$applyNamespaceToRepeatable(name),
-						_p2._0));
-			default:
-				return A2(
-					_rtfeldman$elm_css$Css_Structure$CustomSelector,
-					_p2._0,
-					A2(
-						_elm_lang$core$List$map,
-						_rtfeldman$elm_css$Css_Namespace$applyNamespaceToRepeatable(name),
-						_p2._1));
-		}
-	});
-var _rtfeldman$elm_css$Css_Namespace$applyNamespaceToSelector = F2(
-	function (name, _p3) {
-		var _p4 = _p3;
-		var apply = _rtfeldman$elm_css$Css_Namespace$applyNamespaceToSequence(name);
-		return A3(
-			_rtfeldman$elm_css$Css_Structure$Selector,
-			apply(_p4._0),
-			A2(
-				_elm_lang$core$List$map,
-				function (_p5) {
-					var _p6 = _p5;
-					return {
-						ctor: '_Tuple2',
-						_0: _p6._0,
-						_1: apply(_p6._1)
-					};
-				},
-				_p4._1),
-			_p4._2);
-	});
-var _rtfeldman$elm_css$Css_Namespace$applyNamespaceToStyle = F2(
-	function (name, style) {
-		var _p7 = style;
-		switch (_p7.ctor) {
-			case 'AppendProperty':
-				return _rtfeldman$elm_css$Css_Preprocess$AppendProperty(
-					A2(_rtfeldman$elm_css$Css_Namespace$applyNamespaceToProperty, name, _p7._0));
-			case 'ExtendSelector':
-				return A2(
-					_rtfeldman$elm_css$Css_Preprocess$ExtendSelector,
-					A2(_rtfeldman$elm_css$Css_Namespace$applyNamespaceToRepeatable, name, _p7._0),
-					A2(
-						_elm_lang$core$List$map,
-						_rtfeldman$elm_css$Css_Namespace$applyNamespaceToStyle(name),
-						_p7._1));
-			case 'NestSnippet':
-				return A2(
-					_rtfeldman$elm_css$Css_Preprocess$NestSnippet,
-					_p7._0,
-					A2(
-						_elm_lang$core$List$map,
-						_rtfeldman$elm_css$Css_Namespace$applyNamespaceToSnippet(name),
-						_p7._1));
-			case 'WithPseudoElement':
-				return A2(
-					_rtfeldman$elm_css$Css_Preprocess$WithPseudoElement,
-					_p7._0,
-					A2(
-						_elm_lang$core$List$map,
-						_rtfeldman$elm_css$Css_Namespace$applyNamespaceToStyle(name),
-						_p7._1));
-			case 'WithMedia':
-				return A2(
-					_rtfeldman$elm_css$Css_Preprocess$WithMedia,
-					_p7._0,
-					A2(
-						_elm_lang$core$List$map,
-						_rtfeldman$elm_css$Css_Namespace$applyNamespaceToStyle(name),
-						_p7._1));
-			default:
-				return _rtfeldman$elm_css$Css_Preprocess$ApplyStyles(
-					A2(
-						_elm_lang$core$List$map,
-						_rtfeldman$elm_css$Css_Namespace$applyNamespaceToStyle(name),
-						_p7._0));
-		}
-	});
-var _rtfeldman$elm_css$Css_Namespace$applyNamespaceToSnippet = F2(
-	function (name, _p8) {
-		var _p9 = _p8;
-		return _rtfeldman$elm_css$Css_Preprocess$Snippet(
-			A2(
-				_elm_lang$core$List$map,
-				_rtfeldman$elm_css$Css_Namespace$applyNamespaceToDeclaration(name),
-				_p9._0));
-	});
-var _rtfeldman$elm_css$Css_Namespace$applyNamespaceToDeclaration = F2(
-	function (name, declaration) {
-		var _p10 = declaration;
-		switch (_p10.ctor) {
-			case 'StyleBlockDeclaration':
-				return _rtfeldman$elm_css$Css_Preprocess$StyleBlockDeclaration(
-					A2(_rtfeldman$elm_css$Css_Namespace$applyNamespaceToStyleBlock, name, _p10._0));
-			case 'MediaRule':
-				return A2(
-					_rtfeldman$elm_css$Css_Preprocess$MediaRule,
-					_p10._0,
-					A2(
-						_elm_lang$core$List$map,
-						_rtfeldman$elm_css$Css_Namespace$applyNamespaceToStyleBlock(name),
-						_p10._1));
-			case 'SupportsRule':
-				return A2(
-					_rtfeldman$elm_css$Css_Preprocess$SupportsRule,
-					_p10._0,
-					function (declarations) {
-						return {
-							ctor: '::',
-							_0: _rtfeldman$elm_css$Css_Preprocess$Snippet(declarations),
-							_1: {ctor: '[]'}
-						};
-					}(
-						A2(
-							_elm_lang$core$List$map,
-							_rtfeldman$elm_css$Css_Namespace$applyNamespaceToDeclaration(name),
-							A2(_elm_lang$core$List$concatMap, _rtfeldman$elm_css$Css_Preprocess$unwrapSnippet, _p10._1))));
-			case 'DocumentRule':
-				return A5(
-					_rtfeldman$elm_css$Css_Preprocess$DocumentRule,
-					_p10._0,
-					_p10._1,
-					_p10._2,
-					_p10._3,
-					A2(_rtfeldman$elm_css$Css_Namespace$applyNamespaceToStyleBlock, name, _p10._4));
-			case 'PageRule':
-				return declaration;
-			case 'FontFace':
-				return declaration;
-			case 'Keyframes':
-				return A2(
-					_rtfeldman$elm_css$Css_Preprocess$Keyframes,
-					A2(_elm_lang$core$Basics_ops['++'], name, _p10._0),
-					_p10._1);
-			case 'Viewport':
-				return declaration;
-			case 'CounterStyle':
-				return declaration;
-			default:
-				return declaration;
-		}
-	});
-var _rtfeldman$elm_css$Css_Namespace$applyNamespaceToStyleBlock = F2(
-	function (name, _p11) {
-		var _p12 = _p11;
-		return A3(
-			_rtfeldman$elm_css$Css_Preprocess$StyleBlock,
-			A2(_rtfeldman$elm_css$Css_Namespace$applyNamespaceToSelector, name, _p12._0),
-			A2(
-				_elm_lang$core$List$map,
-				_rtfeldman$elm_css$Css_Namespace$applyNamespaceToSelector(name),
-				_p12._1),
-			A2(
-				_elm_lang$core$List$map,
-				_rtfeldman$elm_css$Css_Namespace$applyNamespaceToStyle(name),
-				_p12._2));
-	});
-var _rtfeldman$elm_css$Css_Namespace$namespace = F2(
-	function (rawIdentifier, snippets) {
-		return A2(
-			_elm_lang$core$List$map,
-			_rtfeldman$elm_css$Css_Namespace$applyNamespaceToSnippet(
-				_rtfeldman$elm_css_util$Css_Helpers$toCssIdentifier(rawIdentifier)),
-			snippets);
-	});
-var _csicar$elm_mathui$MathUiCss$Bottom = {ctor: 'Bottom'};
-var _csicar$elm_mathui$MathUiCss$FunctionApplication = {ctor: 'FunctionApplication'};
-var _csicar$elm_mathui$MathUiCss$HiddenText = {ctor: 'HiddenText'};
-var _csicar$elm_mathui$MathUiCss$Parentheses = {ctor: 'Parentheses'};
-var _csicar$elm_mathui$MathUiCss$VectorSymbol = {ctor: 'VectorSymbol'};
-var _csicar$elm_mathui$MathUiCss$Sqrt = {ctor: 'Sqrt'};
-var _csicar$elm_mathui$MathUiCss$ElemIn = {ctor: 'ElemIn'};
-var _csicar$elm_mathui$MathUiCss$VectorItem = {ctor: 'VectorItem'};
-var _csicar$elm_mathui$MathUiCss$Vector = {ctor: 'Vector'};
-var _csicar$elm_mathui$MathUiCss$MatrixContent = {ctor: 'MatrixContent'};
-var _csicar$elm_mathui$MathUiCss$Matrix = {ctor: 'Matrix'};
-var _csicar$elm_mathui$MathUiCss$PowLeft = {ctor: 'PowLeft'};
-var _csicar$elm_mathui$MathUiCss$PowRight = {ctor: 'PowRight'};
-var _csicar$elm_mathui$MathUiCss$Pow = {ctor: 'Pow'};
-var _csicar$elm_mathui$MathUiCss$SigmaAfter = {ctor: 'SigmaAfter'};
-var _csicar$elm_mathui$MathUiCss$SigmaOver = {ctor: 'SigmaOver'};
-var _csicar$elm_mathui$MathUiCss$SigmaUnder = {ctor: 'SigmaUnder'};
-var _csicar$elm_mathui$MathUiCss$Sigma = {ctor: 'Sigma'};
-var _csicar$elm_mathui$MathUiCss$EqualsLeft = {ctor: 'EqualsLeft'};
-var _csicar$elm_mathui$MathUiCss$EqualsRight = {ctor: 'EqualsRight'};
-var _csicar$elm_mathui$MathUiCss$Equals = {ctor: 'Equals'};
-var _csicar$elm_mathui$MathUiCss$Hole = {ctor: 'Hole'};
-var _csicar$elm_mathui$MathUiCss$Plus = {ctor: 'Plus'};
-var _csicar$elm_mathui$MathUiCss$PlusLeft = {ctor: 'PlusLeft'};
-var _csicar$elm_mathui$MathUiCss$PlusRight = {ctor: 'PlusRight'};
-var _csicar$elm_mathui$MathUiCss$DivRight = {ctor: 'DivRight'};
-var _csicar$elm_mathui$MathUiCss$DivLeft = {ctor: 'DivLeft'};
-var _csicar$elm_mathui$MathUiCss$Div = {ctor: 'Div'};
-var _csicar$elm_mathui$MathUiCss$Wrapper = {ctor: 'Wrapper'};
-var _csicar$elm_mathui$MathUiCss$css = function (_p0) {
-	return _rtfeldman$elm_css$Css$stylesheet(
-		A2(_rtfeldman$elm_css$Css_Namespace$namespace, 'mathui-', _p0));
-}(
+var _elm_lang$dom$Native_Dom = function() {
+
+var fakeNode = {
+	addEventListener: function() {},
+	removeEventListener: function() {}
+};
+
+var onDocument = on(typeof document !== 'undefined' ? document : fakeNode);
+var onWindow = on(typeof window !== 'undefined' ? window : fakeNode);
+
+function on(node)
+{
+	return function(eventName, decoder, toTask)
 	{
-		ctor: '::',
-		_0: A2(
-			_rtfeldman$elm_css$Css$class,
-			_csicar$elm_mathui$MathUiCss$Wrapper,
+		return _elm_lang$core$Native_Scheduler.nativeBinding(function(callback) {
+
+			function performTask(event)
 			{
-				ctor: '::',
-				_0: _rtfeldman$elm_css$Css$fontSize(
-					_rtfeldman$elm_css$Css$em(3)),
-				_1: {ctor: '[]'}
-			}),
+				var result = A2(_elm_lang$core$Json_Decode$decodeValue, decoder, event);
+				if (result.ctor === 'Ok')
+				{
+					_elm_lang$core$Native_Scheduler.rawSpawn(toTask(result._0));
+				}
+			}
+
+			node.addEventListener(eventName, performTask);
+
+			return function()
+			{
+				node.removeEventListener(eventName, performTask);
+			};
+		});
+	};
+}
+
+var rAF = typeof requestAnimationFrame !== 'undefined'
+	? requestAnimationFrame
+	: function(callback) { callback(); };
+
+function withNode(id, doStuff)
+{
+	return _elm_lang$core$Native_Scheduler.nativeBinding(function(callback)
+	{
+		rAF(function()
+		{
+			var node = document.getElementById(id);
+			if (node === null)
+			{
+				callback(_elm_lang$core$Native_Scheduler.fail({ ctor: 'NotFound', _0: id }));
+				return;
+			}
+			callback(_elm_lang$core$Native_Scheduler.succeed(doStuff(node)));
+		});
+	});
+}
+
+
+// FOCUS
+
+function focus(id)
+{
+	return withNode(id, function(node) {
+		node.focus();
+		return _elm_lang$core$Native_Utils.Tuple0;
+	});
+}
+
+function blur(id)
+{
+	return withNode(id, function(node) {
+		node.blur();
+		return _elm_lang$core$Native_Utils.Tuple0;
+	});
+}
+
+
+// SCROLLING
+
+function getScrollTop(id)
+{
+	return withNode(id, function(node) {
+		return node.scrollTop;
+	});
+}
+
+function setScrollTop(id, desiredScrollTop)
+{
+	return withNode(id, function(node) {
+		node.scrollTop = desiredScrollTop;
+		return _elm_lang$core$Native_Utils.Tuple0;
+	});
+}
+
+function toBottom(id)
+{
+	return withNode(id, function(node) {
+		node.scrollTop = node.scrollHeight;
+		return _elm_lang$core$Native_Utils.Tuple0;
+	});
+}
+
+function getScrollLeft(id)
+{
+	return withNode(id, function(node) {
+		return node.scrollLeft;
+	});
+}
+
+function setScrollLeft(id, desiredScrollLeft)
+{
+	return withNode(id, function(node) {
+		node.scrollLeft = desiredScrollLeft;
+		return _elm_lang$core$Native_Utils.Tuple0;
+	});
+}
+
+function toRight(id)
+{
+	return withNode(id, function(node) {
+		node.scrollLeft = node.scrollWidth;
+		return _elm_lang$core$Native_Utils.Tuple0;
+	});
+}
+
+
+// SIZE
+
+function width(options, id)
+{
+	return withNode(id, function(node) {
+		switch (options.ctor)
+		{
+			case 'Content':
+				return node.scrollWidth;
+			case 'VisibleContent':
+				return node.clientWidth;
+			case 'VisibleContentWithBorders':
+				return node.offsetWidth;
+			case 'VisibleContentWithBordersAndMargins':
+				var rect = node.getBoundingClientRect();
+				return rect.right - rect.left;
+		}
+	});
+}
+
+function height(options, id)
+{
+	return withNode(id, function(node) {
+		switch (options.ctor)
+		{
+			case 'Content':
+				return node.scrollHeight;
+			case 'VisibleContent':
+				return node.clientHeight;
+			case 'VisibleContentWithBorders':
+				return node.offsetHeight;
+			case 'VisibleContentWithBordersAndMargins':
+				var rect = node.getBoundingClientRect();
+				return rect.bottom - rect.top;
+		}
+	});
+}
+
+return {
+	onDocument: F3(onDocument),
+	onWindow: F3(onWindow),
+
+	focus: focus,
+	blur: blur,
+
+	getScrollTop: getScrollTop,
+	setScrollTop: F2(setScrollTop),
+	getScrollLeft: getScrollLeft,
+	setScrollLeft: F2(setScrollLeft),
+	toBottom: toBottom,
+	toRight: toRight,
+
+	height: F2(height),
+	width: F2(width)
+};
+
+}();
+var _elm_lang$core$Task$onError = _elm_lang$core$Native_Scheduler.onError;
+var _elm_lang$core$Task$andThen = _elm_lang$core$Native_Scheduler.andThen;
+var _elm_lang$core$Task$spawnCmd = F2(
+	function (router, _p0) {
+		var _p1 = _p0;
+		return _elm_lang$core$Native_Scheduler.spawn(
+			A2(
+				_elm_lang$core$Task$andThen,
+				_elm_lang$core$Platform$sendToApp(router),
+				_p1._0));
+	});
+var _elm_lang$core$Task$fail = _elm_lang$core$Native_Scheduler.fail;
+var _elm_lang$core$Task$mapError = F2(
+	function (convert, task) {
+		return A2(
+			_elm_lang$core$Task$onError,
+			function (_p2) {
+				return _elm_lang$core$Task$fail(
+					convert(_p2));
+			},
+			task);
+	});
+var _elm_lang$core$Task$succeed = _elm_lang$core$Native_Scheduler.succeed;
+var _elm_lang$core$Task$map = F2(
+	function (func, taskA) {
+		return A2(
+			_elm_lang$core$Task$andThen,
+			function (a) {
+				return _elm_lang$core$Task$succeed(
+					func(a));
+			},
+			taskA);
+	});
+var _elm_lang$core$Task$map2 = F3(
+	function (func, taskA, taskB) {
+		return A2(
+			_elm_lang$core$Task$andThen,
+			function (a) {
+				return A2(
+					_elm_lang$core$Task$andThen,
+					function (b) {
+						return _elm_lang$core$Task$succeed(
+							A2(func, a, b));
+					},
+					taskB);
+			},
+			taskA);
+	});
+var _elm_lang$core$Task$map3 = F4(
+	function (func, taskA, taskB, taskC) {
+		return A2(
+			_elm_lang$core$Task$andThen,
+			function (a) {
+				return A2(
+					_elm_lang$core$Task$andThen,
+					function (b) {
+						return A2(
+							_elm_lang$core$Task$andThen,
+							function (c) {
+								return _elm_lang$core$Task$succeed(
+									A3(func, a, b, c));
+							},
+							taskC);
+					},
+					taskB);
+			},
+			taskA);
+	});
+var _elm_lang$core$Task$map4 = F5(
+	function (func, taskA, taskB, taskC, taskD) {
+		return A2(
+			_elm_lang$core$Task$andThen,
+			function (a) {
+				return A2(
+					_elm_lang$core$Task$andThen,
+					function (b) {
+						return A2(
+							_elm_lang$core$Task$andThen,
+							function (c) {
+								return A2(
+									_elm_lang$core$Task$andThen,
+									function (d) {
+										return _elm_lang$core$Task$succeed(
+											A4(func, a, b, c, d));
+									},
+									taskD);
+							},
+							taskC);
+					},
+					taskB);
+			},
+			taskA);
+	});
+var _elm_lang$core$Task$map5 = F6(
+	function (func, taskA, taskB, taskC, taskD, taskE) {
+		return A2(
+			_elm_lang$core$Task$andThen,
+			function (a) {
+				return A2(
+					_elm_lang$core$Task$andThen,
+					function (b) {
+						return A2(
+							_elm_lang$core$Task$andThen,
+							function (c) {
+								return A2(
+									_elm_lang$core$Task$andThen,
+									function (d) {
+										return A2(
+											_elm_lang$core$Task$andThen,
+											function (e) {
+												return _elm_lang$core$Task$succeed(
+													A5(func, a, b, c, d, e));
+											},
+											taskE);
+									},
+									taskD);
+							},
+							taskC);
+					},
+					taskB);
+			},
+			taskA);
+	});
+var _elm_lang$core$Task$sequence = function (tasks) {
+	var _p3 = tasks;
+	if (_p3.ctor === '[]') {
+		return _elm_lang$core$Task$succeed(
+			{ctor: '[]'});
+	} else {
+		return A3(
+			_elm_lang$core$Task$map2,
+			F2(
+				function (x, y) {
+					return {ctor: '::', _0: x, _1: y};
+				}),
+			_p3._0,
+			_elm_lang$core$Task$sequence(_p3._1));
+	}
+};
+var _elm_lang$core$Task$onEffects = F3(
+	function (router, commands, state) {
+		return A2(
+			_elm_lang$core$Task$map,
+			function (_p4) {
+				return {ctor: '_Tuple0'};
+			},
+			_elm_lang$core$Task$sequence(
+				A2(
+					_elm_lang$core$List$map,
+					_elm_lang$core$Task$spawnCmd(router),
+					commands)));
+	});
+var _elm_lang$core$Task$init = _elm_lang$core$Task$succeed(
+	{ctor: '_Tuple0'});
+var _elm_lang$core$Task$onSelfMsg = F3(
+	function (_p7, _p6, _p5) {
+		return _elm_lang$core$Task$succeed(
+			{ctor: '_Tuple0'});
+	});
+var _elm_lang$core$Task$command = _elm_lang$core$Native_Platform.leaf('Task');
+var _elm_lang$core$Task$Perform = function (a) {
+	return {ctor: 'Perform', _0: a};
+};
+var _elm_lang$core$Task$perform = F2(
+	function (toMessage, task) {
+		return _elm_lang$core$Task$command(
+			_elm_lang$core$Task$Perform(
+				A2(_elm_lang$core$Task$map, toMessage, task)));
+	});
+var _elm_lang$core$Task$attempt = F2(
+	function (resultToMessage, task) {
+		return _elm_lang$core$Task$command(
+			_elm_lang$core$Task$Perform(
+				A2(
+					_elm_lang$core$Task$onError,
+					function (_p8) {
+						return _elm_lang$core$Task$succeed(
+							resultToMessage(
+								_elm_lang$core$Result$Err(_p8)));
+					},
+					A2(
+						_elm_lang$core$Task$andThen,
+						function (_p9) {
+							return _elm_lang$core$Task$succeed(
+								resultToMessage(
+									_elm_lang$core$Result$Ok(_p9)));
+						},
+						task))));
+	});
+var _elm_lang$core$Task$cmdMap = F2(
+	function (tagger, _p10) {
+		var _p11 = _p10;
+		return _elm_lang$core$Task$Perform(
+			A2(_elm_lang$core$Task$map, tagger, _p11._0));
+	});
+_elm_lang$core$Native_Platform.effectManagers['Task'] = {pkg: 'elm-lang/core', init: _elm_lang$core$Task$init, onEffects: _elm_lang$core$Task$onEffects, onSelfMsg: _elm_lang$core$Task$onSelfMsg, tag: 'cmd', cmdMap: _elm_lang$core$Task$cmdMap};
+var _elm_lang$dom$Dom$blur = _elm_lang$dom$Native_Dom.blur;
+var _elm_lang$dom$Dom$focus = _elm_lang$dom$Native_Dom.focus;
+var _elm_lang$dom$Dom$NotFound = function (a) {
+	return {ctor: 'NotFound', _0: a};
+};
+var _elm_lang$core$Native_Bitwise = function() {
+
+return {
+	and: F2(function and(a, b) { return a & b; }),
+	or: F2(function or(a, b) { return a | b; }),
+	xor: F2(function xor(a, b) { return a ^ b; }),
+	complement: function complement(a) { return ~a; },
+	shiftLeftBy: F2(function(offset, a) { return a << offset; }),
+	shiftRightBy: F2(function(offset, a) { return a >> offset; }),
+	shiftRightZfBy: F2(function(offset, a) { return a >>> offset; })
+};
+
+}();
+var _elm_lang$core$Bitwise$shiftRightZfBy = _elm_lang$core$Native_Bitwise.shiftRightZfBy;
+var _elm_lang$core$Bitwise$shiftRightBy = _elm_lang$core$Native_Bitwise.shiftRightBy;
+var _elm_lang$core$Bitwise$shiftLeftBy = _elm_lang$core$Native_Bitwise.shiftLeftBy;
+var _elm_lang$core$Bitwise$complement = _elm_lang$core$Native_Bitwise.complement;
+var _elm_lang$core$Bitwise$xor = _elm_lang$core$Native_Bitwise.xor;
+var _elm_lang$core$Bitwise$or = _elm_lang$core$Native_Bitwise.or;
+var _elm_lang$core$Bitwise$and = _elm_lang$core$Native_Bitwise.and;
+var _csicar$elm_mathui$MathUi_Operations$OpInfo = F7(
+	function (a, b, c, d, e, f, g) {
+		return {shortName: a, longName: b, cssClass: c, latexOperator: d, latexBefore: e, latexAfter: f, wolframAlphaName: g};
+	});
+var _csicar$elm_mathui$MathUi_Operations$BigProd = {ctor: 'BigProd'};
+var _csicar$elm_mathui$MathUi_Operations$BigSum = {ctor: 'BigSum'};
+var _csicar$elm_mathui$MathUi_Operations$Factorial = {ctor: 'Factorial'};
+var _csicar$elm_mathui$MathUi_Operations$NoOp = {ctor: 'NoOp'};
+var _csicar$elm_mathui$MathUi_Operations$Root = function (a) {
+	return {ctor: 'Root', _0: a};
+};
+var _csicar$elm_mathui$MathUi_Operations$Infinity = {ctor: 'Infinity'};
+var _csicar$elm_mathui$MathUi_Operations$FunctionApplication = {ctor: 'FunctionApplication'};
+var _csicar$elm_mathui$MathUi_Operations$Equals = {ctor: 'Equals'};
+var _csicar$elm_mathui$MathUi_Operations$Contains = {ctor: 'Contains'};
+var _csicar$elm_mathui$MathUi_Operations$Sub = {ctor: 'Sub'};
+var _csicar$elm_mathui$MathUi_Operations$Pow = {ctor: 'Pow'};
+var _csicar$elm_mathui$MathUi_Operations$Div = {ctor: 'Div'};
+var _csicar$elm_mathui$MathUi_Operations$Mul = {ctor: 'Mul'};
+var _csicar$elm_mathui$MathUi_Operations$Plus = {ctor: 'Plus'};
+var _csicar$elm_mathui$MathUi_Operations$Abs = {ctor: 'Abs'};
+var _csicar$elm_mathui$MathUi_Operations$App = {ctor: 'App'};
+var _csicar$elm_mathui$MathUi_Operations$Hole = {ctor: 'Hole'};
+var _csicar$elm_mathui$MathUi_Operations$Id = function (a) {
+	return {ctor: 'Id', _0: a};
+};
+var _csicar$elm_mathui$MathUi_Operations$Matrix = function (a) {
+	return {ctor: 'Matrix', _0: a};
+};
+var _csicar$elm_mathui$MathUi_Operations$Vector = function (a) {
+	return {ctor: 'Vector', _0: a};
+};
+var _csicar$elm_mathui$MathUi_Operations$Symbol = F2(
+	function (a, b) {
+		return {ctor: 'Symbol', _0: a, _1: b};
+	});
+var _csicar$elm_mathui$MathUi_Operations$infinity = A2(
+	_csicar$elm_mathui$MathUi_Operations$Symbol,
+	_csicar$elm_mathui$MathUi_Operations$Infinity,
+	{shortName: '∞', longName: 'infinity', cssClass: 'Infinity', latexOperator: '\\infty', latexBefore: '', latexAfter: '', wolframAlphaName: '∞'});
+var _csicar$elm_mathui$MathUi_Operations$UnaryOp = F3(
+	function (a, b, c) {
+		return {ctor: 'UnaryOp', _0: a, _1: b, _2: c};
+	});
+var _csicar$elm_mathui$MathUi_Operations$sqrtOp = A2(
+	_csicar$elm_mathui$MathUi_Operations$UnaryOp,
+	_csicar$elm_mathui$MathUi_Operations$Root(2),
+	{shortName: '√', longName: 'sqrt', cssClass: 'Sqrt', latexOperator: '\\sqrt', latexBefore: '', latexAfter: '', wolframAlphaName: '√'});
+var _csicar$elm_mathui$MathUi_Operations$factorial = A2(
+	_csicar$elm_mathui$MathUi_Operations$UnaryOp,
+	_csicar$elm_mathui$MathUi_Operations$Factorial,
+	{shortName: '!', longName: 'factorial', cssClass: 'Factorial', latexOperator: '!', latexBefore: '', latexAfter: '', wolframAlphaName: 'factorial'});
+var _csicar$elm_mathui$MathUi_Operations$parentheses = A2(
+	_csicar$elm_mathui$MathUi_Operations$UnaryOp,
+	_csicar$elm_mathui$MathUi_Operations$NoOp,
+	{shortName: '()', longName: 'parentheses', cssClass: 'Parentheses', latexOperator: '()', latexBefore: '(', latexAfter: ')', wolframAlphaName: '()'});
+var _csicar$elm_mathui$MathUi_Operations$vectorsymbol = A2(
+	_csicar$elm_mathui$MathUi_Operations$UnaryOp,
+	_csicar$elm_mathui$MathUi_Operations$NoOp,
+	{shortName: 'vec', longName: '→', cssClass: 'VectorSymbol', latexOperator: '\\vec', latexBefore: '', latexAfter: '', wolframAlphaName: ''});
+var _csicar$elm_mathui$MathUi_Operations$BigOp = F5(
+	function (a, b, c, d, e) {
+		return {ctor: 'BigOp', _0: a, _1: b, _2: c, _3: d, _4: e};
+	});
+var _csicar$elm_mathui$MathUi_Operations$sigma = A2(
+	_csicar$elm_mathui$MathUi_Operations$BigOp,
+	_csicar$elm_mathui$MathUi_Operations$BigSum,
+	{shortName: 'Σ', longName: 'sigma', cssClass: 'Sigma', latexOperator: '\\sum', latexBefore: '_', latexAfter: '^', wolframAlphaName: 'sum'});
+var _csicar$elm_mathui$MathUi_Operations$product = A2(
+	_csicar$elm_mathui$MathUi_Operations$BigOp,
+	_csicar$elm_mathui$MathUi_Operations$BigProd,
+	{shortName: 'Π', longName: 'product', cssClass: 'Product', latexOperator: '\\prod', latexBefore: '_', latexAfter: '^', wolframAlphaName: 'prod'});
+var _csicar$elm_mathui$MathUi_Operations$BinOp = F4(
+	function (a, b, c, d) {
+		return {ctor: 'BinOp', _0: a, _1: b, _2: c, _3: d};
+	});
+var _csicar$elm_mathui$MathUi_Operations$plus = A2(
+	_csicar$elm_mathui$MathUi_Operations$BinOp,
+	_csicar$elm_mathui$MathUi_Operations$Plus,
+	{shortName: '+', longName: 'plus', cssClass: 'Plus', latexOperator: '+', latexBefore: '', latexAfter: '', wolframAlphaName: '+'});
+var _csicar$elm_mathui$MathUi_Operations$minus = A2(
+	_csicar$elm_mathui$MathUi_Operations$BinOp,
+	_csicar$elm_mathui$MathUi_Operations$Sub,
+	{shortName: '-', longName: 'subtract', cssClass: 'Minus', latexOperator: '-', latexBefore: '', latexAfter: '', wolframAlphaName: '-'});
+var _csicar$elm_mathui$MathUi_Operations$multiply = A2(
+	_csicar$elm_mathui$MathUi_Operations$BinOp,
+	_csicar$elm_mathui$MathUi_Operations$Mul,
+	{shortName: '*', longName: 'multiply', cssClass: 'Multiply', latexOperator: '\\cdot', latexBefore: '', latexAfter: '', wolframAlphaName: '*'});
+var _csicar$elm_mathui$MathUi_Operations$divide = A2(
+	_csicar$elm_mathui$MathUi_Operations$BinOp,
+	_csicar$elm_mathui$MathUi_Operations$Div,
+	{shortName: '/', longName: 'divide', cssClass: 'Div', latexOperator: '\\over', latexBefore: '', latexAfter: '', wolframAlphaName: '/'});
+var _csicar$elm_mathui$MathUi_Operations$pow = A2(
+	_csicar$elm_mathui$MathUi_Operations$BinOp,
+	_csicar$elm_mathui$MathUi_Operations$Pow,
+	{shortName: '^', longName: 'power', cssClass: 'Pow', latexOperator: '^', latexBefore: '', latexAfter: '', wolframAlphaName: '^'});
+var _csicar$elm_mathui$MathUi_Operations$sub = A2(
+	_csicar$elm_mathui$MathUi_Operations$BinOp,
+	_csicar$elm_mathui$MathUi_Operations$Sub,
+	{shortName: '_', longName: 'subscript', cssClass: 'Sub', latexOperator: '_', latexBefore: '', latexAfter: '', wolframAlphaName: '_'});
+var _csicar$elm_mathui$MathUi_Operations$elemIn = A2(
+	_csicar$elm_mathui$MathUi_Operations$BinOp,
+	_csicar$elm_mathui$MathUi_Operations$Contains,
+	{shortName: '∈', longName: 'in', cssClass: 'ElemIn', latexOperator: '\\in', latexBefore: '', latexAfter: '', wolframAlphaName: ' in '});
+var _csicar$elm_mathui$MathUi_Operations$equals = A2(
+	_csicar$elm_mathui$MathUi_Operations$BinOp,
+	_csicar$elm_mathui$MathUi_Operations$Equals,
+	{shortName: '=', longName: 'equals', cssClass: 'Equals', latexOperator: '=', latexBefore: '', latexAfter: '', wolframAlphaName: '='});
+var _csicar$elm_mathui$MathUi_Operations$functionApplication = A2(
+	_csicar$elm_mathui$MathUi_Operations$BinOp,
+	_csicar$elm_mathui$MathUi_Operations$FunctionApplication,
+	{shortName: '⇒', longName: 'functionApplication', cssClass: 'FunctionApplication', latexOperator: '', latexBefore: '', latexAfter: '', wolframAlphaName: '('});
+var _csicar$elm_mathui$MathUi_Operations$lambda = A2(
+	_csicar$elm_mathui$MathUi_Operations$BinOp,
+	_csicar$elm_mathui$MathUi_Operations$Abs,
+	{shortName: 'λ', longName: 'lambda', cssClass: 'Lambda', latexOperator: '', latexBefore: '', latexAfter: '', wolframAlphaName: '?????'});
+var _csicar$elm_mathui$MathUi_Operations$app = A2(
+	_csicar$elm_mathui$MathUi_Operations$BinOp,
+	_csicar$elm_mathui$MathUi_Operations$App,
+	{shortName: 'β', longName: 'app', cssClass: 'App', latexOperator: '', latexBefore: '', latexAfter: '', wolframAlphaName: '?????'});
+var _csicar$elm_mathui$MathUi_Operations$options = {
+	ctor: '::',
+	_0: {
+		ctor: '_Tuple2',
+		_0: '+',
+		_1: function (rest) {
+			return A2(
+				_csicar$elm_mathui$MathUi_Operations$plus,
+				_csicar$elm_mathui$MathUi_Operations$Id(rest),
+				_csicar$elm_mathui$MathUi_Operations$Hole);
+		}
+	},
+	_1: {
+		ctor: '::',
+		_0: {
+			ctor: '_Tuple2',
+			_0: '-',
+			_1: function (rest) {
+				return A2(
+					_csicar$elm_mathui$MathUi_Operations$minus,
+					_csicar$elm_mathui$MathUi_Operations$Id(rest),
+					_csicar$elm_mathui$MathUi_Operations$Hole);
+			}
+		},
 		_1: {
 			ctor: '::',
-			_0: A2(
-				_rtfeldman$elm_css$Css$class,
-				_csicar$elm_mathui$MathUiCss$Div,
-				{
-					ctor: '::',
-					_0: _rtfeldman$elm_css$Css$display(_rtfeldman$elm_css$Css$inlineBlock),
-					_1: {
-						ctor: '::',
-						_0: _rtfeldman$elm_css$Css$verticalAlign(_rtfeldman$elm_css$Css$middle),
-						_1: {
-							ctor: '::',
-							_0: _rtfeldman$elm_css$Css$children(
-								{
-									ctor: '::',
-									_0: A2(
-										_rtfeldman$elm_css$Css_Elements$typeSelector,
-										'*',
-										{
-											ctor: '::',
-											_0: _rtfeldman$elm_css$Css$display(_rtfeldman$elm_css$Css$block),
-											_1: {
-												ctor: '::',
-												_0: _rtfeldman$elm_css$Css$textAlign(_rtfeldman$elm_css$Css$center),
-												_1: {
-													ctor: '::',
-													_0: _rtfeldman$elm_css$Css$fontSize(
-														_rtfeldman$elm_css$Css$em(0.7)),
-													_1: {ctor: '[]'}
-												}
-											}
-										}),
-									_1: {
-										ctor: '::',
-										_0: A2(
-											_rtfeldman$elm_css$Css$class,
-											_csicar$elm_mathui$MathUiCss$DivLeft,
-											{
-												ctor: '::',
-												_0: _rtfeldman$elm_css$Css$borderBottom(
-													_rtfeldman$elm_css$Css$px(1)),
-												_1: {ctor: '[]'}
-											}),
-										_1: {ctor: '[]'}
-									}
-								}),
-							_1: {ctor: '[]'}
-						}
-					}
-				}),
+			_0: {
+				ctor: '_Tuple2',
+				_0: '*',
+				_1: function (rest) {
+					return A2(
+						_csicar$elm_mathui$MathUi_Operations$multiply,
+						_csicar$elm_mathui$MathUi_Operations$Id(rest),
+						_csicar$elm_mathui$MathUi_Operations$Hole);
+				}
+			},
 			_1: {
 				ctor: '::',
-				_0: A2(
-					_rtfeldman$elm_css$Css$class,
-					_csicar$elm_mathui$MathUiCss$Plus,
-					{
-						ctor: '::',
-						_0: _rtfeldman$elm_css$Css$children(
-							{
-								ctor: '::',
-								_0: A2(
-									_rtfeldman$elm_css$Css$class,
-									_csicar$elm_mathui$MathUiCss$PlusRight,
-									{
-										ctor: '::',
-										_0: _rtfeldman$elm_css$Css$before(
-											{
-												ctor: '::',
-												_0: A2(_rtfeldman$elm_css$Css$property, 'content', '\'+\''),
-												_1: {
-													ctor: '::',
-													_0: _rtfeldman$elm_css$Css$verticalAlign(_rtfeldman$elm_css$Css$middle),
-													_1: {ctor: '[]'}
-												}
-											}),
-										_1: {ctor: '[]'}
-									}),
-								_1: {ctor: '[]'}
-							}),
-						_1: {ctor: '[]'}
-					}),
+				_0: {
+					ctor: '_Tuple2',
+					_0: '/',
+					_1: function (rest) {
+						return A2(
+							_csicar$elm_mathui$MathUi_Operations$divide,
+							_csicar$elm_mathui$MathUi_Operations$Id(rest),
+							_csicar$elm_mathui$MathUi_Operations$Hole);
+					}
+				},
 				_1: {
 					ctor: '::',
-					_0: A2(
-						_rtfeldman$elm_css$Css$class,
-						_csicar$elm_mathui$MathUiCss$Equals,
-						{
-							ctor: '::',
-							_0: _rtfeldman$elm_css$Css$children(
-								{
-									ctor: '::',
-									_0: A2(
-										_rtfeldman$elm_css$Css$class,
-										_csicar$elm_mathui$MathUiCss$EqualsRight,
-										{
-											ctor: '::',
-											_0: _rtfeldman$elm_css$Css$before(
-												{
-													ctor: '::',
-													_0: A2(_rtfeldman$elm_css$Css$property, 'content', '\'=\''),
-													_1: {ctor: '[]'}
-												}),
-											_1: {ctor: '[]'}
-										}),
-									_1: {ctor: '[]'}
-								}),
-							_1: {ctor: '[]'}
-						}),
+					_0: {
+						ctor: '_Tuple2',
+						_0: '^',
+						_1: function (rest) {
+							return A2(
+								_csicar$elm_mathui$MathUi_Operations$pow,
+								_csicar$elm_mathui$MathUi_Operations$Id(rest),
+								_csicar$elm_mathui$MathUi_Operations$Hole);
+						}
+					},
 					_1: {
 						ctor: '::',
-						_0: A2(
-							_rtfeldman$elm_css$Css$class,
-							_csicar$elm_mathui$MathUiCss$Sigma,
-							{
-								ctor: '::',
-								_0: _rtfeldman$elm_css$Css$display(_rtfeldman$elm_css$Css$inlineBlock),
-								_1: {
-									ctor: '::',
-									_0: _rtfeldman$elm_css$Css$verticalAlign(_rtfeldman$elm_css$Css$middle),
-									_1: {
-										ctor: '::',
-										_0: _rtfeldman$elm_css$Css$children(
-											{
-												ctor: '::',
-												_0: A2(
-													_rtfeldman$elm_css$Css_Elements$typeSelector,
-													'*',
-													{
-														ctor: '::',
-														_0: _rtfeldman$elm_css$Css$display(_rtfeldman$elm_css$Css$block),
-														_1: {ctor: '[]'}
-													}),
-												_1: {
-													ctor: '::',
-													_0: A2(
-														_rtfeldman$elm_css$Css$class,
-														_csicar$elm_mathui$MathUiCss$SigmaUnder,
-														{
-															ctor: '::',
-															_0: _rtfeldman$elm_css$Css$fontSize(
-																_rtfeldman$elm_css$Css$em(0.7)),
-															_1: {
-																ctor: '::',
-																_0: _rtfeldman$elm_css$Css$lineHeight(
-																	_rtfeldman$elm_css$Css$em(0)),
-																_1: {
-																	ctor: '::',
-																	_0: _rtfeldman$elm_css$Css$height(
-																		_rtfeldman$elm_css$Css$em(0.6)),
-																	_1: {ctor: '[]'}
-																}
-															}
-														}),
-													_1: {
-														ctor: '::',
-														_0: A2(
-															_rtfeldman$elm_css$Css$class,
-															_csicar$elm_mathui$MathUiCss$SigmaOver,
-															{
-																ctor: '::',
-																_0: _rtfeldman$elm_css$Css$fontSize(
-																	_rtfeldman$elm_css$Css$em(0.7)),
-																_1: {
-																	ctor: '::',
-																	_0: _rtfeldman$elm_css$Css$lineHeight(
-																		_rtfeldman$elm_css$Css$em(0)),
-																	_1: {
-																		ctor: '::',
-																		_0: _rtfeldman$elm_css$Css$height(
-																			_rtfeldman$elm_css$Css$em(0.6)),
-																		_1: {ctor: '[]'}
-																	}
-																}
-															}),
-														_1: {
-															ctor: '::',
-															_0: A2(
-																_rtfeldman$elm_css$Css$class,
-																_csicar$elm_mathui$MathUiCss$SigmaAfter,
-																{
-																	ctor: '::',
-																	_0: _rtfeldman$elm_css$Css$before(
-																		{
-																			ctor: '::',
-																			_0: A2(_rtfeldman$elm_css$Css$property, 'content', '\'Σ\''),
-																			_1: {
-																				ctor: '::',
-																				_0: _rtfeldman$elm_css$Css$fontSize(
-																					_rtfeldman$elm_css$Css$em(2)),
-																				_1: {
-																					ctor: '::',
-																					_0: _rtfeldman$elm_css$Css$verticalAlign(_rtfeldman$elm_css$Css$middle),
-																					_1: {ctor: '[]'}
-																				}
-																			}
-																		}),
-																	_1: {
-																		ctor: '::',
-																		_0: _rtfeldman$elm_css$Css$verticalAlign(_rtfeldman$elm_css$Css$middle),
-																		_1: {ctor: '[]'}
-																	}
-																}),
-															_1: {ctor: '[]'}
-														}
-													}
-												}
-											}),
-										_1: {ctor: '[]'}
-									}
-								}
-							}),
+						_0: {
+							ctor: '_Tuple2',
+							_0: '_',
+							_1: function (rest) {
+								return A2(
+									_csicar$elm_mathui$MathUi_Operations$sub,
+									_csicar$elm_mathui$MathUi_Operations$Id(rest),
+									_csicar$elm_mathui$MathUi_Operations$Hole);
+							}
+						},
 						_1: {
 							ctor: '::',
-							_0: A2(
-								_rtfeldman$elm_css$Css$class,
-								_csicar$elm_mathui$MathUiCss$Pow,
-								{
-									ctor: '::',
-									_0: _rtfeldman$elm_css$Css$children(
-										{
-											ctor: '::',
-											_0: A2(
-												_rtfeldman$elm_css$Css$class,
-												_csicar$elm_mathui$MathUiCss$PowRight,
-												{
-													ctor: '::',
-													_0: _rtfeldman$elm_css$Css$verticalAlign(_rtfeldman$elm_css$Css$super),
-													_1: {
-														ctor: '::',
-														_0: _rtfeldman$elm_css$Css$fontSize(
-															_rtfeldman$elm_css$Css$em(0.8)),
-														_1: {ctor: '[]'}
-													}
-												}),
-											_1: {ctor: '[]'}
-										}),
-									_1: {ctor: '[]'}
-								}),
+							_0: {
+								ctor: '_Tuple2',
+								_0: '=',
+								_1: function (rest) {
+									return A2(
+										_csicar$elm_mathui$MathUi_Operations$equals,
+										_csicar$elm_mathui$MathUi_Operations$Id(rest),
+										_csicar$elm_mathui$MathUi_Operations$Hole);
+								}
+							},
 							_1: {
 								ctor: '::',
-								_0: A2(
-									_rtfeldman$elm_css$Css$class,
-									_csicar$elm_mathui$MathUiCss$Matrix,
-									{
+								_0: {
+									ctor: '_Tuple2',
+									_0: '\\abs',
+									_1: function (rest) {
+										return A2(
+											_csicar$elm_mathui$MathUi_Operations$lambda,
+											_csicar$elm_mathui$MathUi_Operations$Id(rest),
+											_csicar$elm_mathui$MathUi_Operations$Hole);
+									}
+								},
+								_1: {
+									ctor: '::',
+									_0: {
+										ctor: '_Tuple2',
+										_0: '\\app',
+										_1: function (rest) {
+											return A2(
+												_csicar$elm_mathui$MathUi_Operations$app,
+												_csicar$elm_mathui$MathUi_Operations$Id(rest),
+												_csicar$elm_mathui$MathUi_Operations$Hole);
+										}
+									},
+									_1: {
 										ctor: '::',
-										_0: _rtfeldman$elm_css$Css$children(
-											{
+										_0: {
+											ctor: '_Tuple2',
+											_0: '\\in',
+											_1: function (rest) {
+												return A2(
+													_csicar$elm_mathui$MathUi_Operations$elemIn,
+													_csicar$elm_mathui$MathUi_Operations$Id(rest),
+													_csicar$elm_mathui$MathUi_Operations$Hole);
+											}
+										},
+										_1: {
+											ctor: '::',
+											_0: {
+												ctor: '_Tuple2',
+												_0: '\\sqrt',
+												_1: function (rest) {
+													return _csicar$elm_mathui$MathUi_Operations$sqrtOp(
+														_csicar$elm_mathui$MathUi_Operations$Id(rest));
+												}
+											},
+											_1: {
 												ctor: '::',
-												_0: A2(
-													_rtfeldman$elm_css$Css$class,
-													_csicar$elm_mathui$MathUiCss$MatrixContent,
-													{
+												_0: {
+													ctor: '_Tuple2',
+													_0: '\\!',
+													_1: function (rest) {
+														return _csicar$elm_mathui$MathUi_Operations$factorial(
+															_csicar$elm_mathui$MathUi_Operations$Id(rest));
+													}
+												},
+												_1: {
+													ctor: '::',
+													_0: {
+														ctor: '_Tuple2',
+														_0: '\\vec',
+														_1: function (rest) {
+															return _csicar$elm_mathui$MathUi_Operations$vectorsymbol(
+																_csicar$elm_mathui$MathUi_Operations$Id(rest));
+														}
+													},
+													_1: {
 														ctor: '::',
-														_0: _rtfeldman$elm_css$Css$display(_rtfeldman$elm_css$Css$inlineTable),
+														_0: {
+															ctor: '_Tuple2',
+															_0: '(',
+															_1: function (rest) {
+																var _p0 = rest;
+																if (_p0 === '') {
+																	return _csicar$elm_mathui$MathUi_Operations$parentheses(_csicar$elm_mathui$MathUi_Operations$Hole);
+																} else {
+																	return A2(
+																		_csicar$elm_mathui$MathUi_Operations$functionApplication,
+																		_csicar$elm_mathui$MathUi_Operations$Id(_p0),
+																		_csicar$elm_mathui$MathUi_Operations$Hole);
+																}
+															}
+														},
 														_1: {
 															ctor: '::',
-															_0: _rtfeldman$elm_css$Css$verticalAlign(_rtfeldman$elm_css$Css$middle),
+															_0: {
+																ctor: '_Tuple2',
+																_0: '\\infinity',
+																_1: function (_p1) {
+																	return _csicar$elm_mathui$MathUi_Operations$infinity;
+																}
+															},
 															_1: {
 																ctor: '::',
-																_0: A2(
-																	_rtfeldman$elm_css$Css$padding2,
-																	_rtfeldman$elm_css$Css$em(0),
-																	_rtfeldman$elm_css$Css$em(0.4)),
+																_0: {
+																	ctor: '_Tuple2',
+																	_0: '\\sigma',
+																	_1: function (rest) {
+																		return A3(
+																			_csicar$elm_mathui$MathUi_Operations$sigma,
+																			_csicar$elm_mathui$MathUi_Operations$Hole,
+																			_csicar$elm_mathui$MathUi_Operations$Hole,
+																			_csicar$elm_mathui$MathUi_Operations$Id(rest));
+																	}
+																},
 																_1: {
 																	ctor: '::',
-																	_0: _rtfeldman$elm_css$Css$borderLeft(
-																		_rtfeldman$elm_css$Css$em(8.0e-2)),
+																	_0: {
+																		ctor: '_Tuple2',
+																		_0: '\\prod',
+																		_1: function (rest) {
+																			return A3(
+																				_csicar$elm_mathui$MathUi_Operations$product,
+																				_csicar$elm_mathui$MathUi_Operations$Hole,
+																				_csicar$elm_mathui$MathUi_Operations$Hole,
+																				_csicar$elm_mathui$MathUi_Operations$Id(rest));
+																		}
+																	},
 																	_1: {
 																		ctor: '::',
-																		_0: _rtfeldman$elm_css$Css$borderRight(
-																			_rtfeldman$elm_css$Css$em(8.0e-2)),
+																		_0: {
+																			ctor: '_Tuple2',
+																			_0: '\\v2',
+																			_1: function (rest) {
+																				return _csicar$elm_mathui$MathUi_Operations$Vector(
+																					{
+																						ctor: '::',
+																						_0: _csicar$elm_mathui$MathUi_Operations$Id(rest),
+																						_1: {
+																							ctor: '::',
+																							_0: _csicar$elm_mathui$MathUi_Operations$Hole,
+																							_1: {ctor: '[]'}
+																						}
+																					});
+																			}
+																		},
 																		_1: {
 																			ctor: '::',
-																			_0: A2(
-																				_rtfeldman$elm_css$Css$borderTopLeftRadius2,
-																				_rtfeldman$elm_css$Css$pct(30),
-																				_rtfeldman$elm_css$Css$pct(100)),
+																			_0: {
+																				ctor: '_Tuple2',
+																				_0: '\\v3',
+																				_1: function (rest) {
+																					return _csicar$elm_mathui$MathUi_Operations$Vector(
+																						{
+																							ctor: '::',
+																							_0: _csicar$elm_mathui$MathUi_Operations$Id(rest),
+																							_1: {
+																								ctor: '::',
+																								_0: _csicar$elm_mathui$MathUi_Operations$Hole,
+																								_1: {
+																									ctor: '::',
+																									_0: _csicar$elm_mathui$MathUi_Operations$Hole,
+																									_1: {ctor: '[]'}
+																								}
+																							}
+																						});
+																				}
+																			},
 																			_1: {
 																				ctor: '::',
-																				_0: A2(
-																					_rtfeldman$elm_css$Css$borderBottomLeftRadius2,
-																					_rtfeldman$elm_css$Css$pct(30),
-																					_rtfeldman$elm_css$Css$pct(100)),
+																				_0: {
+																					ctor: '_Tuple2',
+																					_0: '\\vv',
+																					_1: function (rest) {
+																						var _p2 = _elm_lang$core$String$toInt(rest);
+																						if (_p2.ctor === 'Ok') {
+																							return _csicar$elm_mathui$MathUi_Operations$Vector(
+																								A2(_elm_lang$core$List$repeat, _p2._0, _csicar$elm_mathui$MathUi_Operations$Hole));
+																						} else {
+																							return _csicar$elm_mathui$MathUi_Operations$Vector(
+																								{
+																									ctor: '::',
+																									_0: _csicar$elm_mathui$MathUi_Operations$Id(rest),
+																									_1: {
+																										ctor: '::',
+																										_0: _csicar$elm_mathui$MathUi_Operations$Hole,
+																										_1: {ctor: '[]'}
+																									}
+																								});
+																						}
+																					}
+																				},
 																				_1: {
 																					ctor: '::',
-																					_0: A2(
-																						_rtfeldman$elm_css$Css$borderTopRightRadius2,
-																						_rtfeldman$elm_css$Css$pct(30),
-																						_rtfeldman$elm_css$Css$pct(100)),
+																					_0: {
+																						ctor: '_Tuple2',
+																						_0: '\\m3',
+																						_1: function (rest) {
+																							return _csicar$elm_mathui$MathUi_Operations$Matrix(
+																								A2(
+																									_elm_lang$core$List$map,
+																									function (a) {
+																										return A2(_elm_lang$core$List$repeat, 3, _csicar$elm_mathui$MathUi_Operations$Hole);
+																									},
+																									A2(
+																										_elm_lang$core$List$repeat,
+																										3,
+																										{ctor: '_Tuple0'})));
+																						}
+																					},
 																					_1: {
 																						ctor: '::',
-																						_0: A2(
-																							_rtfeldman$elm_css$Css$borderBottomRightRadius2,
-																							_rtfeldman$elm_css$Css$pct(30),
-																							_rtfeldman$elm_css$Css$pct(100)),
+																						_0: {
+																							ctor: '_Tuple2',
+																							_0: '\\mm',
+																							_1: function (rest) {
+																								return function (res) {
+																									var _p3 = res;
+																									if (((((_p3.ctor === '::') && (_p3._0.ctor === 'Ok')) && (_p3._1.ctor === '::')) && (_p3._1._0.ctor === 'Ok')) && (_p3._1._1.ctor === '[]')) {
+																										return _csicar$elm_mathui$MathUi_Operations$Matrix(
+																											A2(
+																												_elm_lang$core$List$repeat,
+																												_p3._0._0,
+																												A2(_elm_lang$core$List$repeat, _p3._1._0._0, _csicar$elm_mathui$MathUi_Operations$Hole)));
+																									} else {
+																										return _csicar$elm_mathui$MathUi_Operations$Matrix(
+																											{
+																												ctor: '::',
+																												_0: {
+																													ctor: '::',
+																													_0: _csicar$elm_mathui$MathUi_Operations$Hole,
+																													_1: {ctor: '[]'}
+																												},
+																												_1: {ctor: '[]'}
+																											});
+																									}
+																								}(
+																									A2(
+																										_elm_lang$core$List$map,
+																										_elm_lang$core$String$toInt,
+																										A2(_elm_lang$core$String$split, 'x', rest)));
+																							}
+																						},
 																						_1: {ctor: '[]'}
 																					}
 																				}
@@ -14192,131 +14392,8 @@ var _csicar$elm_mathui$MathUiCss$css = function (_p0) {
 																}
 															}
 														}
-													}),
-												_1: {ctor: '[]'}
-											}),
-										_1: {ctor: '[]'}
-									}),
-								_1: {
-									ctor: '::',
-									_0: A2(
-										_rtfeldman$elm_css$Css$class,
-										_csicar$elm_mathui$MathUiCss$Vector,
-										{
-											ctor: '::',
-											_0: _rtfeldman$elm_css$Css$display(_rtfeldman$elm_css$Css$inlineBlock),
-											_1: {
-												ctor: '::',
-												_0: _rtfeldman$elm_css$Css$verticalAlign(_rtfeldman$elm_css$Css$middle),
-												_1: {
-													ctor: '::',
-													_0: _rtfeldman$elm_css$Css$borderLeft(
-														_rtfeldman$elm_css$Css$em(8.0e-2)),
-													_1: {
-														ctor: '::',
-														_0: _rtfeldman$elm_css$Css$borderRight(
-															_rtfeldman$elm_css$Css$em(8.0e-2)),
-														_1: {
-															ctor: '::',
-															_0: A3(
-																_rtfeldman$elm_css$Css$borderTop3,
-																_rtfeldman$elm_css$Css$em(8.0e-2),
-																_rtfeldman$elm_css$Css$solid,
-																_rtfeldman$elm_css$Css$transparent),
-															_1: {
-																ctor: '::',
-																_0: A3(
-																	_rtfeldman$elm_css$Css$borderBottom3,
-																	_rtfeldman$elm_css$Css$em(8.0e-2),
-																	_rtfeldman$elm_css$Css$solid,
-																	_rtfeldman$elm_css$Css$transparent),
-																_1: {
-																	ctor: '::',
-																	_0: A2(
-																		_rtfeldman$elm_css$Css$borderRadius2,
-																		_rtfeldman$elm_css$Css$pct(51),
-																		_rtfeldman$elm_css$Css$pct(13)),
-																	_1: {ctor: '[]'}
-																}
-															}
-														}
 													}
 												}
-											}
-										}),
-									_1: {
-										ctor: '::',
-										_0: A2(
-											_rtfeldman$elm_css$Css$class,
-											_csicar$elm_mathui$MathUiCss$Hole,
-											{
-												ctor: '::',
-												_0: _rtfeldman$elm_css$Css$children(
-													{
-														ctor: '::',
-														_0: _rtfeldman$elm_css$Css_Elements$input(
-															{
-																ctor: '::',
-																_0: A5(
-																	_rtfeldman$elm_css$Css$boxShadow5,
-																	_rtfeldman$elm_css$Css$px(0),
-																	_rtfeldman$elm_css$Css$px(0),
-																	_rtfeldman$elm_css$Css$px(0),
-																	_rtfeldman$elm_css$Css$px(1),
-																	_rtfeldman$elm_css$Css$hex('#bada55')),
-																_1: {ctor: '[]'}
-															}),
-														_1: {ctor: '[]'}
-													}),
-												_1: {ctor: '[]'}
-											}),
-										_1: {
-											ctor: '::',
-											_0: _rtfeldman$elm_css$Css_Elements$input(
-												{
-													ctor: '::',
-													_0: _rtfeldman$elm_css$Css$fontSize(
-														_rtfeldman$elm_css$Css$em(1)),
-													_1: {
-														ctor: '::',
-														_0: _rtfeldman$elm_css$Css$textAlign(_rtfeldman$elm_css$Css$center),
-														_1: {
-															ctor: '::',
-															_0: _rtfeldman$elm_css$Css$backgroundColor(_rtfeldman$elm_css$Css$transparent),
-															_1: {
-																ctor: '::',
-																_0: _rtfeldman$elm_css$Css$borderStyle(_rtfeldman$elm_css$Css$none),
-																_1: {
-																	ctor: '::',
-																	_0: A5(
-																		_rtfeldman$elm_css$Css$boxShadow5,
-																		_rtfeldman$elm_css$Css$px(0),
-																		_rtfeldman$elm_css$Css$px(0),
-																		_rtfeldman$elm_css$Css$px(0),
-																		_rtfeldman$elm_css$Css$px(1),
-																		_rtfeldman$elm_css$Css$hex('#72dfff')),
-																	_1: {ctor: '[]'}
-																}
-															}
-														}
-													}
-												}),
-											_1: {
-												ctor: '::',
-												_0: A2(
-													_rtfeldman$elm_css$Css$class,
-													_csicar$elm_mathui$MathUiCss$HiddenText,
-													{
-														ctor: '::',
-														_0: _rtfeldman$elm_css$Css$overflow(_rtfeldman$elm_css$Css$hidden),
-														_1: {
-															ctor: '::',
-															_0: _rtfeldman$elm_css$Css$fontSize(
-																_rtfeldman$elm_css$Css$px(0)),
-															_1: {ctor: '[]'}
-														}
-													}),
-												_1: {ctor: '[]'}
 											}
 										}
 									}
@@ -14326,6 +14403,844 @@ var _csicar$elm_mathui$MathUiCss$css = function (_p0) {
 					}
 				}
 			}
+		}
+	}
+};
+var _csicar$elm_mathui$MathUi_Breadcrums$foldCrum = F3(
+	function (f, neutral, breadCrum) {
+		var _p0 = breadCrum;
+		if (_p0.ctor === '::') {
+			if (_p0._1.ctor === '[]') {
+				var _p2 = _p0._0;
+				return A2(
+					_elm_lang$core$Maybe$withDefault,
+					function () {
+						var _p1 = _p2;
+						switch (_p1.ctor) {
+							case 'SymbolHere':
+								return A2(_csicar$elm_mathui$MathUi_Operations$Symbol, _p1._0, _p1._1);
+							case 'ExpBelow':
+								return _p1._0;
+							case 'IdHere':
+								return _csicar$elm_mathui$MathUi_Operations$Id(_p1._0);
+							case 'HoleHere':
+								return _csicar$elm_mathui$MathUi_Operations$Hole;
+							default:
+								return neutral;
+						}
+					}(),
+					A2(
+						_elm_lang$core$Debug$log,
+						'f x',
+						f(_p2)));
+			} else {
+				var futureExp = A2(
+					_elm_lang$core$Debug$log,
+					'exp',
+					A3(_csicar$elm_mathui$MathUi_Breadcrums$foldCrum, f, neutral, _p0._1));
+				var _p3 = _p0._0;
+				switch (_p3.ctor) {
+					case 'BinOpLeft':
+						return A4(_csicar$elm_mathui$MathUi_Operations$BinOp, _p3._0, _p3._1, futureExp, _p3._2);
+					case 'BinOpRight':
+						return A4(_csicar$elm_mathui$MathUi_Operations$BinOp, _p3._0, _p3._1, _p3._2, futureExp);
+					case 'BigOpUnder':
+						return A5(_csicar$elm_mathui$MathUi_Operations$BigOp, _p3._0, _p3._1, futureExp, _p3._2, _p3._3);
+					case 'BigOpOver':
+						return A5(_csicar$elm_mathui$MathUi_Operations$BigOp, _p3._0, _p3._1, _p3._2, futureExp, _p3._3);
+					case 'BigOpAfer':
+						return A5(_csicar$elm_mathui$MathUi_Operations$BigOp, _p3._0, _p3._1, _p3._2, _p3._3, futureExp);
+					case 'UnaryOpHere':
+						return A3(_csicar$elm_mathui$MathUi_Operations$UnaryOp, _p3._0, _p3._1, futureExp);
+					case 'VectorAt':
+						return _csicar$elm_mathui$MathUi_Operations$Vector(
+							A2(
+								_elm_lang$core$Basics_ops['++'],
+								_p3._1,
+								A2(
+									_elm_lang$core$Basics_ops['++'],
+									{
+										ctor: '::',
+										_0: futureExp,
+										_1: {ctor: '[]'}
+									},
+									_p3._2)));
+					case 'MatrixAt':
+						return _csicar$elm_mathui$MathUi_Operations$Matrix(
+							A2(
+								_elm_lang$core$Basics_ops['++'],
+								_p3._1,
+								A2(
+									_elm_lang$core$Basics_ops['++'],
+									{
+										ctor: '::',
+										_0: A2(
+											_elm_lang$core$Basics_ops['++'],
+											_p3._2,
+											A2(
+												_elm_lang$core$Basics_ops['++'],
+												{
+													ctor: '::',
+													_0: futureExp,
+													_1: {ctor: '[]'}
+												},
+												_p3._3)),
+										_1: {ctor: '[]'}
+									},
+									_p3._4)));
+					case 'SymbolHere':
+						return A2(_csicar$elm_mathui$MathUi_Operations$Symbol, _p3._0, _p3._1);
+					case 'ExpBelow':
+						return _p3._0;
+					case 'IdHere':
+						return _csicar$elm_mathui$MathUi_Operations$Id(_p3._0);
+					default:
+						return _csicar$elm_mathui$MathUi_Operations$Hole;
+				}
+			}
+		} else {
+			return neutral;
+		}
+	});
+var _csicar$elm_mathui$MathUi_Breadcrums$HoleHere = {ctor: 'HoleHere'};
+var _csicar$elm_mathui$MathUi_Breadcrums$ExpBelow = function (a) {
+	return {ctor: 'ExpBelow', _0: a};
+};
+var _csicar$elm_mathui$MathUi_Breadcrums$IdHere = function (a) {
+	return {ctor: 'IdHere', _0: a};
+};
+var _csicar$elm_mathui$MathUi_Breadcrums$MatrixAt = F5(
+	function (a, b, c, d, e) {
+		return {ctor: 'MatrixAt', _0: a, _1: b, _2: c, _3: d, _4: e};
+	});
+var _csicar$elm_mathui$MathUi_Breadcrums$VectorAt = F3(
+	function (a, b, c) {
+		return {ctor: 'VectorAt', _0: a, _1: b, _2: c};
+	});
+var _csicar$elm_mathui$MathUi_Breadcrums$SymbolHere = F2(
+	function (a, b) {
+		return {ctor: 'SymbolHere', _0: a, _1: b};
+	});
+var _csicar$elm_mathui$MathUi_Breadcrums$UnaryOpHere = F3(
+	function (a, b, c) {
+		return {ctor: 'UnaryOpHere', _0: a, _1: b, _2: c};
+	});
+var _csicar$elm_mathui$MathUi_Breadcrums$BigOpAfer = F4(
+	function (a, b, c, d) {
+		return {ctor: 'BigOpAfer', _0: a, _1: b, _2: c, _3: d};
+	});
+var _csicar$elm_mathui$MathUi_Breadcrums$BigOpOver = F4(
+	function (a, b, c, d) {
+		return {ctor: 'BigOpOver', _0: a, _1: b, _2: c, _3: d};
+	});
+var _csicar$elm_mathui$MathUi_Breadcrums$BigOpUnder = F4(
+	function (a, b, c, d) {
+		return {ctor: 'BigOpUnder', _0: a, _1: b, _2: c, _3: d};
+	});
+var _csicar$elm_mathui$MathUi_Breadcrums$BinOpRight = F3(
+	function (a, b, c) {
+		return {ctor: 'BinOpRight', _0: a, _1: b, _2: c};
+	});
+var _csicar$elm_mathui$MathUi_Breadcrums$BinOpLeft = F3(
+	function (a, b, c) {
+		return {ctor: 'BinOpLeft', _0: a, _1: b, _2: c};
+	});
+var _csicar$elm_mathui$MathUi_Evaluators$factorial = function (n) {
+	var facAcc = F2(
+		function (n, acc) {
+			facAcc:
+			while (true) {
+				var _p0 = n;
+				if (_p0 === 0) {
+					return acc;
+				} else {
+					var _p1 = _p0;
+					var _v1 = _p1 - 1,
+						_v2 = acc * _p1;
+					n = _v1;
+					acc = _v2;
+					continue facAcc;
+				}
+			}
+		});
+	return A2(facAcc, n, 1);
+};
+var _csicar$elm_mathui$MathUi_Evaluators$latexRepr = function (exp) {
+	var _p2 = exp;
+	switch (_p2.ctor) {
+		case 'BinOp':
+			var _p3 = _p2._1;
+			return _elm_lang$core$String$concat(
+				{
+					ctor: '::',
+					_0: '{',
+					_1: {
+						ctor: '::',
+						_0: _p3.latexBefore,
+						_1: {
+							ctor: '::',
+							_0: '{',
+							_1: {
+								ctor: '::',
+								_0: _csicar$elm_mathui$MathUi_Evaluators$latexRepr(_p2._2),
+								_1: {
+									ctor: '::',
+									_0: '}',
+									_1: {
+										ctor: '::',
+										_0: _p3.latexOperator,
+										_1: {
+											ctor: '::',
+											_0: '{',
+											_1: {
+												ctor: '::',
+												_0: _csicar$elm_mathui$MathUi_Evaluators$latexRepr(_p2._3),
+												_1: {
+													ctor: '::',
+													_0: '}',
+													_1: {
+														ctor: '::',
+														_0: _p3.latexAfter,
+														_1: {
+															ctor: '::',
+															_0: '}',
+															_1: {ctor: '[]'}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				});
+		case 'BigOp':
+			var _p4 = _p2._1;
+			return _elm_lang$core$String$concat(
+				{
+					ctor: '::',
+					_0: '{',
+					_1: {
+						ctor: '::',
+						_0: _p4.latexOperator,
+						_1: {
+							ctor: '::',
+							_0: _p4.latexBefore,
+							_1: {
+								ctor: '::',
+								_0: '{',
+								_1: {
+									ctor: '::',
+									_0: _csicar$elm_mathui$MathUi_Evaluators$latexRepr(_p2._2),
+									_1: {
+										ctor: '::',
+										_0: '}',
+										_1: {
+											ctor: '::',
+											_0: _p4.latexAfter,
+											_1: {
+												ctor: '::',
+												_0: '{',
+												_1: {
+													ctor: '::',
+													_0: _csicar$elm_mathui$MathUi_Evaluators$latexRepr(_p2._3),
+													_1: {
+														ctor: '::',
+														_0: '}',
+														_1: {
+															ctor: '::',
+															_0: '{',
+															_1: {
+																ctor: '::',
+																_0: _csicar$elm_mathui$MathUi_Evaluators$latexRepr(_p2._4),
+																_1: {
+																	ctor: '::',
+																	_0: '}}',
+																	_1: {ctor: '[]'}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				});
+		case 'UnaryOp':
+			var _p5 = _p2._1;
+			return _elm_lang$core$String$concat(
+				{
+					ctor: '::',
+					_0: '{',
+					_1: {
+						ctor: '::',
+						_0: _p5.latexBefore,
+						_1: {
+							ctor: '::',
+							_0: _p5.latexOperator,
+							_1: {
+								ctor: '::',
+								_0: '{',
+								_1: {
+									ctor: '::',
+									_0: _csicar$elm_mathui$MathUi_Evaluators$latexRepr(_p2._2),
+									_1: {
+										ctor: '::',
+										_0: '}',
+										_1: {
+											ctor: '::',
+											_0: _p5.latexAfter,
+											_1: {
+												ctor: '::',
+												_0: '}',
+												_1: {ctor: '[]'}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				});
+		case 'Symbol':
+			var _p6 = _p2._1;
+			return _elm_lang$core$String$concat(
+				{
+					ctor: '::',
+					_0: '{',
+					_1: {
+						ctor: '::',
+						_0: _p6.latexBefore,
+						_1: {
+							ctor: '::',
+							_0: _p6.latexOperator,
+							_1: {
+								ctor: '::',
+								_0: _p6.latexAfter,
+								_1: {
+									ctor: '::',
+									_0: '}',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				});
+		case 'Vector':
+			return _elm_lang$core$String$concat(
+				A2(
+					_elm_lang$core$Basics_ops['++'],
+					{
+						ctor: '::',
+						_0: '\\begin{bmatrix} ',
+						_1: {ctor: '[]'}
+					},
+					A2(
+						_elm_lang$core$Basics_ops['++'],
+						A2(
+							_elm_lang$core$List$map,
+							function (val) {
+								return A2(
+									_elm_lang$core$Basics_ops['++'],
+									_csicar$elm_mathui$MathUi_Evaluators$latexRepr(val),
+									' \\\\ ');
+							},
+							_p2._0),
+						{
+							ctor: '::',
+							_0: ' \\end{bmatrix}',
+							_1: {ctor: '[]'}
+						})));
+		case 'Matrix':
+			var reprRow = function (row) {
+				return A2(
+					_elm_lang$core$String$join,
+					' & ',
+					A2(_elm_lang$core$List$map, _csicar$elm_mathui$MathUi_Evaluators$latexRepr, row));
+			};
+			return _elm_lang$core$String$concat(
+				{
+					ctor: '::',
+					_0: '\\begin{pmatrix} ',
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$core$String$join,
+							'\\\\',
+							A2(_elm_lang$core$List$map, reprRow, _p2._0)),
+						_1: {
+							ctor: '::',
+							_0: '\\end{pmatrix}',
+							_1: {ctor: '[]'}
+						}
+					}
+				});
+		case 'Id':
+			return _elm_lang$core$String$concat(
+				{
+					ctor: '::',
+					_0: '{',
+					_1: {
+						ctor: '::',
+						_0: _p2._0,
+						_1: {
+							ctor: '::',
+							_0: '}',
+							_1: {ctor: '[]'}
+						}
+					}
+				});
+		default:
+			return '<Hole>';
+	}
+};
+var _csicar$elm_mathui$MathUi_Evaluators$wolframAlphaText = function (exp) {
+	var _p7 = exp;
+	switch (_p7.ctor) {
+		case 'BinOp':
+			return _elm_lang$core$String$concat(
+				{
+					ctor: '::',
+					_0: '',
+					_1: {
+						ctor: '::',
+						_0: _csicar$elm_mathui$MathUi_Evaluators$wolframAlphaText(_p7._2),
+						_1: {
+							ctor: '::',
+							_0: _p7._1.shortName,
+							_1: {
+								ctor: '::',
+								_0: _csicar$elm_mathui$MathUi_Evaluators$wolframAlphaText(_p7._3),
+								_1: {
+									ctor: '::',
+									_0: '',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				});
+		case 'BigOp':
+			return _elm_lang$core$String$concat(
+				{
+					ctor: '::',
+					_0: _p7._1.wolframAlphaName,
+					_1: {
+						ctor: '::',
+						_0: ' (',
+						_1: {
+							ctor: '::',
+							_0: _csicar$elm_mathui$MathUi_Evaluators$wolframAlphaText(_p7._4),
+							_1: {
+								ctor: '::',
+								_0: '), ',
+								_1: {
+									ctor: '::',
+									_0: _csicar$elm_mathui$MathUi_Evaluators$wolframAlphaText(_p7._3),
+									_1: {
+										ctor: '::',
+										_0: ' to ',
+										_1: {
+											ctor: '::',
+											_0: _csicar$elm_mathui$MathUi_Evaluators$wolframAlphaText(_p7._2),
+											_1: {ctor: '[]'}
+										}
+									}
+								}
+							}
+						}
+					}
+				});
+		case 'UnaryOp':
+			return _elm_lang$core$String$concat(
+				{
+					ctor: '::',
+					_0: '',
+					_1: {
+						ctor: '::',
+						_0: _p7._1.shortName,
+						_1: {
+							ctor: '::',
+							_0: _csicar$elm_mathui$MathUi_Evaluators$wolframAlphaText(_p7._2),
+							_1: {
+								ctor: '::',
+								_0: '',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				});
+		case 'Symbol':
+			return _p7._1.shortName;
+		case 'Vector':
+			return function (inner) {
+				return A2(
+					_elm_lang$core$Basics_ops['++'],
+					'vector {',
+					A2(_elm_lang$core$Basics_ops['++'], inner, '}'));
+			}(
+				A2(
+					_elm_lang$core$String$join,
+					', ',
+					A2(_elm_lang$core$List$map, _csicar$elm_mathui$MathUi_Evaluators$wolframAlphaText, _p7._0)));
+		case 'Matrix':
+			var reprRow = function (row) {
+				return A2(
+					_elm_lang$core$String$join,
+					', ',
+					A2(_elm_lang$core$List$map, _csicar$elm_mathui$MathUi_Evaluators$wolframAlphaText, row));
+			};
+			return _elm_lang$core$String$concat(
+				{
+					ctor: '::',
+					_0: '{{ ',
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$core$String$join,
+							'}, {',
+							A2(_elm_lang$core$List$map, reprRow, _p7._0)),
+						_1: {
+							ctor: '::',
+							_0: '}}',
+							_1: {ctor: '[]'}
+						}
+					}
+				});
+		case 'Id':
+			return _p7._0;
+		default:
+			return '<Hole>';
+	}
+};
+var _csicar$elm_mathui$MathUi_Evaluators$betaReduceStep = F3(
+	function (argument, param, body) {
+		if (_elm_lang$core$Native_Utils.eq(body, param)) {
+			return A2(_elm_lang$core$Debug$log, 'arg', argument);
+		} else {
+			var _p8 = body;
+			switch (_p8.ctor) {
+				case 'BinOp':
+					return A4(
+						_csicar$elm_mathui$MathUi_Operations$BinOp,
+						_p8._0,
+						_p8._1,
+						A3(_csicar$elm_mathui$MathUi_Evaluators$betaReduceStep, argument, param, _p8._2),
+						A3(_csicar$elm_mathui$MathUi_Evaluators$betaReduceStep, argument, param, _p8._3));
+				case 'BigOp':
+					return A5(
+						_csicar$elm_mathui$MathUi_Operations$BigOp,
+						_p8._0,
+						_p8._1,
+						A3(_csicar$elm_mathui$MathUi_Evaluators$betaReduceStep, argument, param, _p8._2),
+						A3(_csicar$elm_mathui$MathUi_Evaluators$betaReduceStep, argument, param, _p8._3),
+						A3(_csicar$elm_mathui$MathUi_Evaluators$betaReduceStep, argument, param, _p8._4));
+				case 'UnaryOp':
+					return A3(
+						_csicar$elm_mathui$MathUi_Operations$UnaryOp,
+						_p8._0,
+						_p8._1,
+						A3(_csicar$elm_mathui$MathUi_Evaluators$betaReduceStep, argument, param, _p8._2));
+				case 'Vector':
+					return _csicar$elm_mathui$MathUi_Operations$Vector(
+						A2(
+							_elm_lang$core$List$map,
+							function (cell) {
+								return A3(_csicar$elm_mathui$MathUi_Evaluators$betaReduceStep, argument, param, cell);
+							},
+							_p8._0));
+				case 'Matrix':
+					return _csicar$elm_mathui$MathUi_Operations$Matrix(
+						A2(
+							_elm_lang$core$List$map,
+							_elm_lang$core$List$map(
+								function (cell) {
+									return A3(_csicar$elm_mathui$MathUi_Evaluators$betaReduceStep, argument, param, cell);
+								}),
+							_p8._0));
+				default:
+					return body;
+			}
+		}
+	});
+var _csicar$elm_mathui$MathUi_Evaluators$reduceOver = F6(
+	function (reducer, neutral, iterator, from, to, body) {
+		if (_elm_lang$core$Native_Utils.cmp(from, to) > 0) {
+			return _elm_lang$core$Result$Ok(neutral);
+		} else {
+			var evaluatedIteration = function (x) {
+				return A2(
+					_csicar$elm_mathui$MathUi_Evaluators$numMath,
+					x,
+					{ctor: '[]'});
+			}(
+				A3(
+					_csicar$elm_mathui$MathUi_Evaluators$betaReduceStep,
+					_csicar$elm_mathui$MathUi_Operations$Id(
+						_elm_lang$core$Basics$toString(from)),
+					iterator,
+					body));
+			return A3(
+				_elm_lang$core$Result$map2,
+				reducer,
+				evaluatedIteration,
+				A6(_csicar$elm_mathui$MathUi_Evaluators$reduceOver, reducer, neutral, iterator, from + 1, to, body));
+		}
+	});
+var _csicar$elm_mathui$MathUi_Evaluators$numMath = F2(
+	function (exp, breadCrum) {
+		var brc = function (x) {
+			return A2(
+				_elm_lang$core$Basics_ops['++'],
+				breadCrum,
+				{
+					ctor: '::',
+					_0: x,
+					_1: {ctor: '[]'}
+				});
+		};
+		var _p9 = exp;
+		_v6_4:
+		do {
+			switch (_p9.ctor) {
+				case 'BinOp':
+					var _p15 = _p9._3;
+					var _p14 = _p9._0;
+					var _p13 = _p9._1;
+					var _p12 = _p9._2;
+					var mapperResult = function () {
+						var _p10 = _p14;
+						switch (_p10.ctor) {
+							case 'Plus':
+								return _elm_lang$core$Result$Ok(
+									F2(
+										function (x, y) {
+											return x + y;
+										}));
+							case 'Sub':
+								return _elm_lang$core$Result$Ok(
+									F2(
+										function (x, y) {
+											return x - y;
+										}));
+							case 'Mul':
+								return _elm_lang$core$Result$Ok(
+									F2(
+										function (x, y) {
+											return x * y;
+										}));
+							case 'Div':
+								return _elm_lang$core$Result$Ok(
+									F2(
+										function (x, y) {
+											return x / y;
+										}));
+							case 'Pow':
+								return _elm_lang$core$Result$Ok(
+									F2(
+										function (x, y) {
+											return Math.pow(x, y);
+										}));
+							default:
+								return _elm_lang$core$Result$Err(
+									{
+										ctor: '_Tuple2',
+										_0: brc(
+											_csicar$elm_mathui$MathUi_Breadcrums$ExpBelow(exp)),
+										_1: 'invalid operator'
+									});
+						}
+					}();
+					var _p11 = mapperResult;
+					if (_p11.ctor === 'Ok') {
+						return A3(
+							_elm_lang$core$Result$map2,
+							_p11._0,
+							A2(
+								_csicar$elm_mathui$MathUi_Evaluators$numMath,
+								_p12,
+								brc(
+									A3(_csicar$elm_mathui$MathUi_Breadcrums$BinOpLeft, _p14, _p13, _p15))),
+							A2(
+								_csicar$elm_mathui$MathUi_Evaluators$numMath,
+								_p15,
+								brc(
+									A3(_csicar$elm_mathui$MathUi_Breadcrums$BinOpRight, _p14, _p13, _p12))));
+					} else {
+						return _elm_lang$core$Result$Err(_p11._0);
+					}
+				case 'UnaryOp':
+					var _p20 = _p9._0;
+					var _p19 = _p9._2;
+					var mapperResult = function () {
+						var _p16 = _p20;
+						switch (_p16.ctor) {
+							case 'Root':
+								return _elm_lang$core$Result$Ok(
+									function (v) {
+										return Math.pow(
+											v,
+											1 / _elm_lang$core$Basics$toFloat(_p16._0));
+									});
+							case 'Factorial':
+								return _elm_lang$core$Result$Ok(
+									function (_p17) {
+										return _elm_lang$core$Basics$toFloat(
+											_csicar$elm_mathui$MathUi_Evaluators$factorial(
+												_elm_lang$core$Basics$round(_p17)));
+									});
+							default:
+								return _elm_lang$core$Result$Err(
+									{
+										ctor: '_Tuple2',
+										_0: brc(
+											_csicar$elm_mathui$MathUi_Breadcrums$ExpBelow(exp)),
+										_1: 'invalid operator'
+									});
+						}
+					}();
+					var _p18 = mapperResult;
+					if (_p18.ctor === 'Ok') {
+						return A2(
+							_elm_lang$core$Result$map,
+							_p18._0,
+							A2(
+								_csicar$elm_mathui$MathUi_Evaluators$numMath,
+								_p19,
+								brc(
+									A3(_csicar$elm_mathui$MathUi_Breadcrums$UnaryOpHere, _p20, _p9._1, _p19))));
+					} else {
+						return _elm_lang$core$Result$Err(_p18._0);
+					}
+				case 'BigOp':
+					if ((_p9._3.ctor === 'BinOp') && (_p9._3._0.ctor === 'Equals')) {
+						var _p27 = _p9._2;
+						var _p26 = _p9._4;
+						var _p25 = _p9._0;
+						var _p24 = _p9._1;
+						var _p23 = _p9._3._2;
+						var _p22 = _p9._3._3;
+						var breadCrumTo = A2(
+							_elm_lang$core$Basics_ops['++'],
+							breadCrum,
+							{
+								ctor: '::',
+								_0: A4(_csicar$elm_mathui$MathUi_Breadcrums$BigOpOver, _p25, _p24, _p22, _p26),
+								_1: {ctor: '[]'}
+							});
+						var breadCrumFrom = A2(
+							_elm_lang$core$Basics_ops['++'],
+							breadCrum,
+							{
+								ctor: '::',
+								_0: A4(_csicar$elm_mathui$MathUi_Breadcrums$BigOpUnder, _p25, _p24, _p27, _p26),
+								_1: {
+									ctor: '::',
+									_0: A3(_csicar$elm_mathui$MathUi_Breadcrums$BinOpRight, _csicar$elm_mathui$MathUi_Operations$Equals, _p9._3._1, _p23),
+									_1: {ctor: '[]'}
+								}
+							});
+						var mapperResult = function () {
+							var _p21 = _p25;
+							switch (_p21.ctor) {
+								case 'BigSum':
+									return A2(
+										F2(
+											function (fromVal, toVal) {
+												return A6(
+													_csicar$elm_mathui$MathUi_Evaluators$reduceOverResult,
+													F2(
+														function (x, y) {
+															return x + y;
+														}),
+													0,
+													_p23,
+													fromVal,
+													toVal,
+													_p26);
+											}),
+										A2(_csicar$elm_mathui$MathUi_Evaluators$numMath, _p22, breadCrumFrom),
+										A2(_csicar$elm_mathui$MathUi_Evaluators$numMath, _p27, breadCrumTo));
+								case 'BigProd':
+									return A2(
+										F2(
+											function (fromVal, toVal) {
+												return A6(
+													_csicar$elm_mathui$MathUi_Evaluators$reduceOverResult,
+													F2(
+														function (x, y) {
+															return x * y;
+														}),
+													1,
+													_p23,
+													fromVal,
+													toVal,
+													_p26);
+											}),
+										A2(_csicar$elm_mathui$MathUi_Evaluators$numMath, _p22, breadCrumFrom),
+										A2(_csicar$elm_mathui$MathUi_Evaluators$numMath, _p27, breadCrumTo));
+								default:
+									return _elm_lang$core$Result$Err(
+										{
+											ctor: '_Tuple2',
+											_0: brc(
+												_csicar$elm_mathui$MathUi_Breadcrums$ExpBelow(exp)),
+											_1: 'invalid operator'
+										});
+							}
+						}();
+						return mapperResult;
+					} else {
+						break _v6_4;
+					}
+				case 'Id':
+					var _p28 = _p9._0;
+					return A2(
+						_elm_lang$core$Result$mapError,
+						function (msg) {
+							return {
+								ctor: '_Tuple2',
+								_0: A2(
+									_elm_lang$core$Basics_ops['++'],
+									breadCrum,
+									{
+										ctor: '::',
+										_0: _csicar$elm_mathui$MathUi_Breadcrums$IdHere(_p28),
+										_1: {ctor: '[]'}
+									}),
+								_1: msg
+							};
+						},
+						_elm_lang$core$String$toFloat(_p28));
+				default:
+					break _v6_4;
+			}
+		} while(false);
+		return _elm_lang$core$Result$Err(
+			{
+				ctor: '_Tuple2',
+				_0: breadCrum,
+				_1: _elm_lang$core$Basics$toString(
+					A2(_elm_lang$core$Debug$log, 'not impl', _p9))
+			});
+	});
+var _csicar$elm_mathui$MathUi_Evaluators$reduceOverResult = F6(
+	function (reducer, neutral, interator, from, to, body) {
+		var _p29 = {ctor: '_Tuple2', _0: from, _1: to};
+		if (_p29._0.ctor === 'Ok') {
+			if (_p29._1.ctor === 'Ok') {
+				return A6(_csicar$elm_mathui$MathUi_Evaluators$reduceOver, reducer, neutral, interator, _p29._0._0, _p29._1._0, body);
+			} else {
+				return _elm_lang$core$Result$Err(_p29._1._0);
+			}
+		} else {
+			return _elm_lang$core$Result$Err(_p29._0._0);
 		}
 	});
 var _csicar$elm_mathui$MathUi$stylesheet = function () {
@@ -14346,24 +15261,34 @@ var _csicar$elm_mathui$MathUi$stylesheet = function () {
 	var tag = 'link';
 	return A3(_elm_lang$html$Html$node, tag, attrs, children);
 }();
-var _csicar$elm_mathui$MathUi$inlinestyle = function () {
-	var tag = 'style';
-	return A3(
-		_elm_lang$html$Html$node,
-		'style',
-		{ctor: '[]'},
-		{
-			ctor: '::',
-			_0: _elm_lang$html$Html$text(
-				_rtfeldman$elm_css$Css_File$compile(
-					{
-						ctor: '::',
-						_0: _csicar$elm_mathui$MathUiCss$css,
-						_1: {ctor: '[]'}
-					}).css),
-			_1: {ctor: '[]'}
-		});
-}();
+var _csicar$elm_mathui$MathUi$closelyMatches = F2(
+	function (a, b) {
+		var _p0 = a;
+		switch (_p0.ctor) {
+			case 'IdHere':
+				var _p1 = b;
+				switch (_p1.ctor) {
+					case 'IdHere':
+						return true;
+					case 'HoleHere':
+						return true;
+					default:
+						return false;
+				}
+			case 'HoleHere':
+				var _p2 = b;
+				switch (_p2.ctor) {
+					case 'IdHere':
+						return true;
+					case 'HoleHere':
+						return true;
+					default:
+						return false;
+				}
+			default:
+				return false;
+		}
+	});
 var _csicar$elm_mathui$MathUi$cls = function (string) {
 	return _elm_lang$html$Html_Attributes$class(
 		A2(_elm_lang$core$Basics_ops['++'], 'mathui-', string));
@@ -14402,652 +15327,178 @@ var _csicar$elm_mathui$MathUi$setLengthForString = function (string) {
 					_elm_lang$core$Basics$toFloat(
 						_elm_lang$core$String$length(string))))));
 };
+var _csicar$elm_mathui$MathUi$onClickNoPropagation = function (msg) {
+	return A3(
+		_elm_lang$html$Html_Events$onWithOptions,
+		'click',
+		{stopPropagation: true, preventDefault: false},
+		_elm_lang$core$Json_Decode$succeed(msg));
+};
 var _csicar$elm_mathui$MathUi$onKeyUp = function (tagger) {
 	return A2(
 		_elm_lang$html$Html_Events$on,
-		'keypress',
+		'keyup',
 		A2(_elm_lang$core$Json_Decode$map, tagger, _elm_lang$html$Html_Events$keyCode));
 };
-var _csicar$elm_mathui$MathUi$latexRepr = function (exp) {
-	var _p0 = exp;
-	switch (_p0.ctor) {
-		case 'BinOp':
-			var _p1 = _p0._0;
-			return _elm_lang$core$String$concat(
-				{
-					ctor: '::',
-					_0: '{',
-					_1: {
-						ctor: '::',
-						_0: _p1.latexBefore,
-						_1: {
-							ctor: '::',
-							_0: '{',
-							_1: {
-								ctor: '::',
-								_0: _csicar$elm_mathui$MathUi$latexRepr(_p0._1),
-								_1: {
-									ctor: '::',
-									_0: '}',
-									_1: {
-										ctor: '::',
-										_0: _p1.latexOperator,
-										_1: {
-											ctor: '::',
-											_0: '{',
-											_1: {
-												ctor: '::',
-												_0: _csicar$elm_mathui$MathUi$latexRepr(_p0._2),
-												_1: {
-													ctor: '::',
-													_0: '}',
-													_1: {
-														ctor: '::',
-														_0: _p1.latexAfter,
-														_1: {
-															ctor: '::',
-															_0: '}',
-															_1: {ctor: '[]'}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				});
-		case 'BigOp':
-			var _p2 = _p0._0;
-			return _elm_lang$core$String$concat(
-				{
-					ctor: '::',
-					_0: '{',
-					_1: {
-						ctor: '::',
-						_0: _p2.latexOperator,
-						_1: {
-							ctor: '::',
-							_0: _p2.latexBefore,
-							_1: {
-								ctor: '::',
-								_0: '{',
-								_1: {
-									ctor: '::',
-									_0: _csicar$elm_mathui$MathUi$latexRepr(_p0._1),
-									_1: {
-										ctor: '::',
-										_0: '}',
-										_1: {
-											ctor: '::',
-											_0: _p2.latexAfter,
-											_1: {
-												ctor: '::',
-												_0: '{',
-												_1: {
-													ctor: '::',
-													_0: _csicar$elm_mathui$MathUi$latexRepr(_p0._2),
-													_1: {
-														ctor: '::',
-														_0: '}',
-														_1: {
-															ctor: '::',
-															_0: '{',
-															_1: {
-																ctor: '::',
-																_0: _csicar$elm_mathui$MathUi$latexRepr(_p0._3),
-																_1: {
-																	ctor: '::',
-																	_0: '}}',
-																	_1: {ctor: '[]'}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				});
-		case 'UnaryOp':
-			var _p3 = _p0._0;
-			return _elm_lang$core$String$concat(
-				{
-					ctor: '::',
-					_0: '{',
-					_1: {
-						ctor: '::',
-						_0: _p3.latexBefore,
-						_1: {
-							ctor: '::',
-							_0: _p3.latexOperator,
-							_1: {
-								ctor: '::',
-								_0: '{',
-								_1: {
-									ctor: '::',
-									_0: _csicar$elm_mathui$MathUi$latexRepr(_p0._1),
-									_1: {
-										ctor: '::',
-										_0: '}',
-										_1: {
-											ctor: '::',
-											_0: _p3.latexAfter,
-											_1: {
-												ctor: '::',
-												_0: '}',
-												_1: {ctor: '[]'}
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				});
-		case 'Symbol':
-			var _p4 = _p0._0;
-			return _elm_lang$core$String$concat(
-				{
-					ctor: '::',
-					_0: '{',
-					_1: {
-						ctor: '::',
-						_0: _p4.latexBefore,
-						_1: {
-							ctor: '::',
-							_0: _p4.latexOperator,
-							_1: {
-								ctor: '::',
-								_0: _p4.latexAfter,
-								_1: {
-									ctor: '::',
-									_0: '}',
-									_1: {ctor: '[]'}
-								}
-							}
-						}
-					}
-				});
-		case 'Vector':
-			return _elm_lang$core$String$concat(
-				A2(
-					_elm_lang$core$Basics_ops['++'],
-					{
-						ctor: '::',
-						_0: '\\begin{bmatrix} ',
-						_1: {ctor: '[]'}
-					},
-					A2(
-						_elm_lang$core$Basics_ops['++'],
-						A2(
-							_elm_lang$core$List$map,
-							function (val) {
-								return A2(
-									_elm_lang$core$Basics_ops['++'],
-									_csicar$elm_mathui$MathUi$latexRepr(val),
-									' \\\\ ');
-							},
-							_p0._0),
-						{
-							ctor: '::',
-							_0: ' \\end{bmatrix}',
-							_1: {ctor: '[]'}
-						})));
-		case 'Matrix':
-			var reprRow = function (row) {
-				return A2(
-					_elm_lang$core$String$join,
-					' & ',
-					A2(_elm_lang$core$List$map, _csicar$elm_mathui$MathUi$latexRepr, row));
-			};
-			return _elm_lang$core$String$concat(
-				{
-					ctor: '::',
-					_0: '\\begin{pmatrix} ',
-					_1: {
-						ctor: '::',
-						_0: A2(
-							_elm_lang$core$String$join,
-							'\\\\',
-							A2(_elm_lang$core$List$map, reprRow, _p0._0)),
-						_1: {
-							ctor: '::',
-							_0: '\\end{pmatrix}',
-							_1: {ctor: '[]'}
-						}
-					}
-				});
-		case 'Id':
-			return _elm_lang$core$String$concat(
-				{
-					ctor: '::',
-					_0: '{',
-					_1: {
-						ctor: '::',
-						_0: _p0._0,
-						_1: {
-							ctor: '::',
-							_0: '}',
-							_1: {ctor: '[]'}
-						}
-					}
-				});
-		default:
-			return '<Hole>';
-	}
-};
-var _csicar$elm_mathui$MathUi$OpInfo = F6(
-	function (a, b, c, d, e, f) {
-		return {shortName: a, longName: b, cssClass: c, latexOperator: d, latexBefore: e, latexAfter: f};
-	});
-var _csicar$elm_mathui$MathUi$Model = F2(
-	function (a, b) {
-		return {expression: a, breadCrum: b};
-	});
-var _csicar$elm_mathui$MathUi$Hole = {ctor: 'Hole'};
-var _csicar$elm_mathui$MathUi$model2 = {
-	expression: _csicar$elm_mathui$MathUi$Hole,
-	breadCrum: {ctor: '[]'}
-};
-var _csicar$elm_mathui$MathUi$Id = function (a) {
-	return {ctor: 'Id', _0: a};
-};
-var _csicar$elm_mathui$MathUi$Matrix = function (a) {
-	return {ctor: 'Matrix', _0: a};
-};
-var _csicar$elm_mathui$MathUi$Vector = function (a) {
-	return {ctor: 'Vector', _0: a};
-};
-var _csicar$elm_mathui$MathUi$Symbol = function (a) {
-	return {ctor: 'Symbol', _0: a};
-};
-var _csicar$elm_mathui$MathUi$infinity = _csicar$elm_mathui$MathUi$Symbol(
-	{shortName: '∞', longName: 'infinity', cssClass: 'Infinity', latexOperator: '\\infty', latexBefore: '', latexAfter: ''});
-var _csicar$elm_mathui$MathUi$UnaryOp = F2(
-	function (a, b) {
-		return {ctor: 'UnaryOp', _0: a, _1: b};
-	});
-var _csicar$elm_mathui$MathUi$sqrtOp = _csicar$elm_mathui$MathUi$UnaryOp(
-	{shortName: '√', longName: 'sqrt', cssClass: 'Sqrt', latexOperator: '\\sqrt', latexBefore: '', latexAfter: ''});
-var _csicar$elm_mathui$MathUi$parentheses = _csicar$elm_mathui$MathUi$UnaryOp(
-	{shortName: '()', longName: 'parentheses', cssClass: 'Parentheses', latexOperator: '()', latexBefore: '(', latexAfter: ')'});
-var _csicar$elm_mathui$MathUi$vectorsymbol = _csicar$elm_mathui$MathUi$UnaryOp(
-	{shortName: 'vec', longName: '→', cssClass: 'VectorSymbol', latexOperator: '\\vec', latexBefore: '', latexAfter: ''});
-var _csicar$elm_mathui$MathUi$BigOp = F4(
-	function (a, b, c, d) {
-		return {ctor: 'BigOp', _0: a, _1: b, _2: c, _3: d};
-	});
-var _csicar$elm_mathui$MathUi$sigma = _csicar$elm_mathui$MathUi$BigOp(
-	{shortName: 'Σ', longName: 'sigma', cssClass: 'Sigma', latexOperator: '\\sum', latexBefore: '_', latexAfter: '^'});
-var _csicar$elm_mathui$MathUi$BinOp = F3(
-	function (a, b, c) {
-		return {ctor: 'BinOp', _0: a, _1: b, _2: c};
-	});
-var _csicar$elm_mathui$MathUi$plus = _csicar$elm_mathui$MathUi$BinOp(
-	{shortName: '+', longName: 'plus', cssClass: 'Plus', latexOperator: '+', latexBefore: '', latexAfter: ''});
-var _csicar$elm_mathui$MathUi$multiply = _csicar$elm_mathui$MathUi$BinOp(
-	{shortName: '*', longName: 'multiply', cssClass: 'Multiply', latexOperator: '\\cdot', latexBefore: '', latexAfter: ''});
-var _csicar$elm_mathui$MathUi$divide = _csicar$elm_mathui$MathUi$BinOp(
-	{shortName: '/', longName: 'divide', cssClass: 'Div', latexOperator: '\\over', latexBefore: '', latexAfter: ''});
-var _csicar$elm_mathui$MathUi$pow = _csicar$elm_mathui$MathUi$BinOp(
-	{shortName: '^', longName: 'power', cssClass: 'Pow', latexOperator: '^', latexBefore: '', latexAfter: ''});
-var _csicar$elm_mathui$MathUi$elemIn = _csicar$elm_mathui$MathUi$BinOp(
-	{shortName: '∈', longName: 'in', cssClass: 'ElemIn', latexOperator: '\\in', latexBefore: '', latexAfter: ''});
-var _csicar$elm_mathui$MathUi$equals = _csicar$elm_mathui$MathUi$BinOp(
-	{shortName: '=', longName: 'equals', cssClass: 'Equals', latexOperator: '=', latexBefore: '', latexAfter: ''});
-var _csicar$elm_mathui$MathUi$model = {
-	expression: A2(
-		_csicar$elm_mathui$MathUi$plus,
-		A3(
-			_csicar$elm_mathui$MathUi$sigma,
-			A2(
-				_csicar$elm_mathui$MathUi$equals,
-				_csicar$elm_mathui$MathUi$Id('i'),
-				_csicar$elm_mathui$MathUi$Id('2')),
-			_csicar$elm_mathui$MathUi$infinity,
-			A2(
-				_csicar$elm_mathui$MathUi$plus,
-				_csicar$elm_mathui$MathUi$Id('a'),
-				A2(
-					_csicar$elm_mathui$MathUi$divide,
-					_csicar$elm_mathui$MathUi$Id('c'),
-					_csicar$elm_mathui$MathUi$sqrtOp(
-						_csicar$elm_mathui$MathUi$Id('2'))))),
-		A2(
-			_csicar$elm_mathui$MathUi$elemIn,
-			_csicar$elm_mathui$MathUi$Vector(
-				{
-					ctor: '::',
-					_0: _csicar$elm_mathui$MathUi$Id('a'),
-					_1: {
-						ctor: '::',
-						_0: _csicar$elm_mathui$MathUi$Id('b'),
-						_1: {
-							ctor: '::',
-							_0: _csicar$elm_mathui$MathUi$Id('c'),
-							_1: {ctor: '[]'}
-						}
-					}
-				}),
-			_csicar$elm_mathui$MathUi$Id('R'))),
-	breadCrum: {ctor: '[]'}
-};
-var _csicar$elm_mathui$MathUi$functionApplication = _csicar$elm_mathui$MathUi$BinOp(
-	{shortName: '⇒', longName: 'functionApplication', cssClass: 'FunctionApplication', latexOperator: '', latexBefore: '', latexAfter: ''});
-var _csicar$elm_mathui$MathUi$options = {
+var _csicar$elm_mathui$MathUi$actions = {
 	ctor: '::',
-	_0: {
-		ctor: '_Tuple2',
-		_0: '+',
-		_1: function (rest) {
+	_0: function (x) {
+		var _p3 = x;
+		if (((((_p3.ctor === 'ExpBelow') && (_p3._0.ctor === 'BinOp')) && (_p3._0._0.ctor === 'App')) && (_p3._0._3.ctor === 'BinOp')) && (_p3._0._3._0.ctor === 'Abs')) {
 			return A2(
-				_csicar$elm_mathui$MathUi$plus,
-				_csicar$elm_mathui$MathUi$Id(rest),
-				_csicar$elm_mathui$MathUi$Hole);
+				_elm_lang$core$Debug$log,
+				'found match',
+				_elm_lang$core$Maybe$Just(
+					A3(_csicar$elm_mathui$MathUi_Evaluators$betaReduceStep, _p3._0._2, _p3._0._3._2, _p3._0._3._3)));
+		} else {
+			return _elm_lang$core$Maybe$Nothing;
 		}
 	},
 	_1: {
 		ctor: '::',
-		_0: {
-			ctor: '_Tuple2',
-			_0: '*',
-			_1: function (rest) {
-				return A2(
-					_csicar$elm_mathui$MathUi$multiply,
-					_csicar$elm_mathui$MathUi$Id(rest),
-					_csicar$elm_mathui$MathUi$Hole);
+		_0: function (x) {
+			var _p4 = x;
+			if (((((_p4.ctor === 'ExpBelow') && (_p4._0.ctor === 'BinOp')) && (_p4._0._0.ctor === 'Plus')) && (_p4._0._2.ctor === 'Id')) && (_p4._0._3.ctor === 'Id')) {
+				var _p5 = {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$String$toInt(_p4._0._2._0),
+					_1: _elm_lang$core$String$toInt(_p4._0._3._0)
+				};
+				if (((_p5.ctor === '_Tuple2') && (_p5._0.ctor === 'Ok')) && (_p5._1.ctor === 'Ok')) {
+					return _elm_lang$core$Maybe$Just(
+						_csicar$elm_mathui$MathUi_Operations$Id(
+							_elm_lang$core$Basics$toString(_p5._0._0 + _p5._1._0)));
+				} else {
+					return _elm_lang$core$Maybe$Nothing;
+				}
+			} else {
+				return _elm_lang$core$Maybe$Nothing;
 			}
 		},
 		_1: {
 			ctor: '::',
-			_0: {
-				ctor: '_Tuple2',
-				_0: '/',
-				_1: function (rest) {
-					return A2(
-						_csicar$elm_mathui$MathUi$divide,
-						_csicar$elm_mathui$MathUi$Id(rest),
-						_csicar$elm_mathui$MathUi$Hole);
+			_0: function (x) {
+				var _p6 = x;
+				if (((_p6.ctor === 'ExpBelow') && (_p6._0.ctor === 'BinOp')) && (_p6._0._0.ctor === 'Plus')) {
+					var _p7 = _p6._0._2;
+					return _elm_lang$core$Native_Utils.eq(_p7, _p6._0._3) ? _elm_lang$core$Maybe$Just(
+						A2(
+							_csicar$elm_mathui$MathUi_Operations$multiply,
+							_csicar$elm_mathui$MathUi_Operations$Id('2'),
+							_p7)) : _elm_lang$core$Maybe$Nothing;
+				} else {
+					return _elm_lang$core$Maybe$Nothing;
 				}
 			},
 			_1: {
 				ctor: '::',
-				_0: {
-					ctor: '_Tuple2',
-					_0: '^',
-					_1: function (rest) {
-						return A2(
-							_csicar$elm_mathui$MathUi$pow,
-							_csicar$elm_mathui$MathUi$Id(rest),
-							_csicar$elm_mathui$MathUi$Hole);
+				_0: function (x) {
+					var _p8 = x;
+					if (((((_p8.ctor === 'ExpBelow') && (_p8._0.ctor === 'BinOp')) && (_p8._0._0.ctor === 'Sub')) && (_p8._0._2.ctor === 'Id')) && (_p8._0._3.ctor === 'Id')) {
+						return _elm_lang$core$Maybe$Nothing;
+					} else {
+						return _elm_lang$core$Maybe$Nothing;
 					}
 				},
 				_1: {
 					ctor: '::',
-					_0: {
-						ctor: '_Tuple2',
-						_0: '=',
-						_1: function (rest) {
-							return A2(
-								_csicar$elm_mathui$MathUi$equals,
-								_csicar$elm_mathui$MathUi$Id(rest),
-								_csicar$elm_mathui$MathUi$Hole);
+					_0: function (x) {
+						var _p9 = x;
+						if (((((_p9.ctor === 'ExpBelow') && (_p9._0.ctor === 'BinOp')) && (_p9._0._0.ctor === 'Div')) && (_p9._0._2.ctor === 'Id')) && (_p9._0._3.ctor === 'Id')) {
+							var _p10 = {
+								ctor: '_Tuple2',
+								_0: _elm_lang$core$String$toFloat(_p9._0._2._0),
+								_1: _elm_lang$core$String$toFloat(_p9._0._3._0)
+							};
+							if (((_p10.ctor === '_Tuple2') && (_p10._0.ctor === 'Ok')) && (_p10._1.ctor === 'Ok')) {
+								return _elm_lang$core$Maybe$Just(
+									_csicar$elm_mathui$MathUi_Operations$Id(
+										_elm_lang$core$Basics$toString(_p10._0._0 / _p10._1._0)));
+							} else {
+								return _elm_lang$core$Maybe$Nothing;
+							}
+						} else {
+							return _elm_lang$core$Maybe$Nothing;
 						}
 					},
-					_1: {
-						ctor: '::',
-						_0: {
-							ctor: '_Tuple2',
-							_0: '\\in',
-							_1: function (rest) {
-								return A2(
-									_csicar$elm_mathui$MathUi$elemIn,
-									_csicar$elm_mathui$MathUi$Id(rest),
-									_csicar$elm_mathui$MathUi$Hole);
-							}
-						},
-						_1: {
-							ctor: '::',
-							_0: {
-								ctor: '_Tuple2',
-								_0: '\\sqrt',
-								_1: function (rest) {
-									return _csicar$elm_mathui$MathUi$sqrtOp(
-										_csicar$elm_mathui$MathUi$Id(rest));
-								}
-							},
-							_1: {
-								ctor: '::',
-								_0: {
-									ctor: '_Tuple2',
-									_0: '\\vec',
-									_1: function (rest) {
-										return _csicar$elm_mathui$MathUi$vectorsymbol(
-											_csicar$elm_mathui$MathUi$Id(rest));
-									}
-								},
-								_1: {
-									ctor: '::',
-									_0: {
-										ctor: '_Tuple2',
-										_0: '(',
-										_1: function (rest) {
-											var _p5 = rest;
-											if (_p5 === '') {
-												return _csicar$elm_mathui$MathUi$parentheses(_csicar$elm_mathui$MathUi$Hole);
-											} else {
-												return A2(
-													_csicar$elm_mathui$MathUi$functionApplication,
-													_csicar$elm_mathui$MathUi$Id(_p5),
-													_csicar$elm_mathui$MathUi$Hole);
-											}
-										}
-									},
-									_1: {
-										ctor: '::',
-										_0: {
-											ctor: '_Tuple2',
-											_0: '\\infinity',
-											_1: function (_p6) {
-												return _csicar$elm_mathui$MathUi$infinity;
-											}
-										},
-										_1: {
-											ctor: '::',
-											_0: {
-												ctor: '_Tuple2',
-												_0: '\\sigma',
-												_1: function (rest) {
-													return A3(
-														_csicar$elm_mathui$MathUi$sigma,
-														_csicar$elm_mathui$MathUi$Hole,
-														_csicar$elm_mathui$MathUi$Hole,
-														_csicar$elm_mathui$MathUi$Id(rest));
-												}
-											},
-											_1: {
-												ctor: '::',
-												_0: {
-													ctor: '_Tuple2',
-													_0: '\\v2',
-													_1: function (rest) {
-														return _csicar$elm_mathui$MathUi$Vector(
-															{
-																ctor: '::',
-																_0: _csicar$elm_mathui$MathUi$Id(rest),
-																_1: {
-																	ctor: '::',
-																	_0: _csicar$elm_mathui$MathUi$Hole,
-																	_1: {ctor: '[]'}
-																}
-															});
-													}
-												},
-												_1: {
-													ctor: '::',
-													_0: {
-														ctor: '_Tuple2',
-														_0: '\\v3',
-														_1: function (rest) {
-															return _csicar$elm_mathui$MathUi$Vector(
-																{
-																	ctor: '::',
-																	_0: _csicar$elm_mathui$MathUi$Id(rest),
-																	_1: {
-																		ctor: '::',
-																		_0: _csicar$elm_mathui$MathUi$Hole,
-																		_1: {
-																			ctor: '::',
-																			_0: _csicar$elm_mathui$MathUi$Hole,
-																			_1: {ctor: '[]'}
-																		}
-																	}
-																});
-														}
-													},
-													_1: {
-														ctor: '::',
-														_0: {
-															ctor: '_Tuple2',
-															_0: '\\vv',
-															_1: function (rest) {
-																var _p7 = _elm_lang$core$String$toInt(rest);
-																if (_p7.ctor === 'Ok') {
-																	return _csicar$elm_mathui$MathUi$Vector(
-																		A2(_elm_lang$core$List$repeat, _p7._0, _csicar$elm_mathui$MathUi$Hole));
-																} else {
-																	return _csicar$elm_mathui$MathUi$Vector(
-																		{
-																			ctor: '::',
-																			_0: _csicar$elm_mathui$MathUi$Id(rest),
-																			_1: {
-																				ctor: '::',
-																				_0: _csicar$elm_mathui$MathUi$Hole,
-																				_1: {ctor: '[]'}
-																			}
-																		});
-																}
-															}
-														},
-														_1: {
-															ctor: '::',
-															_0: {
-																ctor: '_Tuple2',
-																_0: '\\m3',
-																_1: function (rest) {
-																	return _csicar$elm_mathui$MathUi$Matrix(
-																		A2(
-																			_elm_lang$core$List$map,
-																			function (a) {
-																				return A2(_elm_lang$core$List$repeat, 3, _csicar$elm_mathui$MathUi$Hole);
-																			},
-																			A2(
-																				_elm_lang$core$List$repeat,
-																				3,
-																				{ctor: '_Tuple0'})));
-																}
-															},
-															_1: {
-																ctor: '::',
-																_0: {
-																	ctor: '_Tuple2',
-																	_0: '\\mm',
-																	_1: function (rest) {
-																		return function (res) {
-																			var _p8 = res;
-																			if (((((_p8.ctor === '::') && (_p8._0.ctor === 'Ok')) && (_p8._1.ctor === '::')) && (_p8._1._0.ctor === 'Ok')) && (_p8._1._1.ctor === '[]')) {
-																				return _csicar$elm_mathui$MathUi$Matrix(
-																					A2(
-																						_elm_lang$core$List$repeat,
-																						_p8._0._0,
-																						A2(_elm_lang$core$List$repeat, _p8._1._0._0, _csicar$elm_mathui$MathUi$Hole)));
-																			} else {
-																				return _csicar$elm_mathui$MathUi$Matrix(
-																					{
-																						ctor: '::',
-																						_0: {
-																							ctor: '::',
-																							_0: _csicar$elm_mathui$MathUi$Hole,
-																							_1: {ctor: '[]'}
-																						},
-																						_1: {ctor: '[]'}
-																					});
-																			}
-																		}(
-																			A2(
-																				_elm_lang$core$List$map,
-																				_elm_lang$core$String$toInt,
-																				A2(_elm_lang$core$String$split, 'x', rest)));
-																	}
-																},
-																_1: {ctor: '[]'}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-					}
+					_1: {ctor: '[]'}
 				}
 			}
 		}
 	}
 };
-var _csicar$elm_mathui$MathUi$textToExp = function (string) {
-	var matchingOptions = A2(
-		_elm_lang$core$List$filter,
-		function (_p9) {
-			var _p10 = _p9;
-			return A2(_elm_lang$core$String$endsWith, _p10._0, string);
-		},
-		_csicar$elm_mathui$MathUi$options);
-	var _p11 = _elm_lang$core$List$head(matchingOptions);
-	if (_p11.ctor === 'Just') {
-		return _p11._0._1(
-			A2(
-				_elm_lang$core$String$left,
-				_elm_lang$core$String$length(string) - _elm_lang$core$String$length(_p11._0._0),
-				string));
-	} else {
-		return _csicar$elm_mathui$MathUi$Id(string);
-	}
+var _csicar$elm_mathui$MathUi$applyActionFolder = function (x) {
+	return A3(
+		_elm_lang$core$List$foldr,
+		F2(
+			function (action, best) {
+				var _p11 = action(x);
+				if (_p11.ctor === 'Just') {
+					return _elm_lang$core$Maybe$Just(_p11._0);
+				} else {
+					return best;
+				}
+			}),
+		_elm_lang$core$Maybe$Nothing,
+		_csicar$elm_mathui$MathUi$actions);
 };
-var _csicar$elm_mathui$MathUi$changeIdentifier = F2(
-	function (breadCrum, newContent) {
-		var _p12 = breadCrum;
-		if (_p12.ctor === '::') {
-			var newExp = _csicar$elm_mathui$MathUi$textToExp(newContent);
-			var changedExp = A2(_csicar$elm_mathui$MathUi$changeIdentifier, _p12._1, newContent);
-			var _p13 = _p12._0;
-			switch (_p13.ctor) {
-				case 'BinOpLeft':
-					return A3(_csicar$elm_mathui$MathUi$BinOp, _p13._0, changedExp, _p13._1);
-				case 'BinOpRight':
-					return A3(_csicar$elm_mathui$MathUi$BinOp, _p13._0, _p13._1, changedExp);
-				case 'BigOpUnder':
-					return A4(_csicar$elm_mathui$MathUi$BigOp, _p13._0, changedExp, _p13._1, _p13._2);
-				case 'BigOpOver':
-					return A4(_csicar$elm_mathui$MathUi$BigOp, _p13._0, _p13._1, changedExp, _p13._2);
-				case 'BigOpAfer':
-					return A4(_csicar$elm_mathui$MathUi$BigOp, _p13._0, _p13._1, _p13._2, changedExp);
-				case 'UnaryOpHere':
-					return A2(_csicar$elm_mathui$MathUi$UnaryOp, _p13._0, changedExp);
-				case 'VectorAt':
-					return _csicar$elm_mathui$MathUi$Vector(
+var _csicar$elm_mathui$MathUi$applyAction = A2(
+	_csicar$elm_mathui$MathUi_Breadcrums$foldCrum,
+	_csicar$elm_mathui$MathUi$applyActionFolder,
+	_csicar$elm_mathui$MathUi_Operations$Id('test'));
+var _csicar$elm_mathui$MathUi$deletePartWithOption = F3(
+	function (breadCrum, crum, changedExp) {
+		var _p12 = crum;
+		switch (_p12.ctor) {
+			case 'BinOpLeft':
+				var _p13 = _p12._2;
+				return {
+					ctor: '_Tuple2',
+					_0: A4(_csicar$elm_mathui$MathUi_Operations$BinOp, _p12._0, _p12._1, changedExp, _p13),
+					_1: _p13
+				};
+			case 'BinOpRight':
+				var _p14 = _p12._2;
+				return {
+					ctor: '_Tuple2',
+					_0: A4(_csicar$elm_mathui$MathUi_Operations$BinOp, _p12._0, _p12._1, _p14, changedExp),
+					_1: _p14
+				};
+			case 'BigOpUnder':
+				var _p15 = _p12._3;
+				return {
+					ctor: '_Tuple2',
+					_0: A5(_csicar$elm_mathui$MathUi_Operations$BigOp, _p12._0, _p12._1, changedExp, _p12._2, _p15),
+					_1: _p15
+				};
+			case 'BigOpOver':
+				var _p16 = _p12._3;
+				return {
+					ctor: '_Tuple2',
+					_0: A5(_csicar$elm_mathui$MathUi_Operations$BigOp, _p12._0, _p12._1, _p12._2, changedExp, _p16),
+					_1: _p16
+				};
+			case 'BigOpAfer':
+				return {
+					ctor: '_Tuple2',
+					_0: A5(_csicar$elm_mathui$MathUi_Operations$BigOp, _p12._0, _p12._1, _p12._2, _p12._3, changedExp),
+					_1: _csicar$elm_mathui$MathUi_Operations$Hole
+				};
+			case 'UnaryOpHere':
+				return {
+					ctor: '_Tuple2',
+					_0: A3(_csicar$elm_mathui$MathUi_Operations$UnaryOp, _p12._0, _p12._1, changedExp),
+					_1: _csicar$elm_mathui$MathUi_Operations$Hole
+				};
+			case 'VectorAt':
+				var _p18 = _p12._1;
+				var _p17 = _p12._2;
+				return {
+					ctor: '_Tuple2',
+					_0: _csicar$elm_mathui$MathUi_Operations$Vector(
 						A2(
 							_elm_lang$core$Basics_ops['++'],
-							_p13._1,
+							_p18,
 							A2(
 								_elm_lang$core$Basics_ops['++'],
 								{
@@ -15055,91 +15506,16 @@ var _csicar$elm_mathui$MathUi$changeIdentifier = F2(
 									_0: changedExp,
 									_1: {ctor: '[]'}
 								},
-								_p13._2)));
-				case 'MatrixAt':
-					return _csicar$elm_mathui$MathUi$Matrix(
-						A2(
-							_elm_lang$core$Basics_ops['++'],
-							_p13._1,
-							A2(
-								_elm_lang$core$Basics_ops['++'],
-								{
-									ctor: '::',
-									_0: A2(
-										_elm_lang$core$Basics_ops['++'],
-										_p13._2,
-										A2(
-											_elm_lang$core$Basics_ops['++'],
-											{
-												ctor: '::',
-												_0: changedExp,
-												_1: {ctor: '[]'}
-											},
-											_p13._3)),
-									_1: {ctor: '[]'}
-								},
-								_p13._4)));
-				case 'SymbolHere':
-					return newExp;
-				case 'IdHere':
-					return newExp;
-				default:
-					return newExp;
-			}
-		} else {
-			return _csicar$elm_mathui$MathUi$Hole;
-		}
-	});
-var _csicar$elm_mathui$MathUi$deletePartWithOption = F3(
-	function (breadCrum, crum, changedExp) {
-		var _p14 = crum;
-		switch (_p14.ctor) {
-			case 'BinOpLeft':
-				var _p15 = _p14._1;
-				return {
-					ctor: '_Tuple2',
-					_0: A3(_csicar$elm_mathui$MathUi$BinOp, _p14._0, changedExp, _p15),
-					_1: _p15
+								_p17))),
+					_1: _csicar$elm_mathui$MathUi_Operations$Vector(
+						A2(_elm_lang$core$Basics_ops['++'], _p18, _p17))
 				};
-			case 'BinOpRight':
-				var _p16 = _p14._1;
+			case 'MatrixAt':
+				var _p20 = _p12._1;
+				var _p19 = _p12._4;
 				return {
 					ctor: '_Tuple2',
-					_0: A3(_csicar$elm_mathui$MathUi$BinOp, _p14._0, _p16, changedExp),
-					_1: _p16
-				};
-			case 'BigOpUnder':
-				var _p17 = _p14._2;
-				return {
-					ctor: '_Tuple2',
-					_0: A4(_csicar$elm_mathui$MathUi$BigOp, _p14._0, changedExp, _p14._1, _p17),
-					_1: _p17
-				};
-			case 'BigOpOver':
-				var _p18 = _p14._2;
-				return {
-					ctor: '_Tuple2',
-					_0: A4(_csicar$elm_mathui$MathUi$BigOp, _p14._0, _p14._1, changedExp, _p18),
-					_1: _p18
-				};
-			case 'BigOpAfer':
-				return {
-					ctor: '_Tuple2',
-					_0: A4(_csicar$elm_mathui$MathUi$BigOp, _p14._0, _p14._1, _p14._2, changedExp),
-					_1: _csicar$elm_mathui$MathUi$Hole
-				};
-			case 'UnaryOpHere':
-				return {
-					ctor: '_Tuple2',
-					_0: A2(_csicar$elm_mathui$MathUi$UnaryOp, _p14._0, changedExp),
-					_1: _csicar$elm_mathui$MathUi$Hole
-				};
-			case 'VectorAt':
-				var _p20 = _p14._1;
-				var _p19 = _p14._2;
-				return {
-					ctor: '_Tuple2',
-					_0: _csicar$elm_mathui$MathUi$Vector(
+					_0: _csicar$elm_mathui$MathUi_Operations$Matrix(
 						A2(
 							_elm_lang$core$Basics_ops['++'],
 							_p20,
@@ -15147,29 +15523,9 @@ var _csicar$elm_mathui$MathUi$deletePartWithOption = F3(
 								_elm_lang$core$Basics_ops['++'],
 								{
 									ctor: '::',
-									_0: changedExp,
-									_1: {ctor: '[]'}
-								},
-								_p19))),
-					_1: _csicar$elm_mathui$MathUi$Vector(
-						A2(_elm_lang$core$Basics_ops['++'], _p20, _p19))
-				};
-			case 'MatrixAt':
-				var _p22 = _p14._1;
-				var _p21 = _p14._4;
-				return {
-					ctor: '_Tuple2',
-					_0: _csicar$elm_mathui$MathUi$Matrix(
-						A2(
-							_elm_lang$core$Basics_ops['++'],
-							_p22,
-							A2(
-								_elm_lang$core$Basics_ops['++'],
-								{
-									ctor: '::',
 									_0: A2(
 										_elm_lang$core$Basics_ops['++'],
-										_p14._2,
+										_p12._2,
 										A2(
 											_elm_lang$core$Basics_ops['++'],
 											{
@@ -15177,113 +15533,228 @@ var _csicar$elm_mathui$MathUi$deletePartWithOption = F3(
 												_0: changedExp,
 												_1: {ctor: '[]'}
 											},
-											_p14._3)),
+											_p12._3)),
 									_1: {ctor: '[]'}
 								},
-								_p21))),
-					_1: _csicar$elm_mathui$MathUi$Matrix(
-						A2(_elm_lang$core$Basics_ops['++'], _p22, _p21))
+								_p19))),
+					_1: _csicar$elm_mathui$MathUi_Operations$Matrix(
+						A2(_elm_lang$core$Basics_ops['++'], _p20, _p19))
 				};
 			case 'SymbolHere':
-				return {ctor: '_Tuple2', _0: _csicar$elm_mathui$MathUi$Hole, _1: _csicar$elm_mathui$MathUi$Hole};
+				return {ctor: '_Tuple2', _0: _csicar$elm_mathui$MathUi_Operations$Hole, _1: _csicar$elm_mathui$MathUi_Operations$Hole};
 			case 'IdHere':
-				if (_p14._0 === '') {
-					return {ctor: '_Tuple2', _0: _csicar$elm_mathui$MathUi$Hole, _1: _csicar$elm_mathui$MathUi$Hole};
+				if (_p12._0 === '') {
+					return {ctor: '_Tuple2', _0: _csicar$elm_mathui$MathUi_Operations$Hole, _1: _csicar$elm_mathui$MathUi_Operations$Hole};
 				} else {
-					var _p23 = _p14._0;
+					var _p21 = _p12._0;
 					return {
 						ctor: '_Tuple2',
-						_0: _csicar$elm_mathui$MathUi$Id(_p23),
-						_1: _csicar$elm_mathui$MathUi$Id(_p23)
+						_0: _csicar$elm_mathui$MathUi_Operations$Id(_p21),
+						_1: _csicar$elm_mathui$MathUi_Operations$Id(_p21)
 					};
 				}
+			case 'ExpBelow':
+				return {ctor: '_Tuple2', _0: _p12._0, _1: _csicar$elm_mathui$MathUi_Operations$Hole};
 			default:
-				return {ctor: '_Tuple2', _0: _csicar$elm_mathui$MathUi$Hole, _1: _csicar$elm_mathui$MathUi$Hole};
+				return {ctor: '_Tuple2', _0: _csicar$elm_mathui$MathUi_Operations$Hole, _1: _csicar$elm_mathui$MathUi_Operations$Hole};
 		}
 	});
 var _csicar$elm_mathui$MathUi$deleteNode = function (breadCrum) {
-	var _p24 = breadCrum;
-	if (_p24.ctor === '::') {
-		var _p27 = _p24._1;
-		var changedExp = _csicar$elm_mathui$MathUi$deleteNode(_p27);
-		var _p25 = A3(_csicar$elm_mathui$MathUi$deletePartWithOption, _p27, _p24._0, changedExp);
-		var partDeleted = _p25._0;
-		var nodeDeleted = _p25._1;
-		var _p26 = _p27;
-		if (((_p26.ctor === '::') && (_p26._0.ctor === 'HoleHere')) && (_p26._1.ctor === '[]')) {
+	var _p22 = breadCrum;
+	if (_p22.ctor === '::') {
+		var _p25 = _p22._1;
+		var changedExp = _csicar$elm_mathui$MathUi$deleteNode(_p25);
+		var _p23 = A3(_csicar$elm_mathui$MathUi$deletePartWithOption, _p25, _p22._0, changedExp);
+		var partDeleted = _p23._0;
+		var nodeDeleted = _p23._1;
+		var _p24 = _p25;
+		if (((_p24.ctor === '::') && (_p24._0.ctor === 'HoleHere')) && (_p24._1.ctor === '[]')) {
 			return nodeDeleted;
 		} else {
 			return partDeleted;
 		}
 	} else {
-		return _csicar$elm_mathui$MathUi$Hole;
+		return _csicar$elm_mathui$MathUi_Operations$Hole;
 	}
+};
+var _csicar$elm_mathui$MathUi$textToExp = function (string) {
+	var matchingOptions = A2(
+		_elm_lang$core$List$filter,
+		function (_p26) {
+			var _p27 = _p26;
+			return A2(_elm_lang$core$String$endsWith, _p27._0, string);
+		},
+		_csicar$elm_mathui$MathUi_Operations$options);
+	var _p28 = _elm_lang$core$List$head(matchingOptions);
+	if (_p28.ctor === 'Just') {
+		return _p28._0._1(
+			A2(
+				_elm_lang$core$String$left,
+				_elm_lang$core$String$length(string) - _elm_lang$core$String$length(_p28._0._0),
+				string));
+	} else {
+		return _csicar$elm_mathui$MathUi_Operations$Id(string);
+	}
+};
+var _csicar$elm_mathui$MathUi$changeIdentifierFolder = F2(
+	function (newContent, crum) {
+		var newExp = _elm_lang$core$Maybe$Just(
+			_csicar$elm_mathui$MathUi$textToExp(newContent));
+		var _p29 = crum;
+		switch (_p29.ctor) {
+			case 'IdHere':
+				return newExp;
+			case 'SymbolHere':
+				return newExp;
+			case 'HoleHere':
+				return newExp;
+			default:
+				return _elm_lang$core$Maybe$Nothing;
+		}
+	});
+var _csicar$elm_mathui$MathUi$changeIdentifier = F2(
+	function (breadCrum, newContent) {
+		return A3(
+			_csicar$elm_mathui$MathUi_Breadcrums$foldCrum,
+			_csicar$elm_mathui$MathUi$changeIdentifierFolder(newContent),
+			_csicar$elm_mathui$MathUi_Operations$Hole,
+			breadCrum);
+	});
+var _csicar$elm_mathui$MathUi$model2 = {
+	expression: _csicar$elm_mathui$MathUi_Operations$Hole,
+	breadCrum: {ctor: '[]'},
+	focus: {ctor: '[]'}
+};
+var _csicar$elm_mathui$MathUi$model = {
+	expression: A2(
+		_csicar$elm_mathui$MathUi_Operations$plus,
+		A3(
+			_csicar$elm_mathui$MathUi_Operations$sigma,
+			A2(
+				_csicar$elm_mathui$MathUi_Operations$equals,
+				_csicar$elm_mathui$MathUi_Operations$Id('i'),
+				_csicar$elm_mathui$MathUi_Operations$Id('2')),
+			_csicar$elm_mathui$MathUi_Operations$infinity,
+			A2(
+				_csicar$elm_mathui$MathUi_Operations$plus,
+				_csicar$elm_mathui$MathUi_Operations$Id('a'),
+				A2(
+					_csicar$elm_mathui$MathUi_Operations$divide,
+					_csicar$elm_mathui$MathUi_Operations$Id('c'),
+					_csicar$elm_mathui$MathUi_Operations$sqrtOp(
+						_csicar$elm_mathui$MathUi_Operations$Id('2'))))),
+		A2(
+			_csicar$elm_mathui$MathUi_Operations$elemIn,
+			_csicar$elm_mathui$MathUi_Operations$Vector(
+				{
+					ctor: '::',
+					_0: _csicar$elm_mathui$MathUi_Operations$Id('a'),
+					_1: {
+						ctor: '::',
+						_0: _csicar$elm_mathui$MathUi_Operations$Id('b'),
+						_1: {
+							ctor: '::',
+							_0: _csicar$elm_mathui$MathUi_Operations$Id('c'),
+							_1: {ctor: '[]'}
+						}
+					}
+				}),
+			_csicar$elm_mathui$MathUi_Operations$Id('R'))),
+	breadCrum: {ctor: '[]'},
+	focus: {ctor: '[]'}
+};
+var _csicar$elm_mathui$MathUi$Model = F3(
+	function (a, b, c) {
+		return {expression: a, breadCrum: b, focus: c};
+	});
+var _csicar$elm_mathui$MathUi$AdvancedOperator = function (a) {
+	return {ctor: 'AdvancedOperator', _0: a};
+};
+var _csicar$elm_mathui$MathUi$Operator = function (a) {
+	return {ctor: 'Operator', _0: a};
+};
+var _csicar$elm_mathui$MathUi$FocusResult = function (a) {
+	return {ctor: 'FocusResult', _0: a};
 };
 var _csicar$elm_mathui$MathUi$update = F2(
 	function (msg, model) {
-		var _p28 = msg;
-		if (_p28.ctor === 'UpdateIdentifier') {
-			var _p29 = _p28._0;
-			return _elm_lang$core$Native_Utils.update(
-				model,
-				{
-					expression: A2(_csicar$elm_mathui$MathUi$changeIdentifier, _p29, _p28._1),
-					breadCrum: _p29
-				});
-		} else {
-			var _p31 = _p28._0;
-			var _p30 = _p28._1;
-			if (_p30 === 8) {
-				return _elm_lang$core$Native_Utils.update(
+		var _p30 = msg;
+		switch (_p30.ctor) {
+			case 'UpdateIdentifier':
+				var _p31 = _p30._0;
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					_elm_lang$core$Native_Utils.update(
+						model,
+						{
+							expression: A2(_csicar$elm_mathui$MathUi$changeIdentifier, _p31, _p30._1),
+							breadCrum: _p31,
+							focus: _p31
+						}),
+					{
+						ctor: '::',
+						_0: A2(
+							_elm_lang$core$Task$attempt,
+							_csicar$elm_mathui$MathUi$FocusResult,
+							_elm_lang$dom$Dom$focus('mathui-focus')),
+						_1: {ctor: '[]'}
+					});
+			case 'KeyUp':
+				var _p33 = _p30._0;
+				var _p32 = _p30._1;
+				if (_p32 === 8) {
+					return A2(
+						_elm_lang$core$Platform_Cmd_ops['!'],
+						_elm_lang$core$Native_Utils.update(
+							model,
+							{
+								expression: _csicar$elm_mathui$MathUi$deleteNode(_p33),
+								breadCrum: _p33
+							}),
+						{ctor: '[]'});
+				} else {
+					return A2(
+						_elm_lang$core$Platform_Cmd_ops['!'],
+						model,
+						{ctor: '[]'});
+				}
+			case 'ClickOn':
+				var _p34 = _p30._0;
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					_elm_lang$core$Native_Utils.update(
+						model,
+						{
+							expression: _csicar$elm_mathui$MathUi$applyAction(_p34),
+							breadCrum: _p34
+						}),
+					{ctor: '[]'});
+			case 'FocusOn':
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
 					model,
 					{
-						expression: _csicar$elm_mathui$MathUi$deleteNode(_p31),
-						breadCrum: _p31
+						ctor: '::',
+						_0: A2(
+							_elm_lang$core$Task$attempt,
+							_csicar$elm_mathui$MathUi$FocusResult,
+							_elm_lang$dom$Dom$focus(_p30._0)),
+						_1: {ctor: '[]'}
 					});
-			} else {
-				return model;
-			}
+			default:
+				var res2 = A2(_elm_lang$core$Debug$log, 'res', _p30._0);
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					model,
+					{ctor: '[]'});
 		}
 	});
-var _csicar$elm_mathui$MathUi$HoleHere = {ctor: 'HoleHere'};
-var _csicar$elm_mathui$MathUi$IdHere = function (a) {
-	return {ctor: 'IdHere', _0: a};
+var _csicar$elm_mathui$MathUi$FocusOn = function (a) {
+	return {ctor: 'FocusOn', _0: a};
 };
-var _csicar$elm_mathui$MathUi$MatrixAt = F5(
-	function (a, b, c, d, e) {
-		return {ctor: 'MatrixAt', _0: a, _1: b, _2: c, _3: d, _4: e};
-	});
-var _csicar$elm_mathui$MathUi$VectorAt = F3(
-	function (a, b, c) {
-		return {ctor: 'VectorAt', _0: a, _1: b, _2: c};
-	});
-var _csicar$elm_mathui$MathUi$SymbolHere = function (a) {
-	return {ctor: 'SymbolHere', _0: a};
+var _csicar$elm_mathui$MathUi$ClickOn = function (a) {
+	return {ctor: 'ClickOn', _0: a};
 };
-var _csicar$elm_mathui$MathUi$UnaryOpHere = F2(
-	function (a, b) {
-		return {ctor: 'UnaryOpHere', _0: a, _1: b};
-	});
-var _csicar$elm_mathui$MathUi$BigOpAfer = F3(
-	function (a, b, c) {
-		return {ctor: 'BigOpAfer', _0: a, _1: b, _2: c};
-	});
-var _csicar$elm_mathui$MathUi$BigOpOver = F3(
-	function (a, b, c) {
-		return {ctor: 'BigOpOver', _0: a, _1: b, _2: c};
-	});
-var _csicar$elm_mathui$MathUi$BigOpUnder = F3(
-	function (a, b, c) {
-		return {ctor: 'BigOpUnder', _0: a, _1: b, _2: c};
-	});
-var _csicar$elm_mathui$MathUi$BinOpRight = F2(
-	function (a, b) {
-		return {ctor: 'BinOpRight', _0: a, _1: b};
-	});
-var _csicar$elm_mathui$MathUi$BinOpLeft = F2(
-	function (a, b) {
-		return {ctor: 'BinOpLeft', _0: a, _1: b};
-	});
 var _csicar$elm_mathui$MathUi$KeyUp = F2(
 	function (a, b) {
 		return {ctor: 'KeyUp', _0: a, _1: b};
@@ -15292,25 +15763,83 @@ var _csicar$elm_mathui$MathUi$UpdateIdentifier = F2(
 	function (a, b) {
 		return {ctor: 'UpdateIdentifier', _0: a, _1: b};
 	});
-var _csicar$elm_mathui$MathUi$viewExp = F2(
-	function (expression, breadCrums) {
-		var _p32 = expression;
-		switch (_p32.ctor) {
+var _csicar$elm_mathui$MathUi$viewExp = F3(
+	function (expression, focus, breadCrums) {
+		var focusTail = function () {
+			var _p35 = focus;
+			if (_p35.ctor === 'Just') {
+				return _elm_lang$core$List$tail(_p35._0);
+			} else {
+				return _elm_lang$core$Maybe$Nothing;
+			}
+		}();
+		var shortenedFocusTail = function (item) {
+			var _p36 = focusTail;
+			if ((_p36.ctor === 'Just') && (_p36._0.ctor === '::')) {
+				return A2(_csicar$elm_mathui$MathUi$closelyMatches, _p36._0._0, item) ? _elm_lang$core$Maybe$Just(_p36._0._1) : _elm_lang$core$Maybe$Just(
+					{ctor: '[]'});
+			} else {
+				return _elm_lang$core$Maybe$Nothing;
+			}
+		};
+		var viewExpAutoBreadCrum = F2(
+			function (exp, crum) {
+				return A3(
+					_csicar$elm_mathui$MathUi$viewExp,
+					exp,
+					shortenedFocusTail(crum),
+					A2(
+						_elm_lang$core$Basics_ops['++'],
+						breadCrums,
+						{
+							ctor: '::',
+							_0: crum,
+							_1: {ctor: '[]'}
+						}));
+			});
+		var focusMe = A2(
+			_elm_lang$core$Maybe$withDefault,
+			false,
+			A2(
+				_elm_lang$core$Maybe$map,
+				function (l) {
+					return _elm_lang$core$Native_Utils.eq(
+						_elm_lang$core$List$length(l),
+						1);
+				},
+				focus));
+		var shouldFocusId = focusMe ? 'mathui-focus' : 'mathui-blur';
+		var _p37 = expression;
+		switch (_p37.ctor) {
 			case 'BinOp':
-				var _p35 = _p32._2;
-				var _p34 = _p32._0;
-				var _p33 = _p32._1;
+				var _p41 = _p37._3;
+				var _p40 = _p37._1;
+				var _p39 = _p37._0;
+				var _p38 = _p37._2;
 				return A2(
 					_elm_lang$html$Html$span,
 					{
 						ctor: '::',
-						_0: _csicar$elm_mathui$MathUi$cls(_p34.cssClass),
-						_1: {ctor: '[]'}
+						_0: _csicar$elm_mathui$MathUi$cls(_p40.cssClass),
+						_1: {
+							ctor: '::',
+							_0: _csicar$elm_mathui$MathUi$onClickNoPropagation(
+								_csicar$elm_mathui$MathUi$ClickOn(
+									A2(
+										_elm_lang$core$Basics_ops['++'],
+										breadCrums,
+										{
+											ctor: '::',
+											_0: _csicar$elm_mathui$MathUi_Breadcrums$ExpBelow(expression),
+											_1: {ctor: '[]'}
+										}))),
+							_1: {ctor: '[]'}
+						}
 					},
 					{
 						ctor: '::',
 						_0: _csicar$elm_mathui$MathUi$hiddenText(
-							A2(_elm_lang$core$Basics_ops['++'], '{{', _p34.latexBefore)),
+							A2(_elm_lang$core$Basics_ops['++'], '{{', _p40.latexBefore)),
 						_1: {
 							ctor: '::',
 							_0: A2(
@@ -15318,22 +15847,15 @@ var _csicar$elm_mathui$MathUi$viewExp = F2(
 								{
 									ctor: '::',
 									_0: _csicar$elm_mathui$MathUi$cls(
-										A2(_elm_lang$core$Basics_ops['++'], _p34.cssClass, 'Left')),
+										A2(_elm_lang$core$Basics_ops['++'], _p40.cssClass, 'Left')),
 									_1: {ctor: '[]'}
 								},
 								{
 									ctor: '::',
 									_0: A2(
-										_csicar$elm_mathui$MathUi$viewExp,
-										_p33,
-										A2(
-											_elm_lang$core$Basics_ops['++'],
-											breadCrums,
-											{
-												ctor: '::',
-												_0: A2(_csicar$elm_mathui$MathUi$BinOpLeft, _p34, _p35),
-												_1: {ctor: '[]'}
-											})),
+										viewExpAutoBreadCrum,
+										_p38,
+										A3(_csicar$elm_mathui$MathUi_Breadcrums$BinOpLeft, _p39, _p40, _p41)),
 									_1: {ctor: '[]'}
 								}),
 							_1: {
@@ -15342,7 +15864,7 @@ var _csicar$elm_mathui$MathUi$viewExp = F2(
 									A2(
 										_elm_lang$core$Basics_ops['++'],
 										'}',
-										A2(_elm_lang$core$Basics_ops['++'], _p34.latexOperator, '{'))),
+										A2(_elm_lang$core$Basics_ops['++'], _p40.latexOperator, '{'))),
 								_1: {
 									ctor: '::',
 									_0: A2(
@@ -15350,28 +15872,21 @@ var _csicar$elm_mathui$MathUi$viewExp = F2(
 										{
 											ctor: '::',
 											_0: _csicar$elm_mathui$MathUi$cls(
-												A2(_elm_lang$core$Basics_ops['++'], _p34.cssClass, 'Right')),
+												A2(_elm_lang$core$Basics_ops['++'], _p40.cssClass, 'Right')),
 											_1: {ctor: '[]'}
 										},
 										{
 											ctor: '::',
 											_0: A2(
-												_csicar$elm_mathui$MathUi$viewExp,
-												_p35,
-												A2(
-													_elm_lang$core$Basics_ops['++'],
-													breadCrums,
-													{
-														ctor: '::',
-														_0: A2(_csicar$elm_mathui$MathUi$BinOpRight, _p34, _p33),
-														_1: {ctor: '[]'}
-													})),
+												viewExpAutoBreadCrum,
+												_p41,
+												A3(_csicar$elm_mathui$MathUi_Breadcrums$BinOpRight, _p39, _p40, _p38)),
 											_1: {ctor: '[]'}
 										}),
 									_1: {
 										ctor: '::',
 										_0: _csicar$elm_mathui$MathUi$hiddenText(
-											A2(_elm_lang$core$Basics_ops['++'], _p34.latexAfter, '}}')),
+											A2(_elm_lang$core$Basics_ops['++'], _p40.latexAfter, '}}')),
 										_1: {ctor: '[]'}
 									}
 								}
@@ -15379,16 +15894,30 @@ var _csicar$elm_mathui$MathUi$viewExp = F2(
 						}
 					});
 			case 'BigOp':
-				var _p39 = _p32._1;
-				var _p38 = _p32._2;
-				var _p37 = _p32._0;
-				var _p36 = _p32._3;
+				var _p46 = _p37._2;
+				var _p45 = _p37._3;
+				var _p44 = _p37._1;
+				var _p43 = _p37._0;
+				var _p42 = _p37._4;
 				return A2(
 					_elm_lang$html$Html$span,
 					{
 						ctor: '::',
-						_0: _csicar$elm_mathui$MathUi$cls(_p37.cssClass),
-						_1: {ctor: '[]'}
+						_0: _csicar$elm_mathui$MathUi$cls(_p44.cssClass),
+						_1: {
+							ctor: '::',
+							_0: _csicar$elm_mathui$MathUi$onClickNoPropagation(
+								_csicar$elm_mathui$MathUi$ClickOn(
+									A2(
+										_elm_lang$core$Basics_ops['++'],
+										breadCrums,
+										{
+											ctor: '::',
+											_0: _csicar$elm_mathui$MathUi_Breadcrums$ExpBelow(expression),
+											_1: {ctor: '[]'}
+										}))),
+							_1: {ctor: '[]'}
+						}
 					},
 					{
 						ctor: '::',
@@ -15398,8 +15927,8 @@ var _csicar$elm_mathui$MathUi$viewExp = F2(
 								'{',
 								A2(
 									_elm_lang$core$Basics_ops['++'],
-									_p37.latexOperator,
-									A2(_elm_lang$core$Basics_ops['++'], _p37.latexBefore, '{')))),
+									_p44.latexOperator,
+									A2(_elm_lang$core$Basics_ops['++'], _p44.latexBefore, '{')))),
 						_1: {
 							ctor: '::',
 							_0: A2(
@@ -15407,20 +15936,21 @@ var _csicar$elm_mathui$MathUi$viewExp = F2(
 								{
 									ctor: '::',
 									_0: _csicar$elm_mathui$MathUi$cls(
-										A2(_elm_lang$core$Basics_ops['++'], _p37.cssClass, 'Under')),
+										A2(_elm_lang$core$Basics_ops['++'], _p44.cssClass, 'Under')),
 									_1: {ctor: '[]'}
 								},
 								{
 									ctor: '::',
-									_0: A2(
+									_0: A3(
 										_csicar$elm_mathui$MathUi$viewExp,
-										_p39,
+										_p46,
+										focusTail,
 										A2(
 											_elm_lang$core$Basics_ops['++'],
 											breadCrums,
 											{
 												ctor: '::',
-												_0: A3(_csicar$elm_mathui$MathUi$BigOpUnder, _p37, _p38, _p36),
+												_0: A4(_csicar$elm_mathui$MathUi_Breadcrums$BigOpUnder, _p43, _p44, _p45, _p42),
 												_1: {ctor: '[]'}
 											})),
 									_1: {ctor: '[]'}
@@ -15431,7 +15961,7 @@ var _csicar$elm_mathui$MathUi$viewExp = F2(
 									A2(
 										_elm_lang$core$Basics_ops['++'],
 										'}',
-										A2(_elm_lang$core$Basics_ops['++'], _p37.latexAfter, '{'))),
+										A2(_elm_lang$core$Basics_ops['++'], _p44.latexAfter, '{'))),
 								_1: {
 									ctor: '::',
 									_0: A2(
@@ -15439,20 +15969,21 @@ var _csicar$elm_mathui$MathUi$viewExp = F2(
 										{
 											ctor: '::',
 											_0: _csicar$elm_mathui$MathUi$cls(
-												A2(_elm_lang$core$Basics_ops['++'], _p37.cssClass, 'After')),
+												A2(_elm_lang$core$Basics_ops['++'], _p44.cssClass, 'After')),
 											_1: {ctor: '[]'}
 										},
 										{
 											ctor: '::',
-											_0: A2(
+											_0: A3(
 												_csicar$elm_mathui$MathUi$viewExp,
-												_p36,
+												_p42,
+												focusTail,
 												A2(
 													_elm_lang$core$Basics_ops['++'],
 													breadCrums,
 													{
 														ctor: '::',
-														_0: A3(_csicar$elm_mathui$MathUi$BigOpAfer, _p37, _p39, _p38),
+														_0: A4(_csicar$elm_mathui$MathUi_Breadcrums$BigOpAfer, _p43, _p44, _p46, _p45),
 														_1: {ctor: '[]'}
 													})),
 											_1: {ctor: '[]'}
@@ -15464,20 +15995,21 @@ var _csicar$elm_mathui$MathUi$viewExp = F2(
 											{
 												ctor: '::',
 												_0: _csicar$elm_mathui$MathUi$cls(
-													A2(_elm_lang$core$Basics_ops['++'], _p37.cssClass, 'Over')),
+													A2(_elm_lang$core$Basics_ops['++'], _p44.cssClass, 'Over')),
 												_1: {ctor: '[]'}
 											},
 											{
 												ctor: '::',
-												_0: A2(
+												_0: A3(
 													_csicar$elm_mathui$MathUi$viewExp,
-													_p38,
+													_p45,
+													focusTail,
 													A2(
 														_elm_lang$core$Basics_ops['++'],
 														breadCrums,
 														{
 															ctor: '::',
-															_0: A3(_csicar$elm_mathui$MathUi$BigOpOver, _p37, _p39, _p36),
+															_0: A4(_csicar$elm_mathui$MathUi_Breadcrums$BigOpOver, _p43, _p44, _p46, _p42),
 															_1: {ctor: '[]'}
 														})),
 												_1: {ctor: '[]'}
@@ -15493,14 +16025,27 @@ var _csicar$elm_mathui$MathUi$viewExp = F2(
 						}
 					});
 			case 'UnaryOp':
-				var _p41 = _p32._0;
-				var _p40 = _p32._1;
+				var _p48 = _p37._1;
+				var _p47 = _p37._2;
 				return A2(
 					_elm_lang$html$Html$span,
 					{
 						ctor: '::',
-						_0: _csicar$elm_mathui$MathUi$cls(_p41.cssClass),
-						_1: {ctor: '[]'}
+						_0: _csicar$elm_mathui$MathUi$cls(_p48.cssClass),
+						_1: {
+							ctor: '::',
+							_0: _csicar$elm_mathui$MathUi$onClickNoPropagation(
+								_csicar$elm_mathui$MathUi$ClickOn(
+									A2(
+										_elm_lang$core$Basics_ops['++'],
+										breadCrums,
+										{
+											ctor: '::',
+											_0: _csicar$elm_mathui$MathUi_Breadcrums$ExpBelow(expression),
+											_1: {ctor: '[]'}
+										}))),
+							_1: {ctor: '[]'}
+						}
 					},
 					{
 						ctor: '::',
@@ -15508,7 +16053,7 @@ var _csicar$elm_mathui$MathUi$viewExp = F2(
 							A2(
 								_elm_lang$core$Basics_ops['++'],
 								'{',
-								A2(_elm_lang$core$Basics_ops['++'], _p41.latexOperator, '{'))),
+								A2(_elm_lang$core$Basics_ops['++'], _p48.latexOperator, '{'))),
 						_1: {
 							ctor: '::',
 							_0: A2(
@@ -15516,20 +16061,21 @@ var _csicar$elm_mathui$MathUi$viewExp = F2(
 								{
 									ctor: '::',
 									_0: _csicar$elm_mathui$MathUi$cls(
-										A2(_elm_lang$core$Basics_ops['++'], _p41.cssClass, 'Inner')),
+										A2(_elm_lang$core$Basics_ops['++'], _p48.cssClass, 'Inner')),
 									_1: {ctor: '[]'}
 								},
 								{
 									ctor: '::',
-									_0: A2(
+									_0: A3(
 										_csicar$elm_mathui$MathUi$viewExp,
-										_p40,
+										_p47,
+										focusTail,
 										A2(
 											_elm_lang$core$Basics_ops['++'],
 											breadCrums,
 											{
 												ctor: '::',
-												_0: A2(_csicar$elm_mathui$MathUi$UnaryOpHere, _p41, _p40),
+												_0: A3(_csicar$elm_mathui$MathUi_Breadcrums$UnaryOpHere, _p37._0, _p48, _p47),
 												_1: {ctor: '[]'}
 											})),
 									_1: {ctor: '[]'}
@@ -15542,13 +16088,27 @@ var _csicar$elm_mathui$MathUi$viewExp = F2(
 						}
 					});
 			case 'Symbol':
-				var _p42 = _p32._0;
+				var _p50 = _p37._1;
+				var _p49 = _p37._0;
 				return A2(
 					_elm_lang$html$Html$span,
 					{
 						ctor: '::',
-						_0: _csicar$elm_mathui$MathUi$cls(_p42.cssClass),
-						_1: {ctor: '[]'}
+						_0: _csicar$elm_mathui$MathUi$cls(_p50.cssClass),
+						_1: {
+							ctor: '::',
+							_0: _csicar$elm_mathui$MathUi$onClickNoPropagation(
+								_csicar$elm_mathui$MathUi$ClickOn(
+									A2(
+										_elm_lang$core$Basics_ops['++'],
+										breadCrums,
+										{
+											ctor: '::',
+											_0: _csicar$elm_mathui$MathUi_Breadcrums$ExpBelow(expression),
+											_1: {ctor: '[]'}
+										}))),
+							_1: {ctor: '[]'}
+						}
 					},
 					{
 						ctor: '::',
@@ -15556,7 +16116,7 @@ var _csicar$elm_mathui$MathUi$viewExp = F2(
 							_elm_lang$html$Html$input,
 							{
 								ctor: '::',
-								_0: _elm_lang$html$Html_Attributes$value(_p42.shortName),
+								_0: _elm_lang$html$Html_Attributes$value(_p50.shortName),
 								_1: {
 									ctor: '::',
 									_0: _elm_lang$html$Html_Attributes$style(
@@ -15565,35 +16125,39 @@ var _csicar$elm_mathui$MathUi$viewExp = F2(
 											_0: {
 												ctor: '_Tuple2',
 												_0: 'width',
-												_1: _csicar$elm_mathui$MathUi$setLengthForString(_p42.shortName)
+												_1: _csicar$elm_mathui$MathUi$setLengthForString(_p50.shortName)
 											},
 											_1: {ctor: '[]'}
 										}),
 									_1: {
 										ctor: '::',
-										_0: _csicar$elm_mathui$MathUi$onKeyUp(
-											_csicar$elm_mathui$MathUi$KeyUp(
-												A2(
-													_elm_lang$core$Basics_ops['++'],
-													breadCrums,
-													{
-														ctor: '::',
-														_0: _csicar$elm_mathui$MathUi$SymbolHere(_p42),
-														_1: {ctor: '[]'}
-													}))),
+										_0: _elm_lang$html$Html_Attributes$id(shouldFocusId),
 										_1: {
 											ctor: '::',
-											_0: _elm_lang$html$Html_Events$onInput(
-												_csicar$elm_mathui$MathUi$UpdateIdentifier(
+											_0: _csicar$elm_mathui$MathUi$onKeyUp(
+												_csicar$elm_mathui$MathUi$KeyUp(
 													A2(
 														_elm_lang$core$Basics_ops['++'],
 														breadCrums,
 														{
 															ctor: '::',
-															_0: _csicar$elm_mathui$MathUi$SymbolHere(_p42),
+															_0: A2(_csicar$elm_mathui$MathUi_Breadcrums$SymbolHere, _p49, _p50),
 															_1: {ctor: '[]'}
 														}))),
-											_1: {ctor: '[]'}
+											_1: {
+												ctor: '::',
+												_0: _elm_lang$html$Html_Events$onInput(
+													_csicar$elm_mathui$MathUi$UpdateIdentifier(
+														A2(
+															_elm_lang$core$Basics_ops['++'],
+															breadCrums,
+															{
+																ctor: '::',
+																_0: A2(_csicar$elm_mathui$MathUi_Breadcrums$SymbolHere, _p49, _p50),
+																_1: {ctor: '[]'}
+															}))),
+												_1: {ctor: '[]'}
+											}
 										}
 									}
 								}
@@ -15602,13 +16166,26 @@ var _csicar$elm_mathui$MathUi$viewExp = F2(
 						_1: {ctor: '[]'}
 					});
 			case 'Vector':
-				var _p43 = _p32._0;
+				var _p51 = _p37._0;
 				return A2(
 					_elm_lang$html$Html$span,
 					{
 						ctor: '::',
 						_0: _csicar$elm_mathui$MathUi$cls('Vector'),
-						_1: {ctor: '[]'}
+						_1: {
+							ctor: '::',
+							_0: _csicar$elm_mathui$MathUi$onClickNoPropagation(
+								_csicar$elm_mathui$MathUi$ClickOn(
+									A2(
+										_elm_lang$core$Basics_ops['++'],
+										breadCrums,
+										{
+											ctor: '::',
+											_0: _csicar$elm_mathui$MathUi_Breadcrums$ExpBelow(expression),
+											_1: {ctor: '[]'}
+										}))),
+							_1: {ctor: '[]'}
+						}
 					},
 					{
 						ctor: '::',
@@ -15632,35 +16209,49 @@ var _csicar$elm_mathui$MathUi$viewExp = F2(
 											},
 											{
 												ctor: '::',
-												_0: A2(
+												_0: A3(
 													_csicar$elm_mathui$MathUi$viewExp,
 													expression,
+													focusTail,
 													A2(
 														_elm_lang$core$Basics_ops['++'],
 														breadCrums,
 														{
 															ctor: '::',
 															_0: A3(
-																_csicar$elm_mathui$MathUi$VectorAt,
+																_csicar$elm_mathui$MathUi_Breadcrums$VectorAt,
 																index,
-																A2(_elm_lang$core$List$take, index, _p43),
-																A2(_elm_lang$core$List$drop, index + 1, _p43)),
+																A2(_elm_lang$core$List$take, index, _p51),
+																A2(_elm_lang$core$List$drop, index + 1, _p51)),
 															_1: {ctor: '[]'}
 														})),
 												_1: {ctor: '[]'}
 											});
 									}),
-								_p43)),
+								_p51)),
 						_1: {ctor: '[]'}
 					});
 			case 'Matrix':
-				var _p44 = _p32._0;
+				var _p52 = _p37._0;
 				return A2(
 					_elm_lang$html$Html$span,
 					{
 						ctor: '::',
 						_0: _csicar$elm_mathui$MathUi$cls('Matrix'),
-						_1: {ctor: '[]'}
+						_1: {
+							ctor: '::',
+							_0: _csicar$elm_mathui$MathUi$onClickNoPropagation(
+								_csicar$elm_mathui$MathUi$ClickOn(
+									A2(
+										_elm_lang$core$Basics_ops['++'],
+										breadCrums,
+										{
+											ctor: '::',
+											_0: _csicar$elm_mathui$MathUi_Breadcrums$ExpBelow(expression),
+											_1: {ctor: '[]'}
+										}))),
+							_1: {ctor: '[]'}
+						}
 					},
 					{
 						ctor: '::',
@@ -15694,73 +16285,91 @@ var _csicar$elm_mathui$MathUi$viewExp = F2(
 																_1: {ctor: '[]'}
 															},
 															_elm_lang$core$List$singleton(
-																A2(
+																A3(
 																	_csicar$elm_mathui$MathUi$viewExp,
 																	cell,
+																	focusTail,
 																	A2(
 																		_elm_lang$core$Basics_ops['++'],
 																		breadCrums,
 																		{
 																			ctor: '::',
 																			_0: A5(
-																				_csicar$elm_mathui$MathUi$MatrixAt,
+																				_csicar$elm_mathui$MathUi_Breadcrums$MatrixAt,
 																				{ctor: '_Tuple2', _0: indexRow, _1: indexCol},
-																				A2(_elm_lang$core$List$take, indexRow, _p44),
+																				A2(_elm_lang$core$List$take, indexRow, _p52),
 																				A2(_elm_lang$core$List$take, indexCol, row),
 																				A2(_elm_lang$core$List$drop, indexCol + 1, row),
-																				A2(_elm_lang$core$List$drop, indexRow + 1, _p44)),
+																				A2(_elm_lang$core$List$drop, indexRow + 1, _p52)),
 																			_1: {ctor: '[]'}
 																		}))));
 													}),
 												row));
 									}),
-								_p44)),
+								_p52)),
 						_1: {ctor: '[]'}
 					});
 			case 'Id':
-				var _p45 = _p32._0;
+				var _p53 = _p37._0;
 				return A2(
 					_elm_lang$html$Html$input,
 					{
 						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$value(_p45),
+						_0: _elm_lang$html$Html_Attributes$value(_p53),
 						_1: {
 							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$style(
-								{
-									ctor: '::',
-									_0: {
-										ctor: '_Tuple2',
-										_0: 'width',
-										_1: _csicar$elm_mathui$MathUi$setLengthForString(_p45)
-									},
-									_1: {ctor: '[]'}
-								}),
+							_0: _elm_lang$html$Html_Attributes$id(shouldFocusId),
 							_1: {
 								ctor: '::',
-								_0: _csicar$elm_mathui$MathUi$onKeyUp(
-									_csicar$elm_mathui$MathUi$KeyUp(
-										A2(
-											_elm_lang$core$Basics_ops['++'],
-											breadCrums,
-											{
-												ctor: '::',
-												_0: _csicar$elm_mathui$MathUi$IdHere(_p45),
-												_1: {ctor: '[]'}
-											}))),
+								_0: _elm_lang$html$Html_Attributes$style(
+									{
+										ctor: '::',
+										_0: {
+											ctor: '_Tuple2',
+											_0: 'width',
+											_1: _csicar$elm_mathui$MathUi$setLengthForString(_p53)
+										},
+										_1: {ctor: '[]'}
+									}),
 								_1: {
 									ctor: '::',
-									_0: _elm_lang$html$Html_Events$onInput(
-										_csicar$elm_mathui$MathUi$UpdateIdentifier(
+									_0: _csicar$elm_mathui$MathUi$onKeyUp(
+										_csicar$elm_mathui$MathUi$KeyUp(
 											A2(
 												_elm_lang$core$Basics_ops['++'],
 												breadCrums,
 												{
 													ctor: '::',
-													_0: _csicar$elm_mathui$MathUi$IdHere(_p45),
+													_0: _csicar$elm_mathui$MathUi_Breadcrums$IdHere(_p53),
 													_1: {ctor: '[]'}
 												}))),
-									_1: {ctor: '[]'}
+									_1: {
+										ctor: '::',
+										_0: _csicar$elm_mathui$MathUi$onClickNoPropagation(
+											_csicar$elm_mathui$MathUi$ClickOn(
+												A2(
+													_elm_lang$core$Basics_ops['++'],
+													breadCrums,
+													{
+														ctor: '::',
+														_0: _csicar$elm_mathui$MathUi_Breadcrums$IdHere(_p53),
+														_1: {ctor: '[]'}
+													}))),
+										_1: {
+											ctor: '::',
+											_0: _elm_lang$html$Html_Events$onInput(
+												_csicar$elm_mathui$MathUi$UpdateIdentifier(
+													A2(
+														_elm_lang$core$Basics_ops['++'],
+														breadCrums,
+														{
+															ctor: '::',
+															_0: _csicar$elm_mathui$MathUi_Breadcrums$IdHere(_p53),
+															_1: {ctor: '[]'}
+														}))),
+											_1: {ctor: '[]'}
+										}
+									}
 								}
 							}
 						}
@@ -15788,17 +16397,47 @@ var _csicar$elm_mathui$MathUi$viewExp = F2(
 									}),
 								_1: {
 									ctor: '::',
-									_0: _elm_lang$html$Html_Events$onInput(
-										_csicar$elm_mathui$MathUi$UpdateIdentifier(
-											A2(
-												_elm_lang$core$Basics_ops['++'],
-												breadCrums,
-												{
-													ctor: '::',
-													_0: _csicar$elm_mathui$MathUi$HoleHere,
-													_1: {ctor: '[]'}
-												}))),
-									_1: {ctor: '[]'}
+									_0: _elm_lang$html$Html_Attributes$id(shouldFocusId),
+									_1: {
+										ctor: '::',
+										_0: _csicar$elm_mathui$MathUi$onKeyUp(
+											_csicar$elm_mathui$MathUi$KeyUp(
+												A2(
+													_elm_lang$core$Basics_ops['++'],
+													breadCrums,
+													{
+														ctor: '::',
+														_0: _csicar$elm_mathui$MathUi_Breadcrums$HoleHere,
+														_1: {ctor: '[]'}
+													}))),
+										_1: {
+											ctor: '::',
+											_0: _csicar$elm_mathui$MathUi$onClickNoPropagation(
+												_csicar$elm_mathui$MathUi$ClickOn(
+													A2(
+														_elm_lang$core$Basics_ops['++'],
+														breadCrums,
+														{
+															ctor: '::',
+															_0: _csicar$elm_mathui$MathUi_Breadcrums$HoleHere,
+															_1: {ctor: '[]'}
+														}))),
+											_1: {
+												ctor: '::',
+												_0: _elm_lang$html$Html_Events$onInput(
+													_csicar$elm_mathui$MathUi$UpdateIdentifier(
+														A2(
+															_elm_lang$core$Basics_ops['++'],
+															breadCrums,
+															{
+																ctor: '::',
+																_0: _csicar$elm_mathui$MathUi_Breadcrums$HoleHere,
+																_1: {ctor: '[]'}
+															}))),
+												_1: {ctor: '[]'}
+											}
+										}
+									}
 								}
 							},
 							{ctor: '[]'}),
@@ -15819,16 +16458,24 @@ var _csicar$elm_mathui$MathUi$view = function (model) {
 			_0: _csicar$elm_mathui$MathUi$stylesheet,
 			_1: {
 				ctor: '::',
-				_0: A2(
+				_0: A3(
 					_csicar$elm_mathui$MathUi$viewExp,
 					model.expression,
+					_elm_lang$core$List$tail(model.focus),
 					{ctor: '[]'}),
 				_1: {ctor: '[]'}
 			}
 		});
 };
-var _csicar$elm_mathui$MathUi$main = _elm_lang$html$Html$beginnerProgram(
-	{model: _csicar$elm_mathui$MathUi$model, view: _csicar$elm_mathui$MathUi$view, update: _csicar$elm_mathui$MathUi$update})();
+var _csicar$elm_mathui$MathUi$main = _elm_lang$html$Html$program(
+	{
+		init: {ctor: '_Tuple2', _0: _csicar$elm_mathui$MathUi$model, _1: _elm_lang$core$Platform_Cmd$none},
+		view: _csicar$elm_mathui$MathUi$view,
+		update: _csicar$elm_mathui$MathUi$update,
+		subscriptions: function (x) {
+			return _elm_lang$core$Platform_Sub$none;
+		}
+	})();
 var _csicar$elm_mathui$MathUi$viewAll = function (model) {
 	return A2(
 		_elm_lang$html$Html$div,
@@ -15842,9 +16489,10 @@ var _csicar$elm_mathui$MathUi$viewAll = function (model) {
 			_0: _csicar$elm_mathui$MathUi$stylesheet,
 			_1: {
 				ctor: '::',
-				_0: A2(
+				_0: A3(
 					_csicar$elm_mathui$MathUi$viewExp,
 					model.expression,
+					_elm_lang$core$Maybe$Just(model.focus),
 					{ctor: '[]'}),
 				_1: {
 					ctor: '::',
@@ -15854,45 +16502,68 @@ var _csicar$elm_mathui$MathUi$viewAll = function (model) {
 						{
 							ctor: '::',
 							_0: _elm_lang$html$Html$text(
-								_csicar$elm_mathui$MathUi$latexRepr(model.expression)),
+								_csicar$elm_mathui$MathUi_Evaluators$latexRepr(model.expression)),
 							_1: {ctor: '[]'}
 						}),
 					_1: {
 						ctor: '::',
 						_0: A2(
-							_elm_lang$html$Html$img,
+							_elm_lang$html$Html$a,
 							{
 								ctor: '::',
-								_0: _elm_lang$html$Html_Attributes$src(
-									A2(
-										_elm_lang$core$Basics_ops['++'],
-										'https://latex.codecogs.com/svg.latex?%5Cinline%20',
-										_csicar$elm_mathui$MathUi$latexRepr(model.expression))),
-								_1: {ctor: '[]'}
+								_0: _elm_lang$html$Html_Attributes$target('_blank'),
+								_1: {
+									ctor: '::',
+									_0: _elm_lang$html$Html_Attributes$href(
+										A2(
+											_elm_lang$core$Basics_ops['++'],
+											'https://www.wolframalpha.com/input/?i=',
+											_csicar$elm_mathui$MathUi_Evaluators$wolframAlphaText(model.expression))),
+									_1: {ctor: '[]'}
+								}
 							},
-							{ctor: '[]'}),
-						_1: {ctor: '[]'}
+							{
+								ctor: '::',
+								_0: A2(
+									_elm_lang$html$Html$pre,
+									{ctor: '[]'},
+									{
+										ctor: '::',
+										_0: _elm_lang$html$Html$text(
+											_csicar$elm_mathui$MathUi_Evaluators$wolframAlphaText(model.expression)),
+										_1: {ctor: '[]'}
+									}),
+								_1: {ctor: '[]'}
+							}),
+						_1: {
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$img,
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html_Attributes$src(
+										A2(
+											_elm_lang$core$Basics_ops['++'],
+											'https://latex.codecogs.com/svg.latex?%5Cinline%20',
+											_csicar$elm_mathui$MathUi_Evaluators$latexRepr(model.expression))),
+									_1: {ctor: '[]'}
+								},
+								{ctor: '[]'}),
+							_1: {ctor: '[]'}
+						}
 					}
 				}
 			}
 		});
 };
-var _csicar$elm_mathui$Main$update = F2(
-	function (msg, model) {
-		var _p0 = msg;
-		return _elm_lang$core$Native_Utils.update(
-			model,
-			{
-				mathUi: A2(_csicar$elm_mathui$MathUi$update, _p0._0, model.mathUi)
-			});
-	});
 var _csicar$elm_mathui$Main$model = {
 	mathUi: {
 		expression: A2(
-			_csicar$elm_mathui$MathUi$plus,
-			_csicar$elm_mathui$MathUi$Hole,
-			_csicar$elm_mathui$MathUi$Id('a')),
-		breadCrum: {ctor: '[]'}
+			_csicar$elm_mathui$MathUi_Operations$plus,
+			_csicar$elm_mathui$MathUi_Operations$Hole,
+			_csicar$elm_mathui$MathUi_Operations$Id('a')),
+		breadCrum: {ctor: '[]'},
+		focus: {ctor: '[]'}
 	}
 };
 var _csicar$elm_mathui$Main$Model = function (a) {
@@ -15901,6 +16572,23 @@ var _csicar$elm_mathui$Main$Model = function (a) {
 var _csicar$elm_mathui$Main$MathUiMsg = function (a) {
 	return {ctor: 'MathUiMsg', _0: a};
 };
+var _csicar$elm_mathui$Main$update = F2(
+	function (msg, model) {
+		var _p0 = msg;
+		var _p1 = A2(_csicar$elm_mathui$MathUi$update, _p0._0, model.mathUi);
+		var newModel = _p1._0;
+		var cmds = _p1._1;
+		return A2(
+			_elm_lang$core$Platform_Cmd_ops['!'],
+			_elm_lang$core$Native_Utils.update(
+				model,
+				{mathUi: newModel}),
+			{
+				ctor: '::',
+				_0: A2(_elm_lang$core$Platform_Cmd$map, _csicar$elm_mathui$Main$MathUiMsg, cmds),
+				_1: {ctor: '[]'}
+			});
+	});
 var _csicar$elm_mathui$Main$view = function (model) {
 	return A2(
 		_elm_lang$html$Html$div,
@@ -15914,8 +16602,15 @@ var _csicar$elm_mathui$Main$view = function (model) {
 			_1: {ctor: '[]'}
 		});
 };
-var _csicar$elm_mathui$Main$main = _elm_lang$html$Html$beginnerProgram(
-	{model: _csicar$elm_mathui$Main$model, view: _csicar$elm_mathui$Main$view, update: _csicar$elm_mathui$Main$update})();
+var _csicar$elm_mathui$Main$main = _elm_lang$html$Html$program(
+	{
+		init: {ctor: '_Tuple2', _0: _csicar$elm_mathui$Main$model, _1: _elm_lang$core$Platform_Cmd$none},
+		view: _csicar$elm_mathui$Main$view,
+		update: _csicar$elm_mathui$Main$update,
+		subscriptions: function (_p2) {
+			return _elm_lang$core$Platform_Sub$none;
+		}
+	})();
 var Elm = {};
 Elm['Main'] = Elm['Main'] || {};
 if (typeof _csicar$elm_mathui$Main$main !== 'undefined') {
