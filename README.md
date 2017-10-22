@@ -13,6 +13,8 @@ Usage
 
 ### minimal Example
 
+[in action](https://csicar.github.io/elm-mathui/example/Example1.html)
+
 ```elm
 module Main exposing (..)
 

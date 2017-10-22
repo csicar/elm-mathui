@@ -31,6 +31,8 @@ html, input {
     vertical-align: middle;
 }
 
+
+
 .mathui-MultiplyRight::before {
   content: "·";
 }
@@ -39,8 +41,16 @@ html, input {
     content: "+";
 }
 
+.mathui-Factorial::after {
+  content: "!";
+}
+
+.mathui-MinusRight:before {
+  content:"-";
+}
+
 .mathui-Hole input {
- box-shadow: 0 0 0 1px #bada55;
+ box-shadow: 0 0 0 1px rgba(186, 218, 85, 0.72);
 }
 
 .mathui-EqualsRight:before {
@@ -70,6 +80,79 @@ html, input {
 
 .mathui-SigmaAfter {
 }
+
+.mathui-Product {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.mathui-Product>* {
+  display: block;
+}
+
+.mathui-ProductUnder, .mathui-ProductOver {
+  font-size: 0.7em;
+  line-height: 0;
+  height: 0.6em;
+}
+
+.mathui-ProductAfter::before {
+  content: "Π";
+  font-size: 2em;
+  vertical-align: middle;
+}
+
+.mathui-ProductAfter {
+}
+
+.mathui-SubRight {
+  vertical-align: sub;
+  font-size: 0.8em;
+}
+
+.mathui-Lambda {
+  font-size: 0.8em;
+}
+
+.mathui-LambdaLeft {
+  background-color: rgba(186, 218, 85, 0.72);
+  padding: 0.1em;
+  border-top-left-radius: 0.1em;
+  border-bottom-left-radius: 0.1em;
+}
+
+.mathui-LambdaLeft::before {
+  content: "λ"
+}
+
+.mathui-LambdaRight {
+  border: 4px solid rgba(186, 218, 85, 0.72);
+  padding: 0.2em;
+  border-radius: 0.1em;
+}
+
+.mathui-App {
+  font-size: 1em;
+}
+
+.mathui-AppLeft::after {
+  content :"|>"
+}
+
+.mathui-AppLeft {
+  background-color: rgba(186, 218, 85, 0.72);
+  padding: 0.1em;
+  border-top-left-radius: 0.1em;
+  border-bottom-left-radius: 0.1em;
+}
+
+.mathui-AppRight {
+  border: 4px solid rgba(186, 218, 85, 0.72);
+  padding: 0.2em;
+  border-radius: 0.1em;
+}
+
+
 
 .mathui-PowRight {
   vertical-align: super;
