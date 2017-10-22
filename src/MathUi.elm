@@ -1,4 +1,4 @@
-module MathUi exposing (Model, Msg, update, view, viewAll, latexRepr)
+module MathUi exposing (Model, Msg, update, view, viewAll)
 
 {-| MathUi
 
@@ -10,7 +10,7 @@ module MathUi exposing (Model, Msg, update, view, viewAll, latexRepr)
 
 # Update
 
-@docs update, view, viewAll, latexRepr
+@docs update, view, viewAll
 
 
 # Configuration
@@ -21,7 +21,7 @@ module MathUi exposing (Model, Msg, update, view, viewAll, latexRepr)
 
 -}
 
-import Html exposing (Html, Attribute, div, input, text, span, node, pre, img, table, tr, td)
+import Html exposing (Html, Attribute, div, input, text, span, node, pre, img, table, tr, td, a)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onInput, on, keyCode, onClick, onWithOptions)
 import Json.Decode as Json
@@ -33,7 +33,6 @@ import Bitwise exposing (shiftLeftBy)
 import Char
 import MathUi.Operations exposing (..)
 import MathUi.Breadcrums exposing (..)
-import MathUi.Evaluators exposing (..)
 import MathUi.Evaluators exposing (..)
 
 main =
@@ -107,42 +106,6 @@ textToExp string =
 
             Nothing ->
                 Id string
-
-{-| Represents the Expression as a latex-readable string.
-
-    latexRepr plus (Id "a") (Id "b") -- = {{{a}}+{{b}}}
-
--}
-latexRepr : Exp -> String
-latexRepr exp =
-    case exp of
-        BinOp _ info a b ->
-            String.concat [ "{", info.latexBefore, "{", latexRepr a, "}", info.latexOperator, "{", latexRepr b, "}", info.latexAfter, "}" ]
-
-        BigOp _ info under over exp ->
-            String.concat [ "{", info.latexOperator, info.latexBefore, "{", latexRepr under, "}", info.latexAfter, "{", latexRepr over, "}", "{", latexRepr exp, "}}" ]
-
-        UnaryOp _ info exp ->
-            String.concat [ "{", info.latexBefore, info.latexOperator, "{", latexRepr exp, "}", info.latexAfter, "}" ]
-
-        Symbol _ info ->
-            String.concat [ "{", info.latexBefore, info.latexOperator, info.latexAfter, "}" ]
-
-        Vector exps ->
-            String.concat <| [ "\\begin{bmatrix} " ] ++ List.map (\val -> (latexRepr val) ++ " \\\\ ") exps ++ [ " \\end{bmatrix}" ]
-
-        Matrix rows ->
-            let
-                reprRow row =
-                    List.map latexRepr row |> String.join " & "
-            in
-                String.concat <| [ "\\begin{pmatrix} ", String.join "\\\\" (List.map reprRow rows), "\\end{pmatrix}" ]
-
-        Id string ->
-            String.concat [ "{", string, "}" ]
-
-        Hole ->
-            "<Hole>"
 
 
 
@@ -325,7 +288,7 @@ update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
         UpdateIdentifier breadCrum newContent ->
-            { model | expression = changeIdentifier breadCrum newContent, breadCrum = breadCrum } ! [Task.attempt FocusResult (focus "mathui-focus")]
+            { model | expression = changeIdentifier breadCrum newContent, breadCrum = breadCrum, focus = breadCrum } ! [Task.attempt FocusResult (focus "mathui-focus")]
 
         KeyUp breadCrum key ->
             case key of
@@ -367,33 +330,58 @@ setLengthForString string =
 cls string =
     class ("mathui-" ++ string)
 
+closelyMatches : Crum -> Crum -> Bool
+closelyMatches a b =
+  case a of
+    (IdHere _) -> case b of
+      (IdHere _) -> True
+      (HoleHere) -> True
+      _ -> False
+    (HoleHere) -> case b of
+      (IdHere _) -> True
+      (HoleHere) -> True
+      _ -> False
+    _ -> False
 
-viewExp : Exp -> BreadCrum -> Html Msg
-viewExp expression breadCrums =
+viewExp : Exp -> Maybe BreadCrum ->  BreadCrum -> Html Msg
+viewExp expression focus breadCrums =
+  let
+      focusMe = Maybe.map (\l -> List.length l == 1) focus |> Maybe.withDefault False
+      focusTail = case focus of
+        Just a -> (List.tail a)
+        Nothing -> Nothing
+      shortenedFocusTail item = case focusTail of
+        Just (x::xs) -> if (closelyMatches x item) then Just xs else Just []
+        _ -> Nothing
+      shouldFocusId = if focusMe then "mathui-focus" else "mathui-blur"
+      viewExpAutoBreadCrum exp crum =
+        viewExp exp (shortenedFocusTail crum) (breadCrums ++ [crum])
+  in
+
     case expression of
         BinOp op opInfo left right ->
             span [ cls opInfo.cssClass, onClickNoPropagation <| ClickOn (breadCrums ++ [ ExpBelow expression ]) ]
                 [ hiddenText <| "{{" ++ opInfo.latexBefore
-                , span [ cls (opInfo.cssClass ++ "Left") ] [ viewExp left (breadCrums ++ [ BinOpLeft op opInfo right ]) ]
+                , span [ cls (opInfo.cssClass ++ "Left") ] [ viewExpAutoBreadCrum left <| BinOpLeft op opInfo right ]
                 , hiddenText <| "}" ++ opInfo.latexOperator ++ "{"
-                , span [ cls (opInfo.cssClass ++ "Right") ] [ viewExp right (breadCrums ++ [ BinOpRight op opInfo left ]) ]
+                , span [ cls (opInfo.cssClass ++ "Right") ] [ viewExpAutoBreadCrum right <| BinOpRight op opInfo left ]
                 , hiddenText <| opInfo.latexAfter ++ "}}"
                 ]
 
         BigOp op opInfo under over after ->
             span [ cls opInfo.cssClass, onClickNoPropagation <| ClickOn <| breadCrums ++ [ ExpBelow expression ] ]
                 [ hiddenText <| "{" ++ opInfo.latexOperator ++ opInfo.latexBefore ++ "{"
-                , span [ cls (opInfo.cssClass ++ "Under") ] [ viewExp under (breadCrums ++ [ BigOpUnder op opInfo over after ]) ]
+                , span [ cls (opInfo.cssClass ++ "Under") ] [ viewExp under focusTail (breadCrums ++ [ BigOpUnder op opInfo over after ]) ]
                 , hiddenText <| "}" ++ opInfo.latexAfter ++ "{"
-                , span [ cls (opInfo.cssClass ++ "After") ] [ viewExp after (breadCrums ++ [ BigOpAfer op opInfo under over ]) ]
-                , span [ cls (opInfo.cssClass ++ "Over") ] [ viewExp over (breadCrums ++ [ BigOpOver op opInfo under after ]) ]
+                , span [ cls (opInfo.cssClass ++ "After") ] [ viewExp after focusTail (breadCrums ++ [ BigOpAfer op opInfo under over ]) ]
+                , span [ cls (opInfo.cssClass ++ "Over") ] [ viewExp over focusTail (breadCrums ++ [ BigOpOver op opInfo under after ]) ]
                 , hiddenText "}}"
                 ]
 
         UnaryOp op opInfo exp ->
             span [ cls opInfo.cssClass, onClickNoPropagation <| ClickOn (breadCrums ++ [ ExpBelow expression ]) ]
                 [ hiddenText <| "{" ++ opInfo.latexOperator ++ "{"
-                , span [ cls (opInfo.cssClass ++ "Inner") ] [ viewExp exp (breadCrums ++ [ UnaryOpHere op opInfo exp ]) ]
+                , span [ cls (opInfo.cssClass ++ "Inner") ] [ viewExp exp focusTail (breadCrums ++ [ UnaryOpHere op opInfo exp ]) ]
                 , hiddenText "}}"
                 ]
 
@@ -402,6 +390,7 @@ viewExp expression breadCrums =
                 [ input
                     [ value opInfo.shortName
                     , style [ ( "width", setLengthForString opInfo.shortName ) ]
+                    , id shouldFocusId
                     , onKeyUp (KeyUp (breadCrums ++ [ SymbolHere op opInfo ]))
                     , onInput (UpdateIdentifier (breadCrums ++ [ SymbolHere op opInfo ]))
                     ]
@@ -414,7 +403,7 @@ viewExp expression breadCrums =
                     List.indexedMap
                         (\index expression ->
                             span [ cls "VectorItem" ]
-                                [ viewExp expression (breadCrums ++ [ VectorAt index (List.take (index) expressions) (List.drop (index + 1) expressions) ])
+                                [ viewExp expression focusTail (breadCrums ++ [ VectorAt index (List.take (index) expressions) (List.drop (index + 1) expressions) ])
                                 ]
                         )
                         expressions
@@ -428,7 +417,7 @@ viewExp expression breadCrums =
                             tr [ cls "MatrixRow" ] <|
                                 List.indexedMap
                                     (\indexCol cell ->
-                                        viewExp cell
+                                        viewExp cell focusTail
                                             (breadCrums
                                                 ++ [ MatrixAt ( indexRow, indexCol ) (List.take indexRow rows) (List.take indexCol row) (List.drop (indexCol + 1) row) (List.drop (indexRow + 1) rows)
                                                    ]
@@ -444,6 +433,7 @@ viewExp expression breadCrums =
         Id a ->
             input
                 [ value a
+                , id shouldFocusId
                 , style [ ( "width", setLengthForString a ) ]
                 , onKeyUp (KeyUp (breadCrums ++ [ IdHere a ]))
                 , onClickNoPropagation (ClickOn <| breadCrums ++ [ IdHere a ])
@@ -455,6 +445,7 @@ viewExp expression breadCrums =
             span [ cls "Hole" ]
                 [ input
                     [ style [ ( "width", "0.5em" ) ]
+                    , id shouldFocusId
                     , onKeyUp (KeyUp (breadCrums ++ [ HoleHere ]))
                     , onClickNoPropagation (ClickOn <| breadCrums ++ [ HoleHere ])
                     , onInput (UpdateIdentifier (breadCrums ++ [ HoleHere ]))
@@ -469,7 +460,7 @@ view : Model -> Html Msg
 view model =
     div [ cls "Container" ]
         [ stylesheet
-        , viewExp model.expression []
+        , viewExp model.expression (model.focus |> List.tail ) []
         ]
 
 
@@ -481,8 +472,9 @@ viewAll model =
         [ stylesheet
 
         --, inlinestyle
-        , viewExp model.expression []
+        , viewExp model.expression (Just model.focus) []
         , pre [] [ latexRepr model.expression |> text ]
+        , a [target "_blank", href <| "https://www.wolframalpha.com/input/?i=" ++ (wolframAlphaText model.expression) ] [pre [] [ wolframAlphaText model.expression |> text ] ]
         , img [ src <| "https://latex.codecogs.com/svg.latex?%5Cinline%20" ++ (latexRepr model.expression) ] []
         ]
 

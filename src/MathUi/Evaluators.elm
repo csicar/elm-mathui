@@ -4,6 +4,7 @@ import MathUi.Breadcrums exposing (..)
 import MathUi.Operations exposing (..)
 import Result exposing (Result(..))
 
+type alias EvaluationResult a = Result (BreadCrum, String) a
 
 betaReduceStep : Exp -> Exp -> Exp -> Exp
 betaReduceStep argument param body =
@@ -29,57 +30,103 @@ betaReduceStep argument param body =
             _ ->
                 body
 
-type NumMathValue = NInt Int | NFloat Float | NBool Bool
 
-type alias Koerper a = {
-  toString: a -> String,
-  fromString: String -> Result.Result String a,
-  add: a -> a -> a,
-  negate: a -> a,
-  multiply: a -> a -> a,
-  inverse: a -> a,
-  eins: a,
-  null: a
-  }
 
-koerperFloat : Koerper Float
-koerperFloat = {
-  toString= \a -> toString a,
-  fromString= \s -> String.toFloat s,
-  add= \a b -> a + b,
-  negate= \a -> (0 - a),
-  multiply= \a b -> a*b,
-  inverse= \a -> 1 / a,
-  eins= 1,
-  null=0
-  }
 
-mapResultTuple : (a -> b -> r) -> Result e a-> Result e b -> Result e r
-mapResultTuple mapper a b =
-    case (a, b) of
-      (Ok av, Ok bv) -> Ok (mapper av bv)
-      (_, Err err) -> Err err
-      (Err err, _) -> Err err
 
-type alias EvaluationResult a = Result (BreadCrum, String) a
+wolframAlphaText : Exp -> String
+wolframAlphaText exp =
+    case exp of
+        BinOp opType opInfo left right ->
+            String.concat ["", wolframAlphaText left, opInfo.shortName, wolframAlphaText right, ""]
 
-sumOver : Exp -> Float -> Float -> Exp -> EvaluationResult Float
-sumOver iterator from to body =
+        BigOp opType opInfo over under after ->
+          String.concat [opInfo.wolframAlphaName, " (", wolframAlphaText after, "), ", wolframAlphaText under, " to ", wolframAlphaText over]
+
+        UnaryOp opType opInfo exp ->
+          String.concat ["", opInfo.shortName, wolframAlphaText exp, ""]
+
+        Symbol opType opInfo ->
+          (opInfo.shortName)
+
+        Vector expList ->
+          expList |> List.map wolframAlphaText |> String.join ", " |> \inner -> "vector {"++inner++"}"
+
+        Matrix rows ->
+          let
+              reprRow row =
+                  List.map wolframAlphaText row |> String.join ", "
+          in
+              String.concat <| [ "{{ ", String.join "}, {" (List.map reprRow rows), "}}" ]
+
+        Id string ->
+          string
+
+        Hole ->
+          "<Hole>"
+
+
+{-| Represents the Expression as a latex-readable string.
+
+    latexRepr plus (Id "a") (Id "b") -- = {{{a}}+{{b}}}
+
+-}
+latexRepr : Exp -> String
+latexRepr exp =
+    case exp of
+        BinOp _ info a b ->
+            String.concat [ "{", info.latexBefore, "{", latexRepr a, "}", info.latexOperator, "{", latexRepr b, "}", info.latexAfter, "}" ]
+
+        BigOp _ info under over exp ->
+            String.concat [ "{", info.latexOperator, info.latexBefore, "{", latexRepr under, "}", info.latexAfter, "{", latexRepr over, "}", "{", latexRepr exp, "}}" ]
+
+        UnaryOp _ info exp ->
+            String.concat [ "{", info.latexBefore, info.latexOperator, "{", latexRepr exp, "}", info.latexAfter, "}" ]
+
+        Symbol _ info ->
+            String.concat [ "{", info.latexBefore, info.latexOperator, info.latexAfter, "}" ]
+
+        Vector exps ->
+            String.concat <| [ "\\begin{bmatrix} " ] ++ List.map (\val -> (latexRepr val) ++ " \\\\ ") exps ++ [ " \\end{bmatrix}" ]
+
+        Matrix rows ->
+            let
+                reprRow row =
+                    List.map latexRepr row |> String.join " & "
+            in
+                String.concat <| [ "\\begin{pmatrix} ", String.join "\\\\" (List.map reprRow rows), "\\end{pmatrix}" ]
+
+        Id string ->
+            String.concat [ "{", string, "}" ]
+
+        Hole ->
+            "<Hole>"
+
+reduceOver : (Float -> Float -> Float) -> Float -> Exp -> Float -> Float -> Exp -> EvaluationResult Float
+reduceOver reducer neutral iterator from to body =
   if from > to then
-    Ok 0
+    Ok neutral
   else
     let
       evaluatedIteration = betaReduceStep (from |> toString |> Id) (iterator) body |> (\x -> numMath x [])
     in
 
-      Result.map2 (+) (evaluatedIteration) (sumOver iterator (from + 1) to body)
+      Result.map2 reducer (evaluatedIteration) (reduceOver reducer neutral iterator (from + 1) to body)
 
-sumOverResult : Exp -> EvaluationResult Float -> EvaluationResult Float -> Exp -> EvaluationResult Float
-sumOverResult interator from to body =
+reduceOverResult : (Float -> Float -> Float) -> Float -> Exp -> EvaluationResult Float -> EvaluationResult Float -> Exp -> EvaluationResult Float
+reduceOverResult reducer neutral interator from to body =
     case (from , to) of
-      (Ok fromOk, Ok toOk) ->sumOver interator fromOk toOk body
+      (Ok fromOk, Ok toOk) ->reduceOver reducer neutral interator fromOk toOk body
       (Err err, _) -> Err err
       (_, Err err) -> Err err
+
+factorial n =
+  let
+      facAcc n acc = case n of
+        0 -> acc
+        n -> facAcc (n-1) (acc*n)
+  in
+    facAcc n 1
 
 
 numMath : Exp -> BreadCrum -> EvaluationResult Float
@@ -107,6 +154,7 @@ numMath exp breadCrum =
           let
               mapperResult = case opType of
                 Root n -> Ok (\v -> v ^ (1/(toFloat n)))
+                Factorial -> Ok (round >> factorial >> toFloat)
                 _ -> Err ((ExpBelow exp |> brc), "invalid operator")
           in
             case mapperResult of
@@ -118,7 +166,8 @@ numMath exp breadCrum =
               breadCrumFrom = breadCrum ++ [(BigOpUnder opType opInfo to over), (BinOpRight Equals eqInfo iterator)]
               breadCrumTo = breadCrum ++ [(BigOpOver opType opInfo from over)]
               mapperResult = case opType of
-                BigSum -> (\fromVal toVal -> sumOverResult iterator fromVal toVal over) (numMath from breadCrumFrom) (numMath to breadCrumTo)
+                BigSum -> (\fromVal toVal -> reduceOverResult (+) 0 iterator fromVal toVal over) (numMath from breadCrumFrom) (numMath to breadCrumTo)
+                BigProd -> (\fromVal toVal -> reduceOverResult (*) 1 iterator fromVal toVal over) (numMath from breadCrumFrom) (numMath to breadCrumTo)
                 _ -> Err ((ExpBelow exp |> brc), "invalid operator")
           in
             mapperResult
@@ -127,24 +176,3 @@ numMath exp breadCrum =
         Id val ->
           String.toFloat val |> Result.mapError (\msg -> (breadCrum ++ [IdHere val], msg))
         s -> Result.Err (breadCrum, (Debug.log "not impl" s ) |> toString)
-
-        --
-        -- BigOp opType opInfo exp exp2 exp3 ->
-        --
-        --
-        -- UnaryOp opType opInfo exp ->
-        --
-        --
-        -- Symbol opType opInfo ->
-        --
-        --
-        -- Vector expList ->
-        --
-        --
-        -- Matrix expListList ->
-        --
-        --
-        -- Id string ->
-        --
-        --
-        -- Hole ->

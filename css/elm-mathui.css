@@ -31,12 +31,22 @@ html, input {
     vertical-align: middle;
 }
 
+
+
 .mathui-MultiplyRight::before {
   content: "·";
 }
 
 .mathui-PlusRight:before {
     content: "+";
+}
+
+.mathui-Factorial::after {
+  content: "!";
+}
+
+.mathui-MinusRight:before {
+  content:"-";
 }
 
 .mathui-Hole input {
@@ -71,6 +81,29 @@ html, input {
 .mathui-SigmaAfter {
 }
 
+.mathui-Product {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.mathui-Product>* {
+  display: block;
+}
+
+.mathui-ProductUnder, .mathui-ProductOver {
+  font-size: 0.7em;
+  line-height: 0;
+  height: 0.6em;
+}
+
+.mathui-ProductAfter::before {
+  content: "Π";
+  font-size: 2em;
+  vertical-align: middle;
+}
+
+.mathui-ProductAfter {
+}
 
 .mathui-SubRight {
   vertical-align: sub;

@@ -16,6 +16,7 @@ type alias OpInfo =
     , latexOperator : String
     , latexBefore : String
     , latexAfter : String
+    , wolframAlphaName : String
     }
 
 
@@ -33,7 +34,9 @@ type OpType
     | Infinity
     | Root Int
     | NoOp
+    | Factorial
     | BigSum
+    | BigProd
 
 
 {-| Homogeneous syntax tree
@@ -50,7 +53,7 @@ type Exp
 
 
 plusInfo =
-    { shortName = "+", longName = "plus", cssClass = "Plus", latexOperator = "+", latexBefore = "", latexAfter = "" }
+    { shortName = "+", longName = "plus", cssClass = "Plus", latexOperator = "+", latexBefore = "", latexAfter = "", wolframAlphaName="+" }
 
 
 {-| plus left right
@@ -62,59 +65,59 @@ plus =
 
 minus : Exp -> Exp -> Exp
 minus =
-    BinOp Sub { shortName = "-", longName = "subtract", cssClass = "-", latexOperator = "-", latexBefore = "", latexAfter = "" }
+    BinOp Sub { shortName = "-", longName = "subtract", cssClass = "Minus", latexOperator = "-", latexBefore = "", latexAfter = "", wolframAlphaName="-" }
 
 
 {-| multiply left right
 -}
 multiply : Exp -> Exp -> Exp
 multiply =
-    BinOp Mul { shortName = "*", longName = "multiply", cssClass = "Multiply", latexOperator = "\\cdot", latexBefore = "", latexAfter = "" }
+    BinOp Mul { shortName = "*", longName = "multiply", cssClass = "Multiply", latexOperator = "\\cdot", latexBefore = "", latexAfter = "", wolframAlphaName="*" }
 
 
 {-| divide top bottom
 -}
 divide : Exp -> Exp -> Exp
 divide =
-    BinOp Div { shortName = "/", longName = "divide", cssClass = "Div", latexOperator = "\\over", latexBefore = "", latexAfter = "" }
+    BinOp Div { shortName = "/", longName = "divide", cssClass = "Div", latexOperator = "\\over", latexBefore = "", latexAfter = "", wolframAlphaName="/" }
 
 
 {-| pow basis exponent
 -}
 pow : Exp -> Exp -> Exp
 pow =
-    BinOp Pow { shortName = "^", longName = "power", cssClass = "Pow", latexOperator = "^", latexBefore = "", latexAfter = "" }
+    BinOp Pow { shortName = "^", longName = "power", cssClass = "Pow", latexOperator = "^", latexBefore = "", latexAfter = "", wolframAlphaName="^" }
 
 
 sub : Exp -> Exp -> Exp
 sub =
-    BinOp Sub { shortName = "_", longName = "subscript", cssClass = "Sub", latexOperator = "_", latexBefore = "", latexAfter = "" }
+    BinOp Sub { shortName = "_", longName = "subscript", cssClass = "Sub", latexOperator = "_", latexBefore = "", latexAfter = "", wolframAlphaName="_" }
 
 
 {-| elemIn set item
 -}
 elemIn : Exp -> Exp -> Exp
 elemIn =
-    BinOp Contains { shortName = "∈", longName = "in", cssClass = "ElemIn", latexOperator = "\\in", latexBefore = "", latexAfter = "" }
+    BinOp Contains { shortName = "∈", longName = "in", cssClass = "ElemIn", latexOperator = "\\in", latexBefore = "", latexAfter = "", wolframAlphaName=" in " }
 
 
 {-| equals left right
 -}
 equals : Exp -> Exp -> Exp
 equals =
-    BinOp Equals { shortName = "=", longName = "equals", cssClass = "Equals", latexOperator = "=", latexBefore = "", latexAfter = "" }
+    BinOp Equals { shortName = "=", longName = "equals", cssClass = "Equals", latexOperator = "=", latexBefore = "", latexAfter = "", wolframAlphaName="=" }
 
 
 {-| functionApplication func argument
 -}
 functionApplication : Exp -> Exp -> Exp
 functionApplication =
-    BinOp FunctionApplication { shortName = "⇒", longName = "functionApplication", cssClass = "FunctionApplication", latexOperator = "", latexBefore = "", latexAfter = "" }
+    BinOp FunctionApplication { shortName = "⇒", longName = "functionApplication", cssClass = "FunctionApplication", latexOperator = "", latexBefore = "", latexAfter = "", wolframAlphaName="(" }
 
 
 lambdaInfo : OpInfo
 lambdaInfo =
-    { shortName = "λ", longName = "lambda", cssClass = "Lambda", latexOperator = "", latexBefore = "", latexAfter = "" }
+    { shortName = "λ", longName = "lambda", cssClass = "Lambda", latexOperator = "", latexBefore = "", latexAfter = "", wolframAlphaName="?????" }
 
 
 {-| Represents a lambda abstraction
@@ -126,7 +129,7 @@ lambda =
 
 
 appInfo =
-    { shortName = "β", longName = "app", cssClass = "App", latexOperator = "", latexBefore = "", latexAfter = "" }
+    { shortName = "β", longName = "app", cssClass = "App", latexOperator = "", latexBefore = "", latexAfter = "", wolframAlphaName="?????" }
 
 
 {-| Represents a lambda app. Ware attention! the order is flipped compared to standart lambda-calc notation
@@ -141,35 +144,41 @@ app =
 -}
 sqrtOp : Exp -> Exp
 sqrtOp =
-    UnaryOp (Root 2) { shortName = "√", longName = "sqrt", cssClass = "Sqrt", latexOperator = "\\sqrt", latexBefore = "", latexAfter = "" }
+    UnaryOp (Root 2) { shortName = "√", longName = "sqrt", cssClass = "Sqrt", latexOperator = "\\sqrt", latexBefore = "", latexAfter = "", wolframAlphaName="√" }
 
+factorial : Exp -> Exp
+factorial =
+  UnaryOp Factorial {shortName = "!", longName = "factorial", cssClass ="Factorial", latexOperator= "!", latexBefore = "", latexAfter = "", wolframAlphaName="factorial"}
 
 {-| enclose expression in parentheses
 -}
 parentheses : Exp -> Exp
 parentheses =
-    UnaryOp NoOp { shortName = "()", longName = "parentheses", cssClass = "Parentheses", latexOperator = "()", latexBefore = "(", latexAfter = ")" }
+    UnaryOp NoOp { shortName = "()", longName = "parentheses", cssClass = "Parentheses", latexOperator = "()", latexBefore = "(", latexAfter = ")" , wolframAlphaName="()"}
 
 
 {-| place vector arrow above expression
 -}
 vectorsymbol : Exp -> Exp
 vectorsymbol =
-    UnaryOp NoOp { shortName = "vec", longName = "→", cssClass = "VectorSymbol", latexOperator = "\\vec", latexBefore = "", latexAfter = "" }
+    UnaryOp NoOp { shortName = "vec", longName = "→", cssClass = "VectorSymbol", latexOperator = "\\vec", latexBefore = "", latexAfter = "", wolframAlphaName=""}
 
 
 {-| sigma from to over
 -}
 sigma : Exp -> Exp -> Exp -> Exp
 sigma =
-    BigOp BigSum { shortName = "Σ", longName = "sigma", cssClass = "Sigma", latexOperator = "\\sum", latexBefore = "_", latexAfter = "^" }
+    BigOp BigSum { shortName = "Σ", longName = "sigma", cssClass = "Sigma", latexOperator = "\\sum", latexBefore = "_", latexAfter = "^", wolframAlphaName="sum"}
 
+product : Exp -> Exp -> Exp -> Exp
+product =
+  BigOp BigProd { shortName = "Π", longName = "product", cssClass = "Product", latexOperator = "\\prod", latexBefore = "_", latexAfter = "^", wolframAlphaName="prod"}
 
 {-| infinity symbol
 -}
 infinity : Exp
 infinity =
-    Symbol Infinity { shortName = "∞", longName = "infinity", cssClass = "Infinity", latexOperator = "\\infty", latexBefore = "", latexAfter = "" }
+    Symbol Infinity { shortName = "∞", longName = "infinity", cssClass = "Infinity", latexOperator = "\\infty", latexBefore = "", latexAfter = "", wolframAlphaName="∞"}
 
 
 options =
@@ -184,6 +193,7 @@ options =
     , ( "\\app", \rest -> app (Id rest) (Hole) )
     , ( "\\in", \rest -> elemIn (Id rest) Hole )
     , ( "\\sqrt", \rest -> sqrtOp (Id rest) )
+    , ( "\\!", \rest -> factorial (Id rest))
     , ( "\\vec", \rest -> vectorsymbol (Id rest) )
     , ( "("
       , \rest ->
@@ -196,6 +206,7 @@ options =
       )
     , ( "\\infinity", \_ -> infinity )
     , ( "\\sigma", \rest -> sigma Hole Hole (Id rest) )
+    , ( "\\prod", \rest -> product Hole Hole (Id rest) )
     , ( "\\v2", \rest -> Vector [ Id rest, Hole ] )
     , ( "\\v3", \rest -> Vector [ Id rest, Hole, Hole ] )
     , ( "\\vv"
