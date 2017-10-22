@@ -33,7 +33,8 @@ import Bitwise exposing (shiftLeftBy)
 import Char
 import MathUi.Operations exposing (..)
 import MathUi.Breadcrums exposing (..)
-
+import MathUi.Evaluators exposing (..)
+import MathUi.Evaluators exposing (..)
 
 main =
     Html.program { init = (model, Cmd.none), view = view, update = update, subscriptions = \x -> Sub.none }
@@ -49,6 +50,7 @@ type LatexOperator
 type alias Model =
     { expression : Exp
     , breadCrum : BreadCrum
+    , focus: BreadCrum
     }
 
 
@@ -232,37 +234,13 @@ deleteNode breadCrum =
             Hole
 
 
-applyBetaReduce : Exp -> Exp -> Exp -> Exp
-applyBetaReduce argument param body =
-    if body == param then
-        argument |> Debug.log "arg"
-    else
-        case body of
-            BinOp op opInfo exp exp2 ->
-                BinOp op opInfo (applyBetaReduce argument param exp) (applyBetaReduce argument param exp2)
-
-            BigOp op opInfo exp exp2 exp3 ->
-                BigOp op opInfo (applyBetaReduce argument param exp) (applyBetaReduce argument param exp2) (applyBetaReduce argument param exp3)
-
-            UnaryOp op opInfo exp ->
-                UnaryOp op opInfo (applyBetaReduce argument param exp)
-
-            Vector expList ->
-                Vector <| List.map (\cell -> applyBetaReduce argument param cell) expList
-
-            Matrix expListList ->
-                Matrix <| List.map (List.map (\cell -> applyBetaReduce argument param cell)) expListList
-
-            _ ->
-                body
-
 
 actions : List (Crum -> Maybe Exp)
 actions =
     [ \x ->
         case x of
             ExpBelow (BinOp App _ argument (BinOp Abs _ param body)) ->
-                applyBetaReduce argument param body |> Just |> Debug.log "found match"
+                betaReduceStep argument param body |> Just |> Debug.log "found match"
 
             _ ->
                 Nothing

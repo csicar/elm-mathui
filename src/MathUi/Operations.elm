@@ -180,7 +180,7 @@ options =
     , ( "^", \rest -> pow (Id rest) Hole )
     , ( "_", \rest -> sub (Id rest) Hole )
     , ( "=", \rest -> equals (Id rest) Hole )
-    , ( "\\lambda", \rest -> lambda (Id rest) (Hole) )
+    , ( "\\abs", \rest -> lambda (Id rest) (Hole) )
     , ( "\\app", \rest -> app (Id rest) (Hole) )
     , ( "\\in", \rest -> elemIn (Id rest) Hole )
     , ( "\\sqrt", \rest -> sqrtOp (Id rest) )
