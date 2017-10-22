@@ -35,6 +35,7 @@ model =
     { mathUi =
         { expression = app (app (Id "b") (Id "a")) (lambda (Id "x") (app (Id "z") (Id "x")))
         , breadCrum = []
+        , focus = []
         }
     }
 

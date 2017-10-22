@@ -23,6 +23,7 @@ model =
                 (Hole)
                 (Id "a")
         , breadCrum = []
+        , focus = []
         }
     }
 

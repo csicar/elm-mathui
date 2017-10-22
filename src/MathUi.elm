@@ -71,12 +71,14 @@ model =
                 (Id "R")
             )
     , breadCrum = []
+    , focus = []
     }
 
 
 model2 =
     { expression = Hole
     , breadCrum = []
+    , focus = []
     }
 
 

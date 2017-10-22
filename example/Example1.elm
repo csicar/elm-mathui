@@ -33,6 +33,7 @@ model =
                     (vectorsymbol (Id "R"))
                 )
         , breadCrum = []
+        , focus = []
         }
     }
 

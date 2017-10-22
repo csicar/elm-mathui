@@ -23,9 +23,10 @@ model : Model
 model =
     { mathUi =
         { expression =
-            sigma (Id "3") (equals (Id "i") (Id "1")) (Id "i")
+            multiply (Id "10")
+              <| sigma (Id "3") (equals (Id "i") (Id "1")) (pow (Id "2") (Id "i"))
         , breadCrum = []
-
+        , focus = []
         },
       value = Result.Err ([], "no value")
     }
