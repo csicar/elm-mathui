@@ -2,6 +2,7 @@ module MathUi.Breadcrums exposing (..)
 
 import MathUi.Operations exposing (..)
 
+
 type Crum
     = BinOpLeft OpType OpInfo Exp
     | BinOpRight OpType OpInfo Exp
@@ -19,6 +20,7 @@ type Crum
 
 type alias BreadCrum =
     List Crum
+
 
 foldCrum : (Crum -> Maybe Exp) -> Exp -> BreadCrum -> Exp
 foldCrum f neutral breadCrum =

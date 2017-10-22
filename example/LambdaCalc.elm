@@ -7,7 +7,7 @@ import MathUi.Breadcrums exposing (..)
 
 
 main =
-    Html.program { init = (model, Cmd.none), view = view, update = update, subscriptions = \_ -> Sub.none }
+    Html.program { init = ( model, Cmd.none ), view = view, update = update, subscriptions = \_ -> Sub.none }
 
 
 type alias Model =
@@ -44,15 +44,15 @@ type Msg
     = MathUiMsg MathUi.Msg
 
 
-update : Msg -> Model -> (Model, Cmd Msg)
+update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
         MathUiMsg msg ->
-          let
-              (newModel, cmds) = MathUi.update msg model.mathUi
-          in
-
-            { model | mathUi = newModel } ! [Cmd.map (\a -> MathUiMsg a) cmds]
+            let
+                ( newModel, cmds ) =
+                    MathUi.update msg model.mathUi
+            in
+                { model | mathUi = newModel } ! [ Cmd.map (\a -> MathUiMsg a) cmds ]
 
 
 view : Model -> Html.Html Msg

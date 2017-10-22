@@ -7,7 +7,7 @@ import MathUi.Operations exposing (..)
 
 
 main =
-    Html.program { init = (model, Cmd.none), view = view, update = update, subscriptions = \_ -> Sub.none }
+    Html.program { init = ( model, Cmd.none ), view = view, update = update, subscriptions = \_ -> Sub.none }
 
 
 type alias Model =
@@ -42,14 +42,15 @@ type Msg
     = MathUiMsg MathUi.Msg
 
 
-update : Msg -> Model -> (Model, Cmd Msg)
+update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
         MathUiMsg msg ->
             let
-                (newModel, cmds) = MathUi.update msg model.mathUi
+                ( newModel, cmds ) =
+                    MathUi.update msg model.mathUi
             in
-              { model | mathUi = newModel } ! [Cmd.map MathUiMsg cmds]
+                { model | mathUi = newModel } ! [ Cmd.map MathUiMsg cmds ]
 
 
 view : Model -> Html.Html Msg
