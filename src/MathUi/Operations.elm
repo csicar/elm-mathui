@@ -2,8 +2,11 @@ module MathUi.Operations exposing (..)
 
 {-|
 
+
 ## Types
+
 @docs OpInfo, OpType, Exp
+
 
 ## Operators
 
@@ -13,6 +16,7 @@ module MathUi.Operations exposing (..)
 ## Text-Actions
 
 @docs options
+
 -}
 
 
@@ -28,8 +32,8 @@ type alias OpInfo =
     , wolframAlphaName : String
     }
 
-{-|
-Describes the semantic of a operator
+
+{-| Describes the semantic of a operator
 -}
 type OpType
     = App
@@ -70,8 +74,7 @@ plus =
     BinOp Plus { shortName = "+", longName = "plus", cssClass = "Plus", latexOperator = "+", latexBefore = "", latexAfter = "", wolframAlphaName = "+" }
 
 
-{-|
-minus left right
+{-| minus left right
 -}
 minus : Exp -> Exp -> Exp
 minus =
@@ -99,8 +102,7 @@ pow =
     BinOp Pow { shortName = "^", longName = "power", cssClass = "Pow", latexOperator = "^", latexBefore = "", latexAfter = "", wolframAlphaName = "^" }
 
 
-{-|
-sub term
+{-| sub term
 represents a indizes
 -}
 sub : Exp -> Exp -> Exp
@@ -134,8 +136,7 @@ lambda param body
 -}
 lambda : Exp -> Exp -> Exp
 lambda =
-  BinOp Abs { shortName = "λ", longName = "lambda", cssClass = "Lambda", latexOperator = "", latexBefore = "", latexAfter = "", wolframAlphaName = "?????" }
-
+    BinOp Abs { shortName = "λ", longName = "lambda", cssClass = "Lambda", latexOperator = "", latexBefore = "", latexAfter = "", wolframAlphaName = "?????" }
 
 
 {-| Represents a lambda app. Ware attention! the order is flipped compared to standart lambda-calc notation
@@ -153,8 +154,7 @@ sqrtOp =
     UnaryOp (Root 2) { shortName = "√", longName = "sqrt", cssClass = "Sqrt", latexOperator = "\\sqrt", latexBefore = "", latexAfter = "", wolframAlphaName = "√" }
 
 
-{-|
-factorial num
+{-| factorial num
 -}
 factorial : Exp -> Exp
 factorial =
@@ -182,8 +182,7 @@ sigma =
     BigOp BigSum { shortName = "Σ", longName = "sigma", cssClass = "Sigma", latexOperator = "\\sum", latexBefore = "_", latexAfter = "^", wolframAlphaName = "sum" }
 
 
-{-|
-BigProd over under after
+{-| BigProd over under after
 -}
 product : Exp -> Exp -> Exp -> Exp
 product =
@@ -197,12 +196,10 @@ infinity =
     Symbol Infinity { shortName = "∞", longName = "infinity", cssClass = "Infinity", latexOperator = "\\infty", latexBefore = "", latexAfter = "", wolframAlphaName = "∞" }
 
 
-{-|
-
-The selection is triggered by character sequences at the end of the text-field.
+{-| The selection is triggered by character sequences at the end of the text-field.
 The function in options get the rest of the text-field value and can decide how to handle it
 -}
-options : List (String, (String -> Exp))
+options : List ( String, String -> Exp )
 options =
     [ ( "+", \rest -> plus (Id rest) Hole )
     , ( "-", \rest -> minus (Id rest) Hole )

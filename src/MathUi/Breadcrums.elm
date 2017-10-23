@@ -1,16 +1,19 @@
 module MathUi.Breadcrums exposing (..)
+
 {-|
-Breadcrums
-----
+
+
+## Breadcrums
 
 Breadcrums are used for navigation along the Syntax-tree
 @docs Crum, BreadCrum, foldCrum
+
 -}
+
 import MathUi.Operations exposing (..)
 
 
-{-|
-Represents a single step.
+{-| Represents a single step.
 -}
 type Crum
     = BinOpLeft OpType OpInfo Exp
@@ -27,14 +30,13 @@ type Crum
     | HoleHere
 
 
-{-|
-Represents a path of steps
+{-| Represents a path of steps
 -}
 type alias BreadCrum =
     List Crum
 
-{-|
-update leafs with a function; set default value, if Nothing is returned by the function
+
+{-| update leafs with a function; set default value, if Nothing is returned by the function
 -}
 foldCrum : (Crum -> Maybe Exp) -> Exp -> BreadCrum -> Exp
 foldCrum f neutral breadCrum =
