@@ -1,27 +1,30 @@
-module MathUi.Evaluators exposing (betaReduceStep , wolframAlphaText, latexRepr , numMath, EvaluationResult)
+module MathUi.Evaluators exposing (betaReduceStep, wolframAlphaText, latexRepr, numMath, EvaluationResult)
+
 {-|
-Evaluators
----
+
+
+## Evaluators
 
 ##Types
 @docs EvaluationResult
 
 ##Evaluators
 @docs betaReduceStep, wolframAlphaText, latexRepr, numMath
+
 -}
+
 import MathUi.Breadcrums exposing (..)
 import MathUi.Operations exposing (..)
 import Result exposing (Result(..))
 
-{-|
-Result of a real evaluation; Error with its location as a BreadCrum and a parameterized Ok-Valueu
+
+{-| Result of a real evaluation; Error with its location as a BreadCrum and a parameterized Ok-Valueu
 -}
 type alias EvaluationResult a =
     Result ( BreadCrum, String ) a
 
 
-{-|
-betaReduce one step Step (für Lambda calculus)
+{-| betaReduce one step Step (für Lambda calculus)
 -}
 betaReduceStep : Exp -> Exp -> Exp -> Exp
 betaReduceStep argument param body =
@@ -47,8 +50,8 @@ betaReduceStep argument param body =
             _ ->
                 body
 
-{-|
-convert exp to wolfram alpha understandable format
+
+{-| convert exp to wolfram alpha understandable format
 -}
 wolframAlphaText : Exp -> String
 wolframAlphaText exp =
@@ -156,8 +159,8 @@ factorial n =
     in
         facAcc n 1
 
-{-|
-basic calculator. Does +, -, *, /, ^, !, sqrt, BigSum, BigProd
+
+{-| basic calculator. Does +, -, *, /, ^, !, sqrt, BigSum, BigProd
 -}
 numMath : Exp -> BreadCrum -> EvaluationResult Float
 numMath exp breadCrum =
